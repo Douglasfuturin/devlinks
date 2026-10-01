@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://douglasfuturin.github.io/devlinks/sitemap.xml

@@ -1,0 +1,19 @@
+{
+  "siteUrl": "https://douglasfuturin.github.io/devlinks",
+  "home": {
+    "title": "Douglas Ribeiro dos Santos | Links",
+    "description": "Links oficiais de Douglas Ribeiro dos Santos: inteligência artificial, automação e espanhol.",
+    "name": "Douglas Ribeiro dos Santos",
+    "bio": "Escolha o perfil da bio do Instagram.",
+    "footer": "Feito com ♥ por Douglas Ribeiro dos Santos",
+    "avatar": "assets/avatars/douglas.svg",
+    "avatarAlt": "Monograma DR de Douglas Ribeiro dos Santos",
+    "sectionTitle": "Perfis",
+    "ogImageAlt": "Douglas Ribeiro dos Santos. Links de IA, automação e espanhol."
+  },
+  "analytics": {
+    "enabled": false,
+    "vercel": false,
+    "plausibleDomain": ""
+  }
+}

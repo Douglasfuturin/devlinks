@@ -1,52 +1,116 @@
-<h1 align="center"> DevLinks </h1>
+# Links para a bio do Instagram
 
-<p align="center">
-Programa exclusivo e gratuito, promovido pela Rocketseat para ensino de tecnologias WEB. <br/>
-<a href="https://lp.rocketseat.com.br/devlinks/inscricao?utm_source=github&utm_medium=descricao&utm_campaign=capture-devlinks&utm_term=organic&utm_content=descricao-github-mayk-brito">Estude esse projeto em formato de vídeo clicando aqui.</a>
-</p>
+Páginas estáticas no visual do DevLinks, uma para cada perfil. Não tem backend nem banco: o conteúdo mora em arquivos JSON e o `build.js` gera o HTML.
 
-<p align="center">
-  <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-layout">Layout</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#memo-licença">Licença</a>
-</p>
+| URL | Arquivo | Para que serve |
+| --- | --- | --- |
+| [/](./) | `site.json` | Lista dos perfis |
+| [/douglasdev/](./douglasdev/) | `profiles/douglasdev.json` | Bio de [@o.douglas.dev](https://instagram.com/o.douglas.dev): IA e automação |
+| [/espanhol/](./espanhol/) | `profiles/espanhol.json` | Bio do [Espanhol do Brasileiro](https://www.instagram.com/espanhol.do.brasileiro/) (@espanhol.do.brasileiro) |
 
-<p align="center">
-  <img alt="License" src="https://img.shields.io/static/v1?label=license&message=MIT&color=49AA26&labelColor=000000">
-</p>
+## Editar um link
 
-<br>
+Abra o JSON do perfil. Cada item tem:
 
-<p align="center">
-  <img alt="projeto DevLinks" src=".github/preview.jpg" width="100%">
-</p>
+- `title`, `description`, `url`
+- `icon`: emoji, ou um destes nomes para a fileira de redes: `logo-instagram`, `logo-linkedin`, `logo-github`, `logo-youtube`, `logo-tiktok`, `logo-whatsapp`. São os ícones do Ionicons (os mesmos do DevLinks), gravados na página, sem carregar script externo
+- `badge`: selo opcional, como `R$47` ou `GRÁTIS`. Deixe `""` para não mostrar
+- `highlight`: `true` deixa a borda do botão na cor de destaque do perfil
+- `enabled`: `false` tira o link da página sem apagar o bloco
+- `utm`: `false` não adiciona UTM. O padrão é adicionar em links `http` e `https`
+- `todo`: lembrete seu. Não aparece no site
 
-## 🚀 Tecnologias
+`layout` da seção: `list` (botões) ou `social` (ícones no rodapé, como no DevLinks). Seção com todos os links desligados some da página.
 
-Esse projeto foi desenvolvido com as seguintes tecnologias:
+Quando a URL ainda não existe, use `"url": "#"` e explique no `todo`.
 
-- HTML e CSS
-- JavaScript
-- Git e Github
-- Figma
+Depois de salvar:
 
-## 💻 Projeto
+```bash
+node build.js
+```
 
-O DevLinks é um agregador de links para usar como cartão de visitas online.
+O comando regrava `index.html`, `douglasdev/index.html`, `espanhol/index.html`, `sitemap.xml` e `robots.txt`. Não edite esses HTML na mão.
 
-- [Acesse o projeto finalizado, online](https://maykbrito.github.io/devlinks)
+## Criar um perfil
 
-- [Assistir aulas](https://lp.rocketseat.com.br/devlinks/inscricao?utm_source=github&utm_medium=descricao&utm_campaign=capture-devlinks&utm_term=organic&utm_content=descricao-github-mayk-brito)
+1. Copie `profiles/douglasdev.json` para `profiles/nome.json`.
+2. O `id` tem que ser igual ao nome do arquivo (`nome`), em minúsculas.
+3. Preencha nome, arroba, bio, avatar, `theme` e as seções.
+4. Rode `node build.js`.
 
-## 🔖 Layout
+A página fica em `/nome/`. Apagar o JSON e rodar o build de novo remove a pasta gerada.
 
-Você pode visualizar o layout do projeto através [DESSE LINK](https://www.figma.com/community/file/1187422022288947321). É necessário ter conta no [Figma](https://figma.com) para acessá-lo.
+O `utm_campaign` é sempre o `id` do perfil.
 
-## :memo: Licença
+## Cores
 
-Esse projeto está sob a licença MIT.
+O objeto `theme` troca as variáveis do DevLinks naquele perfil: texto, borda, fundo do botão, hover e as cores do selo (`accent` e `accentText`). O bloco `light` vale quando o interruptor está no tema claro.
 
----
+O fundo com foto roxa/cinza continua o do DevLinks, compartilhado. O `/douglasdev/` usa o tema clássico (branco) em cima da foto roxa. O `/espanhol/` usa a paleta do logo: azul-marinho `#031228`, verde `#037b27`, amarelo `#fdba01` e vermelho da Espanha `#dd1014`. O logo oficial fica em `assets/espanhol/logo.png` (fundo transparente; na página ele entra num cartão branco para o azul-marinho do lettering aparecer). O favicon dessa página é `assets/espanhol/favicon.png`.
 
-Feito com ♥ by Rocketseat :wave: [Participe da nossa comunidade!](https://discord.gg/rocketseat)
+Avatar: caminho em `profile.avatar`, a partir da raiz do site (`assets/avatars/douglas.svg`). Pode ser SVG, PNG ou JPG. `avatarAlt` é o texto alternativo.
+
+## UTM
+
+Em todo link `http`/`https` com `utm` diferente de `false`, o build acrescenta:
+
+`utm_source=instagram&utm_medium=bio&utm_campaign=<id-do-perfil>`
+
+Origem e mídia saem do objeto `utm` do perfil. Se a URL já tiver um desses parâmetros, ele é mantido. Links `#`, `mailto:` e `tel:` não recebem UTM.
+
+## Cliques (opcional, desligado)
+
+Dá para medir o clique sem obrigar ninguém a aceitar cookie.
+
+1. **Sem script.** O UTM já chega na Lastlink, no Vercel Analytics do destino, ou em qualquer ferramenta que leia a URL. É o caminho que funciona nos dois deploys.
+2. **Vercel Web Analytics** (grátis no plano Hobby, sem cookie). No projeto da Vercel, ative Web Analytics. Em `site.json`, mude `analytics` para `"enabled": true` e `"vercel": true`. Rode `node build.js` e faça deploy. Cada clique manda o evento `link_click` com `profile` (ex.: `espanhol`) e `link` (ex.: `flashcards`). O script `/_vercel/insights/script.js` só existe na Vercel; por isso ele fica de fora enquanto `vercel` for `false`.
+3. **Plausible.** Se você tiver um domínio no Plausible (ou numa instância sua), preencha `plausibleDomain` e ligue `enabled`. O mesmo evento `link_click` é enviado.
+
+## SEO e preview
+
+Cada página tem título, descrição, canonical, Open Graph e Twitter Card em pt-BR, mais JSON-LD. A imagem de preview é `assets/og-home.png`, `assets/og-douglasdev.png` e `assets/og-espanhol.png`.
+
+`site.json` → `siteUrl` precisa ser a URL pública, sem barra no final. O padrão é o GitHub Pages do repositório. Se o endereço oficial for o da Vercel ou um domínio próprio, troque o `siteUrl` e rode o build de novo, senão o preview aponta para o lugar errado.
+
+Para refazer as imagens depois de mudar nome ou marca:
+
+```bash
+python3 scripts/og-images.py
+node build.js
+```
+
+O script usa Pillow e a fonte Inter.
+
+## Rodar na máquina
+
+```bash
+node build.js
+python3 -m http.server 4173
+```
+
+Abra `http://localhost:4173/`, `http://localhost:4173/douglasdev/` e `http://localhost:4173/espanhol/`.
+
+## GitHub Pages
+
+O repositório não tinha um workflow de Pages: o deploy é o modo estático, pela branch. Em **Settings → Pages**, escolha **Deploy from a branch**, branch `main`, pasta **/ (root)**.
+
+A URL fica `https://douglasfuturin.github.io/devlinks/`. O arquivo `.nojekyll` impede o Jekyll de filtrar JSON e pastas. Os links usam caminhos relativos, então funcionam nesse subcaminho.
+
+## Vercel
+
+Importe o repositório. Framework **Other**, sem comando de build, diretório de saída na raiz. O `vercel.json` só liga a barra no final da URL e alguns cabeçalhos. Não crie projeto Node: não existe `package.json` de propósito.
+
+Se a URL da Vercel for a oficial, atualize `siteUrl` e rode o build antes do push.
+
+## Pendências de URL
+
+Nada disso aparece na página. O `node build.js` lista de novo:
+
+- Curso de importação de chuteiras (`/douglasdev/`)
+- Checkouts da Lastlink em `/espanhol/` ainda sem URL: Fluência na Prática (R$97) e Morar e Trabalhar na Espanha (R$197, bônus Professor de Espanhol). Kit Sobrevivência (R$19,90) e Flashcards (R$47) já apontam para a Lastlink, com UTM do perfil.
+- Material grátis / lista de WhatsApp
+
+## Crédito
+
+O visual (fundo, interruptor de tema, cartões e fileira de ícones) vem do [DevLinks da Rocketseat](https://github.com/rocketseat-education/devlinks), projeto em MIT. O conteúdo e os perfis são do Douglas Ribeiro dos Santos.

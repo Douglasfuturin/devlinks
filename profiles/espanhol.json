@@ -1,0 +1,153 @@
+{
+  "id": "espanhol",
+  "order": 2,
+  "navTitle": "Espanhol do Brasileiro",
+  "navDescription": "Flashcards e cursos de espanhol da Espanha.",
+  "navIcon": "🇪🇸",
+  "profile": {
+    "kind": "organization",
+    "name": "Espanhol do Brasileiro",
+    "subtitle": "FLASHCARDS",
+    "handle": "@espanhol.do.brasileiro",
+    "bio": "Espanhol da Espanha, do jeito do brasileiro.",
+    "avatar": "assets/espanhol/logo.png",
+    "avatarFit": "logo",
+    "avatarAlt": "Logo Espanhol do Brasileiro: Espanhol em azul-marinho, do Brasileiro em verde, bandeiras da Espanha e do Brasil, e o selo Flashcards.",
+    "favicon": "assets/espanhol/favicon.png",
+    "faviconType": "image/png",
+    "footer": "Espanhol do Brasileiro"
+  },
+  "theme": {
+    "themeColor": "#031228",
+    "pageBg": "#031228",
+    "bgUrl": "none",
+    "textColor": "#f7f4ef",
+    "strokeColor": "rgba(253, 186, 1, 0.55)",
+    "surfaceColor": "rgba(255, 255, 255, 0.06)",
+    "surfaceColorHover": "rgba(3, 123, 39, 0.22)",
+    "highlightColor": "rgba(253, 186, 1, 0.24)",
+    "accent": "#fdba01",
+    "accentText": "#031228",
+    "mark": "#dd1014",
+    "sectionColor": "#3dcf73",
+    "subtitleColor": "#fdba01",
+    "light": {
+      "themeColor": "#f7f6f2",
+      "pageBg": "#f7f6f2",
+      "bgUrl": "none",
+      "textColor": "#031228",
+      "strokeColor": "rgba(3, 123, 39, 0.4)",
+      "surfaceColor": "rgba(3, 123, 39, 0.06)",
+      "surfaceColorHover": "rgba(3, 123, 39, 0.12)",
+      "highlightColor": "rgba(221, 16, 20, 0.1)",
+      "accent": "#fdba01",
+      "accentText": "#031228",
+      "mark": "#dd1014",
+      "sectionColor": "#037b27",
+      "subtitleColor": "#037b27"
+    }
+  },
+  "seo": {
+    "title": "Espanhol do Brasileiro | Flashcards",
+    "description": "Espanhol do Brasileiro: Kit Sobrevivência, Flashcards, Fluência na Prática e Morar e Trabalhar na Espanha, com o tutor Professor de Espanhol.",
+    "type": "website",
+    "siteName": "Espanhol do Brasileiro",
+    "imageAlt": "Logo Espanhol do Brasileiro, flashcards de espanhol da Espanha."
+  },
+  "utm": {
+    "source": "instagram",
+    "medium": "bio"
+  },
+  "sections": [
+    {
+      "id": "cursos",
+      "title": "Cursos",
+      "layout": "list",
+      "links": [
+        {
+          "id": "kit-sobrevivencia",
+          "title": "Kit Sobrevivência",
+          "description": "O essencial para se virar em espanhol.",
+          "url": "https://lastlink.com/p/CA990C2E4/checkout-payment",
+          "icon": "🧰",
+          "badge": "R$19,90",
+          "highlight": false,
+          "enabled": true,
+          "utm": true
+        },
+        {
+          "id": "flashcards",
+          "title": "Flashcards",
+          "description": "Espanhol da Espanha, do zero ao avançado.",
+          "url": "https://lastlink.com/p/CC267EA60/checkout-payment",
+          "icon": "🗂️",
+          "badge": "R$47",
+          "highlight": true,
+          "enabled": true,
+          "utm": true
+        },
+        {
+          "id": "fluencia-na-pratica",
+          "title": "Fluência na Prática",
+          "description": "Prática para falar com mais segurança.",
+          "url": "#",
+          "todo": "TODO: colar o link de checkout da Lastlink",
+          "icon": "🗣️",
+          "badge": "R$97",
+          "highlight": false,
+          "enabled": true,
+          "utm": true
+        },
+        {
+          "id": "morar-e-trabalhar",
+          "title": "Morar e Trabalhar na Espanha",
+          "description": "Bônus: Professor de Espanhol, tutor com IA.",
+          "url": "#",
+          "todo": "TODO: colar o link de checkout da Lastlink",
+          "icon": "✈️",
+          "badge": "R$197",
+          "highlight": false,
+          "enabled": true,
+          "utm": true
+        }
+      ]
+    },
+    {
+      "id": "gratis",
+      "title": "Grátis",
+      "layout": "list",
+      "links": [
+        {
+          "id": "material-gratis",
+          "title": "Material grátis",
+          "description": "Material gratuito na lista do WhatsApp.",
+          "url": "#",
+          "todo": "TODO: colar o link do material gratuito ou da lista de WhatsApp",
+          "icon": "🎁",
+          "badge": "GRÁTIS",
+          "highlight": false,
+          "enabled": true,
+          "utm": true
+        }
+      ]
+    },
+    {
+      "id": "redes",
+      "title": "Redes",
+      "layout": "social",
+      "links": [
+        {
+          "id": "instagram",
+          "title": "Instagram",
+          "description": "",
+          "url": "https://www.instagram.com/espanhol.do.brasileiro/",
+          "icon": "logo-instagram",
+          "badge": "",
+          "highlight": false,
+          "enabled": true,
+          "utm": true
+        }
+      ]
+    }
+  ]
+}

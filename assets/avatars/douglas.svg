@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 112 112">
+  <defs>
+    <linearGradient id="douglas" x1="18" y1="10" x2="96" y2="104" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8b5cf6"/>
+      <stop offset="1" stop-color="#2e1065"/>
+    </linearGradient>
+  </defs>
+  <circle cx="56" cy="56" r="56" fill="url(#douglas)"/>
+  <text x="56" y="56" text-anchor="middle" dominant-baseline="central" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="600" fill="#ffffff">DR</text>
+</svg>
