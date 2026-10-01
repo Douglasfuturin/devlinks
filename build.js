@@ -386,7 +386,8 @@ function pageMap(options) {
     AVATAR: esc(avatar),
     AVATAR_LIGHT: esc(avatarLight),
     AVATAR_ALT: esc(options.avatarAlt),
-    AVATAR_CLASS: options.avatarFit === "logo" ? "logo" : "avatar",
+    AVATAR_CLASS:
+      options.avatarFit === "logo" ? "logo" : options.avatarFit === "photo" ? "avatar photo" : "avatar",
     AVATAR_SIZE:
       options.avatarFit === "logo" ? 'width="320" height="246"' : 'width="112" height="112"',
     FAVICON: esc(asset(options.prefix, options.favicon || "assets/favicon.svg")),
@@ -397,6 +398,11 @@ function pageMap(options) {
     HANDLE: options.handle ? `<p id="handle">${esc(options.handle)}</p>` : "",
     SUBTITLE: options.subtitle ? `<p id="subtitle">${esc(options.subtitle)}</p>` : "",
     BIO: options.bio ? `<p id="bio">${esc(options.bio)}</p>` : "",
+    BRAND: options.brandLogo
+      ? `<img class="brand-logo" src="${esc(asset(options.prefix, options.brandLogo))}" alt="${esc(
+          options.brandLogoAlt || ""
+        )}" width="160" height="124" />`
+      : "",
     LINKS: options.links,
     SOCIAL: options.social,
     FOOTER: esc(options.footer),
@@ -405,6 +411,15 @@ function pageMap(options) {
     ANALYTICS_HEAD: analyticsHead(options.analytics),
     ANALYTICS_BOOT: analyticsBoot(options.profileId, options.analytics),
   }
+}
+
+// seo.canonical (opcional): URL oficial do perfil quando ele mora em outro domínio,
+// por exemplo a raiz da Vercel. Sem ela, vale siteUrl + /id/.
+function profileCanonical(profile, base) {
+  const custom = profile.seo && profile.seo.canonical
+  if (!custom) return `${base}/${profile.id}/`
+  if (!isHttp(custom)) throw new Error(`${profile.id}: seo.canonical precisa ser http(s).`)
+  return custom.endsWith("/") ? custom : `${custom}/`
 }
 
 function requireOg(file) {
@@ -537,7 +552,8 @@ function build() {
 
   for (const profile of profiles) {
     requireOg(`assets/og-${profile.id}.png`)
-    const canonical = `${base}/${profile.id}/`
+    const canonical = profileCanonical(profile, base)
+    const ogBase = canonical.replace(/\/+$/, "").replace(new RegExp(`/${profile.id}$`), "")
     const sections = renderSections(profile)
     const html = fill(
       template,
@@ -547,7 +563,7 @@ function build() {
         description: profile.seo.description,
         canonical,
         ogType: profile.seo.type || "website",
-        ogImage: `${base}/assets/og-${profile.id}.png`,
+        ogImage: `${ogBase}/assets/og-${profile.id}.png`,
         ogImageAlt: profile.seo.imageAlt || profile.seo.title,
         siteName: profile.seo.siteName || profile.profile.name,
         avatar: profile.profile.avatar,
@@ -557,6 +573,8 @@ function build() {
         favicon: profile.profile.favicon,
         faviconType: profile.profile.faviconType,
         subtitle: profile.profile.subtitle,
+        brandLogo: profile.profile.brandLogo,
+        brandLogoAlt: profile.profile.brandLogoAlt,
         themeColor: profile.theme && profile.theme.themeColor,
         themeColorLight: profile.theme && profile.theme.light && profile.theme.light.themeColor,
         name: profile.profile.name,
@@ -574,7 +592,7 @@ function build() {
     writeText(path.join(ROOT, profile.id, "index.html"), html)
   }
 
-  const urls = [homeCanonical, ...profiles.map((profile) => `${base}/${profile.id}/`)]
+  const urls = [homeCanonical, ...profiles.map((profile) => profileCanonical(profile, base))]
   writeText(
     path.join(ROOT, "sitemap.xml"),
     `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls
@@ -664,11 +682,24 @@ function assertBuilt(profiles) {
   expect(espanhol, "--mark: #dd1014;", "Vermelho da Espanha ausente")
   expect(espanhol, "--page-bg: #031228;", "Azul-marinho da marca ausente")
   expect(espanhol, "Espanhol do Brasileiro", "Nome da marca ausente")
-  expect(espanhol, "FLASHCARDS", "Subtítulo FLASHCARDS ausente")
+  expect(espanhol, "<h1>Marina Duarte</h1>", "Nome da Marina ausente")
+  expect(espanhol, "Professora de espanhol", "Subtítulo da professora ausente")
+  expect(espanhol, "assets/espanhol/marina-duarte.jpg", "Foto da Marina ausente")
+  expect(espanhol, 'class="avatar photo"', "Foto sem a classe de avatar")
+  expect(espanhol, 'class="brand-logo"', "Logo pequeno da marca ausente")
+  expect(
+    espanhol,
+    '<link rel="canonical" href="https://marina-duarte.vercel.app/" />',
+    "Canonical do /espanhol/ fora da Vercel"
+  )
+  expect(
+    espanhol,
+    'content="https://marina-duarte.vercel.app/assets/og-espanhol.png"',
+    "Imagem OG do /espanhol/ fora da Vercel"
+  )
   expect(espanhol, "Professor de Espanhol", "Bônus do tutor ausente")
-  expect(espanhol, "assets/espanhol/logo.png", "Logo ausente no cabeçalho")
+  expect(espanhol, "assets/espanhol/logo-small.png", "Logo ausente no cabeçalho")
   expect(espanhol, "assets/espanhol/favicon.png", "Favicon da marca ausente")
-  expect(espanhol, 'class="logo"', "Logo sem a classe de cabeçalho")
   reject(espanhol, "Rumo à Espanha", "Nome antigo ainda está na página")
   reject(home, "Rumo à Espanha", "Nome antigo ainda está na home")
   reject(espanhol, "darkpagesai", "Dark Pages vazou para /espanhol/")

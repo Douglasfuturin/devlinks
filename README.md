@@ -6,7 +6,7 @@ Páginas estáticas no visual do DevLinks, uma para cada perfil. Não tem backen
 | --- | --- | --- |
 | [/](./) | `site.json` | Lista dos perfis |
 | [/douglasdev/](./douglasdev/) | `profiles/douglasdev.json` | Bio de [@o.douglas.dev](https://instagram.com/o.douglas.dev): IA e automação |
-| [/espanhol/](./espanhol/) | `profiles/espanhol.json` | Bio do [Espanhol do Brasileiro](https://www.instagram.com/espanhol.do.brasileiro/) (@espanhol.do.brasileiro) |
+| [/espanhol/](./espanhol/) | `profiles/espanhol.json` | Bio do [Espanhol do Brasileiro](https://www.instagram.com/espanhol.do.brasileiro/) (@espanhol.do.brasileiro), com a professora Marina Duarte. Na Vercel é a raiz: https://marina-duarte.vercel.app |
 
 ## Editar um link
 
@@ -50,6 +50,12 @@ O objeto `theme` troca as variáveis do DevLinks naquele perfil: texto, borda, f
 O fundo com foto roxa/cinza continua o do DevLinks, compartilhado. O `/douglasdev/` usa o tema clássico (branco) em cima da foto roxa. O `/espanhol/` usa a paleta do logo: azul-marinho `#031228`, verde `#037b27`, amarelo `#fdba01` e vermelho da Espanha `#dd1014`. O logo oficial fica em `assets/espanhol/logo.png` (fundo transparente; na página ele entra num cartão branco para o azul-marinho do lettering aparecer). O favicon dessa página é `assets/espanhol/favicon.png`.
 
 Avatar: caminho em `profile.avatar`, a partir da raiz do site (`assets/avatars/douglas.svg`). Pode ser SVG, PNG ou JPG. `avatarAlt` é o texto alternativo.
+
+## Vercel (marina-duarte.vercel.app)
+
+O projeto `marina-duarte` na Vercel publica este repositório sem build. O `vercel.json` reescreve `/` para `/espanhol/`, então o link da bio é só https://marina-duarte.vercel.app. `/douglasdev/` continua no mesmo endereço.
+
+No `/espanhol/`, `seo.canonical` aponta canonical, `og:url`, `og:image` e sitemap para a Vercel. A foto do topo é `assets/espanhol/marina-duarte.jpg` (400x400, `avatarFit: "photo"`) e o logo pequeno é `assets/espanhol/logo-small.png` (`brandLogo`).
 
 ## UTM
 
