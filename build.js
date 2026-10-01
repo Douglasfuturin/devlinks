@@ -639,7 +639,14 @@ function assertBuilt(profiles) {
   expect(espanhol, "R$97", "Preço de fluência ausente")
   expect(espanhol, "R$197", "Preço de morar e trabalhar ausente")
   expect(espanhol, "GRÁTIS", "Selo do material grátis ausente")
-  reject(espanhol, "utm_", "Placeholder de /espanhol/ não pode levar UTM")
+  expect(
+    espanhol,
+    'href="https://lastlink.com/p/CA990C2E4/checkout-payment?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=espanhol"',
+    "Checkout do kit sem UTM da página"
+  )
+  expect(espanhol, 'href="#flashcards"', "Flashcards deixou de ser placeholder")
+  expect(espanhol, 'href="#fluencia-na-pratica"', "Fluência deixou de ser placeholder")
+  expect(espanhol, 'href="#morar-e-trabalhar"', "Morar e trabalhar deixou de ser placeholder")
   expect(espanhol, 'class="highlight"', "Destaque dos flashcards ausente")
   expect(espanhol, "--accent: #fdba01;", "Amarelo da marca ausente")
   expect(espanhol, "--mark: #dd1014;", "Vermelho da Espanha ausente")

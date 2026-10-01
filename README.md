@@ -108,7 +108,7 @@ Se a URL da Vercel for a oficial, atualize `siteUrl` e rode o build antes do pus
 Nada disso aparece na página. O `node build.js` lista de novo:
 
 - Curso de importação de chuteiras (`/douglasdev/`)
-- Checkouts da Lastlink em `/espanhol/`: Kit Sobrevivência (R$19,90), Flashcards (R$47), Fluência na Prática (R$97), Morar e Trabalhar na Espanha (R$197, bônus Professor de Espanhol)
+- Checkouts da Lastlink em `/espanhol/` ainda sem URL: Flashcards (R$47), Fluência na Prática (R$97), Morar e Trabalhar na Espanha (R$197, bônus Professor de Espanhol). O Kit Sobrevivência (R$19,90) já aponta para a Lastlink, com UTM do perfil.
 - Material grátis / lista de WhatsApp
 - @ do Instagram do Espanhol do Brasileiro, hoje desligado em `profiles/espanhol.json`
 
