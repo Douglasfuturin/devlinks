@@ -114,10 +114,11 @@ Se a URL da Vercel for a oficial, atualize `siteUrl` e rode o build antes do pus
 
 Os quatro cursos de `/espanhol/` já apontam para a Lastlink, com UTM do perfil: Kit Sobrevivência (R$19,90), Flashcards (R$47), Fluência na Prática (R$97) e Morar e Trabalhar na Espanha (R$197, bônus Professor de Espanhol).
 
-Ainda faltam, e nada disso aparece na página. O `node build.js` lista de novo:
+O grupo gratuito do WhatsApp é o primeiro botão de `/espanhol/`: [Entrar no grupo gratuito do WhatsApp](https://chat.whatsapp.com/DasExwyjLjNJAdKjoMYYUb).
+
+Ainda falta, e nada disso aparece na página. O `node build.js` lista de novo:
 
 - Curso de importação de chuteiras (`/douglasdev/`)
-- Material grátis / lista de WhatsApp
 
 ## Crédito
 

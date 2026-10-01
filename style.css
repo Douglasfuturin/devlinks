@@ -310,6 +310,36 @@ ul li a.highlight {
   border-color: var(--mark);
 }
 
+ul li a.whatsapp {
+  background: rgba(37, 211, 102, 0.14);
+  border-color: #25d366;
+}
+
+ul li a.whatsapp .link-icon {
+  color: #25d366;
+}
+
+ul li a.whatsapp:hover,
+ul li a.whatsapp:focus-visible {
+  background: rgba(37, 211, 102, 0.24);
+  border-color: #25d366;
+}
+
+.light ul li a.whatsapp {
+  background: rgba(5, 127, 43, 0.1);
+  border-color: #057f2b;
+}
+
+.light ul li a.whatsapp .link-icon {
+  color: #057f2b;
+}
+
+.light ul li a.whatsapp:hover,
+.light ul li a.whatsapp:focus-visible {
+  background: rgba(5, 127, 43, 0.16);
+  border-color: #057f2b;
+}
+
 ul li a:hover,
 ul li a:focus-visible {
   background: var(--surface-color-hover);

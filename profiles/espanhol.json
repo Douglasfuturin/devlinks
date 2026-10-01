@@ -67,6 +67,25 @@
   },
   "sections": [
     {
+      "id": "grupo",
+      "title": "Grátis",
+      "layout": "list",
+      "links": [
+        {
+          "id": "grupo-whatsapp",
+          "title": "Entrar no grupo gratuito do WhatsApp",
+          "description": "Dicas de espanhol da Espanha, grátis.",
+          "url": "https://chat.whatsapp.com/DasExwyjLjNJAdKjoMYYUb",
+          "icon": "logo-whatsapp",
+          "badge": "GRÁTIS",
+          "highlight": false,
+          "tone": "whatsapp",
+          "enabled": true,
+          "utm": false
+        }
+      ]
+    },
+    {
       "id": "cursos",
       "title": "Cursos",
       "layout": "list",
@@ -111,25 +130,6 @@
           "url": "https://lastlink.com/p/CBDB5423A/checkout-payment",
           "icon": "✈️",
           "badge": "R$197",
-          "highlight": false,
-          "enabled": true,
-          "utm": true
-        }
-      ]
-    },
-    {
-      "id": "gratis",
-      "title": "Grátis",
-      "layout": "list",
-      "links": [
-        {
-          "id": "material-gratis",
-          "title": "Material grátis",
-          "description": "Material gratuito na lista do WhatsApp.",
-          "url": "#",
-          "todo": "TODO: colar o link do material gratuito ou da lista de WhatsApp",
-          "icon": "🎁",
-          "badge": "GRÁTIS",
           "highlight": false,
           "enabled": true,
           "utm": true

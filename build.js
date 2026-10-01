@@ -185,7 +185,10 @@ function renderListLink(link, profileId, utm) {
   const href = outboundHref(link, profileId, utm)
   const external = isHttp(href)
   const finalHref = href === "#" ? `#${link.id}` : href
-  const classAttr = link.highlight ? ' class="highlight"' : ""
+  const classes = []
+  if (link.highlight) classes.push("highlight")
+  if (link.tone === "whatsapp") classes.push("whatsapp")
+  const classAttr = classes.length ? ` class="${classes.join(" ")}"` : ""
   const blank = external ? ' target="_blank" rel="noopener noreferrer"' : ""
   const desc = link.description
     ? `\n              <span class="link-desc">${esc(link.description)}</span>`
@@ -378,6 +381,7 @@ function pageMap(options) {
   return {
     TITLE: esc(options.title),
     DESCRIPTION: esc(options.description),
+    AUTHOR: esc(options.author || options.name || ""),
     CANONICAL: esc(options.canonical),
     OG_TYPE: esc(options.ogType || "website"),
     OG_IMAGE: esc(options.ogImage),
@@ -548,6 +552,7 @@ function build() {
       prefix: directoryPrefix,
       title: site.home.title,
       description: site.home.description,
+      author: site.home.name,
       canonical: directoryCanonical,
       ogType: "website",
       ogImage: `${base}/assets/og-home.png`,
@@ -613,6 +618,7 @@ function build() {
         prefix,
         title: profile.seo.title,
         description: profile.seo.description,
+        author: profile.profile.name,
         canonical,
         ogType: profile.seo.type || "website",
         ogImage: profileOg(profile, ogBase),
@@ -734,6 +740,26 @@ function assertBuilt(profiles) {
   expect(espanhol, "R$97", "Preço de fluência ausente")
   expect(espanhol, "R$197", "Preço de morar e trabalhar ausente")
   expect(espanhol, "GRÁTIS", "Selo do material grátis ausente")
+  expect(
+    espanhol,
+    'href="https://chat.whatsapp.com/DasExwyjLjNJAdKjoMYYUb"',
+    "Grupo do WhatsApp ausente ou com UTM"
+  )
+  expect(espanhol, 'id="grupo-whatsapp"', "Botão do grupo ausente")
+  expect(espanhol, 'class="whatsapp"', "Destaque do WhatsApp ausente")
+  expect(espanhol, "Entrar no grupo gratuito do WhatsApp", "Texto do grupo ausente")
+  expect(espanhol, "Dicas de espanhol da Espanha, grátis.", "Linha do grupo ausente")
+  expect(
+    espanhol,
+    '<a id="grupo-whatsapp" href="https://chat.whatsapp.com/DasExwyjLjNJAdKjoMYYUb" data-link-id="grupo-whatsapp" class="whatsapp" target="_blank" rel="noopener noreferrer">',
+    "Grupo sem nova aba"
+  )
+  if (espanhol.indexOf('id="grupo-whatsapp"') > espanhol.indexOf('id="kit-sobrevivencia"')) {
+    throw new Error("Grupo gratuito ficou depois dos cursos")
+  }
+  reject(espanhol, "material-gratis", "Placeholder do material grátis ainda está na página")
+  reject(espanhol, "Douglas", "Nome de outra pessoa na página da Marina")
+  reject(home, "Douglas", "Nome de outra pessoa na raiz da Marina")
   expect(
     espanhol,
     'href="https://lastlink.com/p/CA990C2E4/checkout-payment?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=espanhol"',
