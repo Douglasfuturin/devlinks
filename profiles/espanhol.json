@@ -140,12 +140,13 @@
             "Plano de Estudo de 30 Dias: 30 a 40 minutos por dia, missões diárias, duas trilhas e checklist para imprimir",
             "Guia Comece Aqui"
           ],
-          "url": "https://lastlink.com/p/CE3770193/checkout-payment",
           "icon": "🗣️",
           "badge": "R$97",
+          "paused": true,
+          "pausedLabel": "Novas turmas em breve",
+          "pausedNote": "Comece pelo Kit ou pelos Flashcards",
           "highlight": false,
-          "enabled": true,
-          "utm": true
+          "enabled": true
         },
         {
           "id": "morar-e-trabalhar",
@@ -158,12 +159,13 @@
             "Preparação para o DELE A1 a C1: formato das provas, estratégias por habilidade, tarefas com gabarito e modelos",
             "Bônus: Professor de Espanhol com IA, com comandos prontos para conversar, ensaiar roteiros, corrigir textos, burocracia e DELE"
           ],
-          "url": "https://lastlink.com/p/CBDB5423A/checkout-payment",
           "icon": "✈️",
           "badge": "R$197",
+          "paused": true,
+          "pausedLabel": "Novas turmas em breve",
+          "pausedNote": "Comece pelo Kit ou pelos Flashcards",
           "highlight": false,
-          "enabled": true,
-          "utm": true
+          "enabled": true
         }
       ]
     },
