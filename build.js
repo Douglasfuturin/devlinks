@@ -195,7 +195,7 @@ function renderListLink(link, profileId, utm) {
     ? `\n              <span class="link-desc">${esc(link.description)}</span>`
     : ""
   const cta = link.cta ? `\n              <span class="link-cta">${esc(link.cta)}</span>` : ""
-  const badge = link.badge ? `<span class="badge">${esc(link.badge)}</span>` : ""
+  const badge = link.badge ? `\n            <span class="badge">${esc(link.badge)}</span>` : ""
   const extra =
     external && !link.ariaLabel
       ? `\n            <span class="sr-only"> (abre em nova aba)</span>`
@@ -216,8 +216,7 @@ function renderListLink(link, profileId, utm) {
           <a id="${esc(link.id)}" href="${esc(finalHref)}" data-link-id="${esc(link.id)}"${courseClass}${aria}${blank}>
             <span class="course-top">
               ${iconMarkup(link.icon, link.id)}
-              <span class="link-title">${esc(link.title)}</span>
-              ${badge}
+              <span class="link-title">${esc(link.title)}</span>${link.badge ? `\n              <span class="badge">${esc(link.badge)}</span>` : ""}
             </span>${desc}${ladder}${list}${extra}
           </a>
         </li>`
@@ -227,8 +226,7 @@ function renderListLink(link, profileId, utm) {
             ${iconMarkup(link.icon, link.id)}
             <span class="link-copy">
               <span class="link-title">${esc(link.title)}</span>${desc}${cta}
-            </span>
-            ${badge}${extra}
+            </span>${badge}${extra}
           </a>
         </li>`
 }
