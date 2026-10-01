@@ -190,18 +190,42 @@ function renderListLink(link, profileId, utm) {
   if (link.tone === "whatsapp") classes.push("whatsapp")
   const classAttr = classes.length ? ` class="${classes.join(" ")}"` : ""
   const blank = external ? ' target="_blank" rel="noopener noreferrer"' : ""
+  const aria = link.ariaLabel ? ` aria-label="${esc(link.ariaLabel)}"` : ""
   const desc = link.description
     ? `\n              <span class="link-desc">${esc(link.description)}</span>`
     : ""
+  const cta = link.cta ? `\n              <span class="link-cta">${esc(link.cta)}</span>` : ""
   const badge = link.badge ? `\n            <span class="badge">${esc(link.badge)}</span>` : ""
-  const extra = external
-    ? `\n            <span class="sr-only"> (abre em nova aba)</span>`
-    : ""
+  const extra =
+    external && !link.ariaLabel
+      ? `\n            <span class="sr-only"> (abre em nova aba)</span>`
+      : ""
+  const features = Array.isArray(link.features) ? link.features.filter(Boolean) : []
+  if (features.length || link.includesPrevious) classes.push("course")
+  const courseClass = classes.length ? ` class="${classes.join(" ")}"` : ""
+  if (features.length || link.includesPrevious) {
+    const ladder = link.includesPrevious
+      ? `\n            <p class="link-ladder">${esc(link.includesPrevious)}</p>`
+      : ""
+    const list = features.length
+      ? `\n            <ul class="feature-list">\n${features
+          .map((item) => `              <li>${esc(item)}</li>`)
+          .join("\n")}\n            </ul>`
+      : ""
+    return `        <li>
+          <a id="${esc(link.id)}" href="${esc(finalHref)}" data-link-id="${esc(link.id)}"${courseClass}${aria}${blank}>
+            <span class="course-top">
+              ${iconMarkup(link.icon, link.id)}
+              <span class="link-title">${esc(link.title)}</span>${link.badge ? `\n              <span class="badge">${esc(link.badge)}</span>` : ""}
+            </span>${desc}${ladder}${list}${extra}
+          </a>
+        </li>`
+  }
   return `        <li>
-          <a id="${esc(link.id)}" href="${esc(finalHref)}" data-link-id="${esc(link.id)}"${classAttr}${blank}>
+          <a id="${esc(link.id)}" href="${esc(finalHref)}" data-link-id="${esc(link.id)}"${classAttr}${aria}${blank}>
             ${iconMarkup(link.icon, link.id)}
             <span class="link-copy">
-              <span class="link-title">${esc(link.title)}</span>${desc}
+              <span class="link-title">${esc(link.title)}</span>${desc}${cta}
             </span>${badge}${extra}
           </a>
         </li>`
@@ -731,7 +755,22 @@ function assertBuilt(profiles) {
   )
   reject(douglas, "Kit Sobrevivência", "Curso de espanhol vazou para /douglasdev/")
   expect(espanhol, "Kit Sobrevivência", "Kit ausente")
-  expect(espanhol, ">Flashcards<", "Flashcards ausente")
+  expect(espanhol, "Flashcards A1–C1", "Flashcards ausente")
+  expect(espanhol, "687 flashcards do A1 ao C1", "Entrega dos flashcards ausente")
+  expect(espanhol, "Baralho pronto para o Anki", "Anki ausente")
+  expect(espanhol, "PDF para celular, com 33 páginas", "PDF do kit ausente")
+  expect(espanhol, "Tudo do plano anterior +", "Escada dos planos ausente")
+  expect(espanhol, "Roteiros de Conversação, 22 páginas", "Roteiros ausentes")
+  expect(espanhol, "Falsos amigos PT–ES, 9 páginas", "Falsos amigos ausentes")
+  expect(espanhol, "Plano de Estudo de 30 Dias", "Plano de 30 dias ausente")
+  expect(espanhol, "Guia Comece Aqui", "Guia Comece Aqui ausente")
+  expect(espanhol, "Vocabulário de Trabalho", "Vocabulário de trabalho ausente")
+  expect(espanhol, "Documentos e Burocracia", "Burocracia ausente")
+  expect(espanhol, "Preparação para o DELE A1 a C1", "DELE ausente")
+  expect(espanhol, "comandos prontos para conversar", "Bônus de IA ausente")
+  reject(espanhol, "aula ao vivo", "Entrega inventada na página")
+  reject(espanhol, "videoaula", "Entrega inventada na página")
+  reject(espanhol, "área de membros", "Entrega inventada na página")
   expect(espanhol, "Fluência na Prática", "Fluência ausente")
   expect(espanhol, "Morar e Trabalhar na Espanha", "Morar e trabalhar ausente")
   expect(espanhol, "R$19,90", "Preço do kit ausente")
@@ -747,11 +786,22 @@ function assertBuilt(profiles) {
   )
   expect(espanhol, 'id="grupo-whatsapp"', "Botão do grupo ausente")
   expect(espanhol, 'class="whatsapp"', "Destaque do WhatsApp ausente")
-  expect(espanhol, "Entrar no grupo gratuito do WhatsApp", "Texto do grupo ausente")
-  expect(espanhol, "Dicas de espanhol da Espanha, grátis.", "Linha do grupo ausente")
+  expect(espanhol, "Grupo de Networking de Imigrantes na Espanha", "Título do grupo ausente")
   expect(
     espanhol,
-    '<a id="grupo-whatsapp" href="https://chat.whatsapp.com/DasExwyjLjNJAdKjoMYYUb" data-link-id="grupo-whatsapp" class="whatsapp" target="_blank" rel="noopener noreferrer">',
+    "Dicas de espanhol e experiências do dia a dia. Gratuito!",
+    "Linha do grupo ausente"
+  )
+  expect(espanhol, "Entrar no grupo grátis", "Chamada do grupo ausente")
+  reject(espanhol, "Entrar no grupo gratuito do WhatsApp", "Texto antigo do grupo ainda está na página")
+  expect(
+    espanhol,
+    'aria-label="Grupo de Networking de Imigrantes na Espanha. Dicas de espanhol e experiências do dia a dia. Gratuito! Entrar no grupo grátis no WhatsApp (abre em nova aba)"',
+    "Texto acessível do grupo desatualizado"
+  )
+  expect(
+    espanhol,
+    '<a id="grupo-whatsapp" href="https://chat.whatsapp.com/DasExwyjLjNJAdKjoMYYUb" data-link-id="grupo-whatsapp" class="whatsapp" aria-label="Grupo de Networking de Imigrantes na Espanha. Dicas de espanhol e experiências do dia a dia. Gratuito! Entrar no grupo grátis no WhatsApp (abre em nova aba)" target="_blank" rel="noopener noreferrer">',
     "Grupo sem nova aba"
   )
   if (espanhol.indexOf('id="grupo-whatsapp"') > espanhol.indexOf('id="kit-sobrevivencia"')) {
@@ -789,7 +839,7 @@ function assertBuilt(profiles) {
     const href = `href="https://lastlink.com/p/${checkout}/checkout-payment?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=espanhol"`
     expect(home, href, `Raiz sem o checkout ${checkout}`)
   }
-  expect(espanhol, 'class="highlight"', "Destaque dos flashcards ausente")
+  expect(espanhol, 'class="highlight course"', "Destaque dos flashcards ausente")
   expect(espanhol, "--accent: #fdba01;", "Amarelo da marca ausente")
   expect(espanhol, "--mark: #dd1014;", "Vermelho da Espanha ausente")
   expect(espanhol, "--page-bg: #031228;", "Azul-marinho da marca ausente")
