@@ -8,6 +8,7 @@ const MANIFEST_PATH = path.join(ROOT, "generated-profiles.json")
 const RESERVED = new Set([
   "assets",
   "profiles",
+  "perfis",
   "scripts",
   "node_modules",
 ])
@@ -184,7 +185,10 @@ function renderListLink(link, profileId, utm) {
   const href = outboundHref(link, profileId, utm)
   const external = isHttp(href)
   const finalHref = href === "#" ? `#${link.id}` : href
-  const classAttr = link.highlight ? ' class="highlight"' : ""
+  const classes = []
+  if (link.highlight) classes.push("highlight")
+  if (link.tone === "whatsapp") classes.push("whatsapp")
+  const classAttr = classes.length ? ` class="${classes.join(" ")}"` : ""
   const blank = external ? ' target="_blank" rel="noopener noreferrer"' : ""
   const desc = link.description
     ? `\n              <span class="link-desc">${esc(link.description)}</span>`
@@ -377,26 +381,54 @@ function pageMap(options) {
   return {
     TITLE: esc(options.title),
     DESCRIPTION: esc(options.description),
+    AUTHOR: esc(options.author || options.name || ""),
     CANONICAL: esc(options.canonical),
     OG_TYPE: esc(options.ogType || "website"),
     OG_IMAGE: esc(options.ogImage),
     OG_IMAGE_ALT: esc(options.ogImageAlt),
+    OG_IMAGE_TYPE: esc(options.ogImageType || "image/png"),
+    OG_IMAGE_WIDTH: esc(options.ogImageWidth || "1200"),
+    OG_IMAGE_HEIGHT: esc(options.ogImageHeight || "630"),
     SITE_NAME: esc(options.siteName),
     ASSET_PREFIX: options.prefix,
     AVATAR: esc(avatar),
     AVATAR_LIGHT: esc(avatarLight),
     AVATAR_ALT: esc(options.avatarAlt),
-    AVATAR_CLASS: options.avatarFit === "logo" ? "logo" : "avatar",
+    AVATAR_CLASS:
+      options.avatarFit === "logo"
+        ? "logo"
+        : options.avatarFit === "photo"
+          ? "avatar photo"
+          : options.avatarFit === "mark"
+            ? "mark"
+            : "avatar",
     AVATAR_SIZE:
-      options.avatarFit === "logo" ? 'width="320" height="246"' : 'width="112" height="112"',
+      options.avatarFit === "logo"
+        ? 'width="320" height="246"'
+        : options.avatarFit === "mark"
+          ? 'width="512" height="512"'
+          : 'width="112" height="112"',
     FAVICON: esc(asset(options.prefix, options.favicon || "assets/favicon.svg")),
     FAVICON_TYPE: esc(options.faviconType || "image/svg+xml"),
+    APPLE_ICON: options.appleTouchIcon
+      ? `<link rel="apple-touch-icon" href="${esc(asset(options.prefix, options.appleTouchIcon))}" />`
+      : "",
     THEME_COLOR: esc(options.themeColor || "#2a0246"),
     THEME_COLOR_LIGHT: esc(options.themeColorLight || "#d0d0d0"),
     NAME: esc(options.name),
-    HANDLE: options.handle ? `<p id="handle">${esc(options.handle)}</p>` : "",
+    NAME_ATTR: options.hideTitle ? ' class="sr-only"' : "",
+    HANDLE: options.handle
+      ? options.handleHref
+        ? `<p id="handle"><a href="${esc(options.handleHref)}">${esc(options.handle)}</a></p>`
+        : `<p id="handle">${esc(options.handle)}</p>`
+      : "",
     SUBTITLE: options.subtitle ? `<p id="subtitle">${esc(options.subtitle)}</p>` : "",
     BIO: options.bio ? `<p id="bio">${esc(options.bio)}</p>` : "",
+    BRAND: options.brandLogo
+      ? `<img class="brand-logo" src="${esc(asset(options.prefix, options.brandLogo))}" alt="${esc(
+          options.brandLogoAlt || ""
+        )}" width="160" height="124" />`
+      : "",
     LINKS: options.links,
     SOCIAL: options.social,
     FOOTER: esc(options.footer),
@@ -405,6 +437,15 @@ function pageMap(options) {
     ANALYTICS_HEAD: analyticsHead(options.analytics),
     ANALYTICS_BOOT: analyticsBoot(options.profileId, options.analytics),
   }
+}
+
+// seo.canonical (opcional): URL oficial do perfil quando ele mora em outro domínio,
+// por exemplo a raiz da Vercel. Sem ela, vale siteUrl + /id/.
+function profileCanonical(profile, base) {
+  const custom = profile.seo && profile.seo.canonical
+  if (!custom) return `${base}/${profile.id}/`
+  if (!isHttp(custom)) throw new Error(`${profile.id}: seo.canonical precisa ser http(s).`)
+  return custom.endsWith("/") ? custom : `${custom}/`
 }
 
 function requireOg(file) {
@@ -472,6 +513,16 @@ function build() {
   cleanRemoved(profiles.map((profile) => profile.id))
 
   requireOg("assets/og-home.png")
+  const rootId = site.vercelRoot || ""
+  if (rootId && !profiles.some((profile) => profile.id === rootId)) {
+    throw new Error(`site.json: vercelRoot "${rootId}" não é um perfil.`)
+  }
+  if (rootId && RESERVED.has(rootId)) {
+    throw new Error(`site.json: vercelRoot "${rootId}" é um nome reservado.`)
+  }
+
+  const directoryPrefix = rootId ? "../" : "./"
+  const directoryCanonical = rootId ? `${base}/perfis/` : `${base}/`
   const homeSections = renderSections({
     id: "home",
     utm: {},
@@ -484,7 +535,7 @@ function build() {
           id: `perfil-${profile.id}`,
           title: profile.navTitle || profile.profile.name,
           description: profile.navDescription || profile.profile.bio || "",
-          url: `${profile.id}/`,
+          url: `${directoryPrefix}${profile.id}/`,
           icon: profile.navIcon || "",
           badge: "",
           highlight: false,
@@ -495,14 +546,14 @@ function build() {
     ],
   })
 
-  const homeCanonical = `${base}/`
-  const homeHtml = fill(
+  const directoryHtml = fill(
     template,
     pageMap({
-      prefix: "./",
+      prefix: directoryPrefix,
       title: site.home.title,
       description: site.home.description,
-      canonical: homeCanonical,
+      author: site.home.name,
+      canonical: directoryCanonical,
       ogType: "website",
       ogImage: `${base}/assets/og-home.png`,
       ogImageAlt: site.home.ogImageAlt,
@@ -524,31 +575,57 @@ function build() {
         inLanguage: "pt-BR",
         name: site.home.title,
         description: site.home.description,
-        url: homeCanonical,
+        url: directoryCanonical,
         hasPart: profiles.map((profile) => ({
           "@type": "ProfilePage",
           name: profile.profile.name,
-          url: `${base}/${profile.id}/`,
+          url: profileCanonical(profile, base),
         })),
       }),
     })
   )
-  writeText(path.join(ROOT, "index.html"), homeHtml)
+  writeText(
+    path.join(ROOT, rootId ? "perfis/index.html" : "index.html"),
+    directoryHtml
+  )
 
-  for (const profile of profiles) {
-    requireOg(`assets/og-${profile.id}.png`)
-    const canonical = `${base}/${profile.id}/`
+  function profileOg(profile, ogBase) {
+    const file = profile.seo && profile.seo.image
+    if (!file) return `${ogBase}/assets/og-${profile.id}.png`
+    if (isHttp(file)) return file
+    return `${ogBase}/${String(file).replace(/^\.?\//, "")}`
+  }
+
+  function instagramHref(profile) {
+    for (const section of profile.sections || []) {
+      if ((section.layout || "list") !== "social") continue
+      for (const link of visibleLinks(section)) {
+        if (link.icon === "logo-instagram" && isHttp(link.url)) {
+          return outboundHref(link, profile.id, profile.utm || {})
+        }
+      }
+    }
+    return ""
+  }
+
+  function profileDocument(profile, prefix) {
+    const canonical = profileCanonical(profile, base)
+    const ogBase = canonical.replace(/\/+$/, "").replace(new RegExp(`/${profile.id}$`), "")
     const sections = renderSections(profile)
-    const html = fill(
+    return fill(
       template,
       pageMap({
-        prefix: "../",
+        prefix,
         title: profile.seo.title,
         description: profile.seo.description,
+        author: profile.profile.name,
         canonical,
         ogType: profile.seo.type || "website",
-        ogImage: `${base}/assets/og-${profile.id}.png`,
+        ogImage: profileOg(profile, ogBase),
         ogImageAlt: profile.seo.imageAlt || profile.seo.title,
+        ogImageType: profile.seo.imageType,
+        ogImageWidth: profile.seo.imageWidth,
+        ogImageHeight: profile.seo.imageHeight,
         siteName: profile.seo.siteName || profile.profile.name,
         avatar: profile.profile.avatar,
         avatarLight: profile.profile.avatarLight,
@@ -556,7 +633,12 @@ function build() {
         avatarFit: profile.profile.avatarFit,
         favicon: profile.profile.favicon,
         faviconType: profile.profile.faviconType,
+        appleTouchIcon: profile.profile.appleTouchIcon,
+        hideTitle: profile.profile.hideTitle,
+        handleHref: instagramHref(profile),
         subtitle: profile.profile.subtitle,
+        brandLogo: profile.profile.brandLogo,
+        brandLogoAlt: profile.profile.brandLogoAlt,
         themeColor: profile.theme && profile.theme.themeColor,
         themeColorLight: profile.theme && profile.theme.light && profile.theme.light.themeColor,
         name: profile.profile.name,
@@ -571,10 +653,20 @@ function build() {
         jsonLd: jsonLdScript(profileJsonLd(profile, canonical)),
       })
     )
-    writeText(path.join(ROOT, profile.id, "index.html"), html)
   }
 
-  const urls = [homeCanonical, ...profiles.map((profile) => `${base}/${profile.id}/`)]
+  for (const profile of profiles) {
+    requireOg(`assets/og-${profile.id}.png`)
+    writeText(path.join(ROOT, profile.id, "index.html"), profileDocument(profile, "../"))
+    if (profile.id === rootId) {
+      writeText(path.join(ROOT, "index.html"), profileDocument(profile, "./"))
+    }
+  }
+
+  const urls = [
+    ...(rootId ? [directoryCanonical] : [`${base}/`]),
+    ...profiles.map((profile) => profileCanonical(profile, base)),
+  ]
   writeText(
     path.join(ROOT, "sitemap.xml"),
     `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls
@@ -598,6 +690,7 @@ function build() {
 
 function assertBuilt(profiles) {
   const home = fs.readFileSync(path.join(ROOT, "index.html"), "utf8")
+  const directory = fs.readFileSync(path.join(ROOT, "perfis", "index.html"), "utf8")
   const douglas = fs.readFileSync(path.join(ROOT, "douglasdev", "index.html"), "utf8")
   const espanhol = fs.readFileSync(path.join(ROOT, "espanhol", "index.html"), "utf8")
 
@@ -608,9 +701,17 @@ function assertBuilt(profiles) {
     if (html.includes(text)) throw new Error(message)
   }
 
-  expect(home, 'href="douglasdev/"', "Home sem link para /douglasdev/")
-  expect(home, 'href="espanhol/"', "Home sem link para /espanhol/")
-  expect(home, "Escolha o perfil da bio do Instagram.", "Home sem a chamada em pt-BR")
+  expect(directory, 'href="../douglasdev/"', "Lista de perfis sem link para /douglasdev/")
+  expect(directory, 'href="../espanhol/"', "Lista de perfis sem link para /espanhol/")
+  expect(directory, "Escolha o perfil da bio do Instagram.", "Lista de perfis sem a chamada em pt-BR")
+  expect(directory, 'href="../style.css"', "Lista de perfis sem CSS relativo")
+  expect(home, 'href="./style.css"', "Raiz sem CSS no mesmo diretório")
+  expect(home, 'src="./script.js"', "Raiz sem script no mesmo diretório")
+  reject(home, 'href="../', "Raiz com caminho que quebra o GitHub Pages")
+  expect(home, '<h1 class="sr-only">Marina Duarte</h1>', "Raiz da Vercel sem a Marina")
+  expect(home, 'class="mark"', "Raiz sem a marca nova")
+  expect(home, "assets/espanhol/marina-duarte-logo.webp", "Raiz sem o arquivo da marca")
+  expect(espanhol, 'href="../style.css"', "Página /espanhol/ sem CSS relativo")
   expect(douglas, "utm_source=instagram", "UTM source ausente em /douglasdev/")
   expect(douglas, "utm_medium=bio", "UTM medium ausente em /douglasdev/")
   expect(douglas, "utm_campaign=douglasdev", "UTM campaign ausente em /douglasdev/")
@@ -641,6 +742,26 @@ function assertBuilt(profiles) {
   expect(espanhol, "GRÁTIS", "Selo do material grátis ausente")
   expect(
     espanhol,
+    'href="https://chat.whatsapp.com/DasExwyjLjNJAdKjoMYYUb"',
+    "Grupo do WhatsApp ausente ou com UTM"
+  )
+  expect(espanhol, 'id="grupo-whatsapp"', "Botão do grupo ausente")
+  expect(espanhol, 'class="whatsapp"', "Destaque do WhatsApp ausente")
+  expect(espanhol, "Entrar no grupo gratuito do WhatsApp", "Texto do grupo ausente")
+  expect(espanhol, "Dicas de espanhol da Espanha, grátis.", "Linha do grupo ausente")
+  expect(
+    espanhol,
+    '<a id="grupo-whatsapp" href="https://chat.whatsapp.com/DasExwyjLjNJAdKjoMYYUb" data-link-id="grupo-whatsapp" class="whatsapp" target="_blank" rel="noopener noreferrer">',
+    "Grupo sem nova aba"
+  )
+  if (espanhol.indexOf('id="grupo-whatsapp"') > espanhol.indexOf('id="kit-sobrevivencia"')) {
+    throw new Error("Grupo gratuito ficou depois dos cursos")
+  }
+  reject(espanhol, "material-gratis", "Placeholder do material grátis ainda está na página")
+  reject(espanhol, "Douglas", "Nome de outra pessoa na página da Marina")
+  reject(home, "Douglas", "Nome de outra pessoa na raiz da Marina")
+  expect(
+    espanhol,
     'href="https://lastlink.com/p/CA990C2E4/checkout-payment?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=espanhol"',
     "Checkout do kit sem UTM da página"
   )
@@ -649,18 +770,52 @@ function assertBuilt(profiles) {
     'href="https://lastlink.com/p/CC267EA60/checkout-payment?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=espanhol"',
     "Checkout dos flashcards sem UTM da página"
   )
-  expect(espanhol, 'href="#fluencia-na-pratica"', "Fluência deixou de ser placeholder")
-  expect(espanhol, 'href="#morar-e-trabalhar"', "Morar e trabalhar deixou de ser placeholder")
+  expect(
+    espanhol,
+    'href="https://lastlink.com/p/CE3770193/checkout-payment?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=espanhol"',
+    "Checkout de Fluência na Prática sem UTM da página"
+  )
+  expect(
+    espanhol,
+    'href="https://lastlink.com/p/CBDB5423A/checkout-payment?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=espanhol"',
+    "Checkout de Morar e Trabalhar sem UTM da página"
+  )
+  for (const checkout of [
+    "CA990C2E4",
+    "CC267EA60",
+    "CE3770193",
+    "CBDB5423A",
+  ]) {
+    const href = `href="https://lastlink.com/p/${checkout}/checkout-payment?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=espanhol"`
+    expect(home, href, `Raiz sem o checkout ${checkout}`)
+  }
   expect(espanhol, 'class="highlight"', "Destaque dos flashcards ausente")
   expect(espanhol, "--accent: #fdba01;", "Amarelo da marca ausente")
   expect(espanhol, "--mark: #dd1014;", "Vermelho da Espanha ausente")
   expect(espanhol, "--page-bg: #031228;", "Azul-marinho da marca ausente")
   expect(espanhol, "Espanhol do Brasileiro", "Nome da marca ausente")
-  expect(espanhol, "FLASHCARDS", "Subtítulo FLASHCARDS ausente")
+  expect(espanhol, '<h1 class="sr-only">Marina Duarte</h1>', "Nome da Marina ausente")
+  expect(espanhol, ">Professora de espanhol<", "Linha da professora ausente")
+  reject(espanhol, 'id="bio"', "Bio repetida ainda está no topo")
+  reject(espanhol, "brand-logo", "Logo antigo ainda está no topo")
+  reject(espanhol, "logo-small.png", "Logo pequeno ainda está na página")
+  reject(espanhol, "marina-duarte.jpg", "Foto redonda ainda está na página")
+  expect(espanhol, 'class="mark"', "Marca nova sem a classe de destaque")
+  expect(espanhol, "assets/espanhol/marina-duarte-logo.webp", "Arquivo da marca ausente")
+  expect(
+    espanhol,
+    '<link rel="canonical" href="https://marina-duarte.vercel.app/" />',
+    "Canonical do /espanhol/ fora da Vercel"
+  )
+  expect(
+    espanhol,
+    'content="https://marina-duarte.vercel.app/assets/espanhol/marina-duarte-logo.webp"',
+    "Imagem OG do /espanhol/ fora da marca nova"
+  )
+  expect(espanhol, 'property="og:image:type" content="image/webp"', "OG sem tipo webp")
+  expect(espanhol, 'rel="apple-touch-icon"', "Apple touch icon ausente")
   expect(espanhol, "Professor de Espanhol", "Bônus do tutor ausente")
-  expect(espanhol, "assets/espanhol/logo.png", "Logo ausente no cabeçalho")
-  expect(espanhol, "assets/espanhol/favicon.png", "Favicon da marca ausente")
-  expect(espanhol, 'class="logo"', "Logo sem a classe de cabeçalho")
+  expect(espanhol, 'type="image/webp"', "Favicon da marca ausente")
   reject(espanhol, "Rumo à Espanha", "Nome antigo ainda está na página")
   reject(home, "Rumo à Espanha", "Nome antigo ainda está na home")
   reject(espanhol, "darkpagesai", "Dark Pages vazou para /espanhol/")

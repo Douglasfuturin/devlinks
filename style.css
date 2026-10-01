@@ -112,6 +112,68 @@ body * {
   box-shadow: 0 10px 28px rgba(3, 18, 40, 0.18);
 }
 
+#profile img.photo {
+  border: 3px solid var(--accent);
+  box-shadow: 0 10px 28px rgba(3, 18, 40, 0.28);
+}
+
+#profile img.mark {
+  width: min(100%, 420px);
+  height: auto;
+  border-radius: 28px;
+  object-fit: contain;
+  background: transparent;
+}
+
+#profile:has(img.mark) {
+  padding-top: 8px;
+}
+
+#profile:has(img.mark) #subtitle {
+  letter-spacing: 0.02em;
+  font-size: 15px;
+  margin-top: 14px;
+}
+
+#profile h1.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+#handle a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#handle a:hover,
+#handle a:focus-visible {
+  text-decoration: underline;
+}
+
+#profile img.brand-logo {
+  width: 160px;
+  height: auto;
+  border-radius: 14px;
+  object-fit: contain;
+  background: #ffffff;
+  padding: 8px 10px;
+  margin-top: 16px;
+  border: 1px solid rgba(3, 18, 40, 0.08);
+  box-shadow: 0 6px 18px rgba(3, 18, 40, 0.16);
+}
+
+#profile:has(img.photo) #subtitle {
+  text-wrap: balance;
+  letter-spacing: 0.02em;
+}
+
 #profile h1 {
   font-size: 18px;
   font-weight: 500;
@@ -246,6 +308,36 @@ ul li a {
 
 ul li a.highlight {
   border-color: var(--mark);
+}
+
+ul li a.whatsapp {
+  background: rgba(37, 211, 102, 0.14);
+  border-color: #25d366;
+}
+
+ul li a.whatsapp .link-icon {
+  color: #25d366;
+}
+
+ul li a.whatsapp:hover,
+ul li a.whatsapp:focus-visible {
+  background: rgba(37, 211, 102, 0.24);
+  border-color: #25d366;
+}
+
+.light ul li a.whatsapp {
+  background: rgba(5, 127, 43, 0.1);
+  border-color: #057f2b;
+}
+
+.light ul li a.whatsapp .link-icon {
+  color: #057f2b;
+}
+
+.light ul li a.whatsapp:hover,
+.light ul li a.whatsapp:focus-visible {
+  background: rgba(5, 127, 43, 0.16);
+  border-color: #057f2b;
 }
 
 ul li a:hover,
