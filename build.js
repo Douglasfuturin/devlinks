@@ -160,7 +160,13 @@ function assertProfile(profile, filename) {
       if (seen.has(link.id)) throw new Error(`${label}: id de link repetido.`)
       seen.add(link.id)
       if (!link.title) throw new Error(`${label}: title é obrigatório.`)
-      assertSafeUrl(link.url, label)
+      if (link.paused === true) {
+        if (String(link.url || "").trim()) {
+          throw new Error(`${label}: item pausado não pode ter url.`)
+        }
+      } else {
+        assertSafeUrl(link.url, label)
+      }
       if (typeof link.enabled !== "boolean") {
         throw new Error(`${label}: enabled precisa ser true ou false.`)
       }
@@ -181,7 +187,56 @@ function iconMarkup(icon, label) {
   return `<span class="link-icon" aria-hidden="true">${esc(icon)}</span>`
 }
 
+function courseInner(link, features) {
+  const desc = link.description
+    ? `\n              <span class="link-desc">${esc(link.description)}</span>`
+    : ""
+  const ladder = link.includesPrevious
+    ? `\n            <p class="link-ladder">${esc(link.includesPrevious)}</p>`
+    : ""
+  const list = features.length
+    ? `\n            <ul class="feature-list">\n${features
+        .map((item) => `              <li>${esc(item)}</li>`)
+        .join("\n")}\n            </ul>`
+    : ""
+  const badge = link.badge ? `\n              <span class="badge">${esc(link.badge)}</span>` : ""
+  return `<span class="course-top">
+              ${iconMarkup(link.icon, link.id)}
+              <span class="link-title">${esc(link.title)}</span>${badge}
+            </span>${desc}${ladder}${list}`
+}
+
+function renderPausedLink(link, features) {
+  const isCourse = features.length || link.includesPrevious
+  const label = String(link.pausedLabel || "Novas turmas em breve").trim() || "Novas turmas em breve"
+  const classes = []
+  if (link.highlight) classes.push("highlight")
+  if (isCourse) classes.push("course")
+  classes.push("paused")
+  const note = link.pausedNote
+    ? `\n            <p class="paused-note">${esc(link.pausedNote)}</p>`
+    : ""
+  const inner = isCourse
+    ? courseInner(link, features)
+    : `${iconMarkup(link.icon, link.id)}
+            <span class="link-copy">
+              <span class="link-title">${esc(link.title)}</span>${
+        link.description
+          ? `\n              <span class="link-desc">${esc(link.description)}</span>`
+          : ""
+      }
+            </span>${link.badge ? `\n            <span class="badge">${esc(link.badge)}</span>` : ""}`
+  return `        <li>
+          <article id="${esc(link.id)}" class="${classes.join(" ")}">
+            ${inner}
+            <p class="paused-state">${esc(label)}</p>${note}
+          </article>
+        </li>`
+}
+
 function renderListLink(link, profileId, utm) {
+  const features = Array.isArray(link.features) ? link.features.filter(Boolean) : []
+  if (link.paused === true) return renderPausedLink(link, features)
   const href = outboundHref(link, profileId, utm)
   const external = isHttp(href)
   const finalHref = href === "#" ? `#${link.id}` : href
@@ -200,7 +255,6 @@ function renderListLink(link, profileId, utm) {
     external && !link.ariaLabel
       ? `\n            <span class="sr-only"> (abre em nova aba)</span>`
       : ""
-  const features = Array.isArray(link.features) ? link.features.filter(Boolean) : []
   if (features.length || link.includesPrevious) classes.push("course")
   const courseClass = classes.length ? ` class="${classes.join(" ")}"` : ""
   if (features.length || link.includesPrevious) {
@@ -712,6 +766,41 @@ function build() {
   }
 }
 
+const LIVE_CHECKOUTS = new Set(["CA990C2E4", "CC267EA60"])
+
+function assertOnlyLiveCheckouts(html, label) {
+  const ids = [...html.matchAll(/lastlink\.com\/p\/([A-Za-z0-9]+)/gi)].map((match) => match[1])
+  for (const id of ids) {
+    if (!LIVE_CHECKOUTS.has(id)) {
+      throw new Error(`${label}: checkout pausado ainda está na página`)
+    }
+  }
+}
+
+function assertRepoCheckouts() {
+  const skip = new Set([".git", "node_modules"])
+  const files = []
+  const walk = (dir) => {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      if (skip.has(entry.name)) continue
+      const full = path.join(dir, entry.name)
+      if (entry.isDirectory()) walk(full)
+      else files.push(full)
+    }
+  }
+  walk(ROOT)
+  for (const file of files) {
+    if (!/\.(html|js|json|css|md|xml|txt|svg)$/i.test(file)) continue
+    const source = fs.readFileSync(file, "utf8")
+    const ids = [...source.matchAll(/lastlink\.com\/p\/([A-Za-z0-9]+)/gi)].map((match) => match[1])
+    for (const id of ids) {
+      if (!LIVE_CHECKOUTS.has(id)) {
+        throw new Error(`${path.relative(ROOT, file)}: checkout pausado ainda está no repositório`)
+      }
+    }
+  }
+}
+
 function assertBuilt(profiles) {
   const home = fs.readFileSync(path.join(ROOT, "index.html"), "utf8")
   const directory = fs.readFileSync(path.join(ROOT, "perfis", "index.html"), "utf8")
@@ -820,25 +909,25 @@ function assertBuilt(profiles) {
     'href="https://lastlink.com/p/CC267EA60/checkout-payment?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=espanhol"',
     "Checkout dos flashcards sem UTM da página"
   )
-  expect(
-    espanhol,
-    'href="https://lastlink.com/p/CE3770193/checkout-payment?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=espanhol"',
-    "Checkout de Fluência na Prática sem UTM da página"
-  )
-  expect(
-    espanhol,
-    'href="https://lastlink.com/p/CBDB5423A/checkout-payment?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=espanhol"',
-    "Checkout de Morar e Trabalhar sem UTM da página"
-  )
-  for (const checkout of [
-    "CA990C2E4",
-    "CC267EA60",
-    "CE3770193",
-    "CBDB5423A",
-  ]) {
+  for (const checkout of ["CA990C2E4", "CC267EA60"]) {
     const href = `href="https://lastlink.com/p/${checkout}/checkout-payment?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=espanhol"`
     expect(home, href, `Raiz sem o checkout ${checkout}`)
   }
+  expect(espanhol, '<article id="fluencia-na-pratica" class="course paused">', "Fluência ainda é um link de compra")
+  expect(espanhol, '<article id="morar-e-trabalhar" class="course paused">', "Morar ainda é um link de compra")
+  expect(home, '<article id="fluencia-na-pratica" class="course paused">', "Raiz ainda vende Fluência")
+  expect(home, '<article id="morar-e-trabalhar" class="course paused">', "Raiz ainda vende Morar")
+  expect(espanhol, "Novas turmas em breve", "Aviso de turma pausada ausente")
+  expect(espanhol, "Comece pelo Kit ou pelos Flashcards", "Nota dos cursos pausados ausente")
+  reject(espanhol, 'id="fluencia-na-pratica" href=', "Fluência ainda tem href")
+  reject(espanhol, 'id="morar-e-trabalhar" href=', "Morar ainda tem href")
+  reject(home, 'id="fluencia-na-pratica" href=', "Raiz ainda liga Fluência")
+  reject(home, 'id="morar-e-trabalhar" href=', "Raiz ainda liga Morar")
+  assertOnlyLiveCheckouts(espanhol, "/espanhol/")
+  assertOnlyLiveCheckouts(home, "/")
+  assertOnlyLiveCheckouts(douglas, "/douglasdev/")
+  assertOnlyLiveCheckouts(directory, "/perfis/")
+  assertRepoCheckouts()
   expect(espanhol, 'class="highlight course"', "Destaque dos flashcards ausente")
   expect(espanhol, "--accent: #fdba01;", "Amarelo da marca ausente")
   expect(espanhol, "--mark: #dd1014;", "Vermelho da Espanha ausente")

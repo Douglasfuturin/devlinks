@@ -112,7 +112,7 @@ Se a URL da Vercel for a oficial, atualize `siteUrl` e rode o build antes do pus
 
 ## Pendências de URL
 
-Os quatro cursos de `/espanhol/` já apontam para a Lastlink, com UTM do perfil: Kit Sobrevivência (R$19,90), Flashcards (R$47), Fluência na Prática (R$97) e Morar e Trabalhar na Espanha (R$197, bônus Professor de Espanhol).
+Kit Sobrevivência (R$19,90) e Flashcards (R$47) apontam para a Lastlink, com UTM do perfil. Fluência na Prática (R$97) e Morar e Trabalhar na Espanha (R$197) continuam na página, sem link de compra, com o aviso “Novas turmas em breve”.
 
 O grupo gratuito do WhatsApp é o primeiro botão de `/espanhol/`: [Grupo de Networking de Imigrantes na Espanha](https://chat.whatsapp.com/DasExwyjLjNJAdKjoMYYUb).
 
