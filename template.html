@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!-- Página gerada por build.js. Edite profiles/*.json ou site.json e rode: node build.js -->
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      ;(function () {
+        try {
+          if (localStorage.getItem("devlinks-theme") === "light") {
+            document.documentElement.classList.add("light")
+          }
+        } catch (error) {}
+      })()
+    </script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>@@TITLE@@</title>
+    <meta name="description" content="@@DESCRIPTION@@" />
+    <meta name="author" content="Douglas Ribeiro dos Santos" />
+    <meta name="robots" content="index,follow" />
+    <meta
+      name="theme-color"
+      content="@@THEME_COLOR@@"
+      data-theme-dark="@@THEME_COLOR@@"
+      data-theme-light="@@THEME_COLOR_LIGHT@@"
+    />
+    <link rel="canonical" href="@@CANONICAL@@" />
+    <link rel="icon" href="@@FAVICON@@" type="@@FAVICON_TYPE@@" />
+    <meta property="og:type" content="@@OG_TYPE@@" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="@@SITE_NAME@@" />
+    <meta property="og:title" content="@@TITLE@@" />
+    <meta property="og:description" content="@@DESCRIPTION@@" />
+    <meta property="og:url" content="@@CANONICAL@@" />
+    <meta property="og:image" content="@@OG_IMAGE@@" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="@@OG_IMAGE_ALT@@" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="@@TITLE@@" />
+    <meta name="twitter:description" content="@@DESCRIPTION@@" />
+    <meta name="twitter:image" content="@@OG_IMAGE@@" />
+    <meta name="twitter:image:alt" content="@@OG_IMAGE_ALT@@" />
+    @@JSON_LD@@
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="@@ASSET_PREFIX@@style.css" />
+    @@THEME_STYLE@@
+    @@ANALYTICS_HEAD@@
+  </head>
+  <body>
+    <a class="skip" href="#conteudo">Ir para os links</a>
+    <main id="container">
+      <header id="profile">
+        <img
+          class="@@AVATAR_CLASS@@"
+          src="@@AVATAR@@"
+          data-avatar="@@AVATAR@@"
+          data-avatar-light="@@AVATAR_LIGHT@@"
+          alt="@@AVATAR_ALT@@"
+          @@AVATAR_SIZE@@
+        />
+        <h1>@@NAME@@</h1>
+        @@SUBTITLE@@
+        @@HANDLE@@
+        @@BIO@@
+      </header>
+
+      <div
+        id="switch"
+        role="switch"
+        tabindex="0"
+        aria-checked="false"
+        aria-label="Ativar tema claro"
+        onclick="toggleMode()"
+        onkeydown="onSwitchKey(event)"
+      >
+        <button type="button" tabindex="-1" aria-hidden="true"></button>
+        <span></span>
+      </div>
+
+      <div id="conteudo">
+        @@LINKS@@
+      </div>
+
+      @@SOCIAL@@
+
+      <footer>@@FOOTER@@</footer>
+    </main>
+
+    @@ANALYTICS_BOOT@@
+    <script src="@@ASSET_PREFIX@@script.js"></script>
+  </body>
+</html>

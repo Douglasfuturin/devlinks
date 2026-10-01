@@ -1,85 +1,124 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<!-- Página gerada por build.js. Edite profiles/*.json ou site.json e rode: node build.js -->
+<html lang="pt-BR">
   <head>
+    <meta charset="UTF-8" />
+    <script>
+      ;(function () {
+        try {
+          if (localStorage.getItem("devlinks-theme") === "light") {
+            document.documentElement.classList.add("light")
+          }
+        } catch (error) {}
+      })()
+    </script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>Douglas Ribeiro dos Santos | Links</title>
+    <meta name="description" content="Links oficiais de Douglas Ribeiro dos Santos: inteligência artificial, automação e espanhol." />
+    <meta name="author" content="Douglas Ribeiro dos Santos" />
+    <meta name="robots" content="index,follow" />
+    <meta
+      name="theme-color"
+      content="#2a0246"
+      data-theme-dark="#2a0246"
+      data-theme-light="#d0d0d0"
+    />
+    <link rel="canonical" href="https://douglasfuturin.github.io/devlinks/" />
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Douglas Ribeiro dos Santos" />
+    <meta property="og:title" content="Douglas Ribeiro dos Santos | Links" />
+    <meta property="og:description" content="Links oficiais de Douglas Ribeiro dos Santos: inteligência artificial, automação e espanhol." />
+    <meta property="og:url" content="https://douglasfuturin.github.io/devlinks/" />
+    <meta property="og:image" content="https://douglasfuturin.github.io/devlinks/assets/og-home.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Douglas Ribeiro dos Santos. Links de IA, automação e espanhol." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Douglas Ribeiro dos Santos | Links" />
+    <meta name="twitter:description" content="Links oficiais de Douglas Ribeiro dos Santos: inteligência artificial, automação e espanhol." />
+    <meta name="twitter:image" content="https://douglasfuturin.github.io/devlinks/assets/og-home.png" />
+    <meta name="twitter:image:alt" content="Douglas Ribeiro dos Santos. Links de IA, automação e espanhol." />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","inLanguage":"pt-BR","name":"Douglas Ribeiro dos Santos | Links","description":"Links oficiais de Douglas Ribeiro dos Santos: inteligência artificial, automação e espanhol.","url":"https://douglasfuturin.github.io/devlinks/","hasPart":[{"@type":"ProfilePage","name":"Douglas Ribeiro dos Santos","url":"https://douglasfuturin.github.io/devlinks/douglasdev/"},{"@type":"ProfilePage","name":"Espanhol do Brasileiro","url":"https://douglasfuturin.github.io/devlinks/espanhol/"}]}</script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap"
       rel="stylesheet"
     />
-
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DevLinks</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./style.css" />
+    
+    
   </head>
   <body>
-    <div id="container">
-      <div id="profile">
+    <a class="skip" href="#conteudo">Ir para os links</a>
+    <main id="container">
+      <header id="profile">
         <img
-          src="./assets/avatar.png"
-          alt="Foto de Mayk Brito sorrindo, usando óculos e camisa preta, barba e fundo amarelo."
+          class="avatar"
+          src="./assets/avatars/douglas.svg"
+          data-avatar="./assets/avatars/douglas.svg"
+          data-avatar-light="./assets/avatars/douglas.svg"
+          alt="Monograma DR de Douglas Ribeiro dos Santos"
+          width="112" height="112"
         />
-        <p>@maykbrito</p>
-      </div>
+        <h1>Douglas Ribeiro dos Santos</h1>
+        
+        
+        <p id="bio">Escolha o perfil da bio do Instagram.</p>
+      </header>
 
-      <div id="switch" onclick="toggleMode()">
-        <button></button>
+      <div
+        id="switch"
+        role="switch"
+        tabindex="0"
+        aria-checked="false"
+        aria-label="Ativar tema claro"
+        onclick="toggleMode()"
+        onkeydown="onSwitchKey(event)"
+      >
+        <button type="button" tabindex="-1" aria-hidden="true"></button>
         <span></span>
       </div>
 
-      <ul>
+      <div id="conteudo">
+              <section aria-labelledby="secao-perfis">
+        <h2 id="secao-perfis" class="section-title">Perfis</h2>
+        <ul>
         <li>
-          <a href="#">Inscrever-se no NLW</a>
+          <a id="perfil-douglasdev" href="douglasdev/" data-link-id="perfil-douglasdev">
+            <span class="link-icon" aria-hidden="true">💻</span>
+            <span class="link-copy">
+              <span class="link-title">IA e automação</span>
+              <span class="link-desc">Projetos, curso e redes de @o.douglas.dev.</span>
+            </span>
+          </a>
         </li>
-
         <li>
-          <a href="#">Baixar meu e-book</a>
+          <a id="perfil-espanhol" href="espanhol/" data-link-id="perfil-espanhol">
+            <span class="link-icon" aria-hidden="true">🇪🇸</span>
+            <span class="link-copy">
+              <span class="link-title">Espanhol do Brasileiro</span>
+              <span class="link-desc">Flashcards e cursos de espanhol da Espanha.</span>
+            </span>
+          </a>
         </li>
-
-        <li>
-          <a href="https://github.com/maykbrito">Ver meu portfólio</a>
-        </li>
-
-        <li>
-          <a href="https://rocketseat.com.br/explorer" target="_blank"
-            >Conheça o Explorer</a
-          >
-        </li>
-      </ul>
-      <div id="social-links">
-        <a href="https://github.com/maykbrito" target="_blank">
-          <ion-icon name="logo-github"></ion-icon>
-        </a>
-
-        <a href="https://instagram.com/maykbrito" target="_blank">
-          <ion-icon name="logo-instagram"></ion-icon>
-        </a>
-
-        <a href="https://youtube.com/maykbrito" target="_blank">
-          <ion-icon name="logo-youtube"></ion-icon>
-        </a>
-
-        <a href="https://linkedin.com/in/maykbrito" target="_blank">
-          <ion-icon name="logo-linkedin"></ion-icon>
-        </a>
+        </ul>
+      </section>
       </div>
 
-      <footer>
-        Feito com ♥ pela <a href="https://rocketseat.com.br/">Rocketseat</a>
-      </footer>
-    </div>
+      
 
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-    ></script>
+      <footer>Feito com ♥ por Douglas Ribeiro dos Santos</footer>
+    </main>
 
+    <script>window.DEVLINKS = {"profile":"home","analytics":{"enabled":false,"vercel":false,"plausibleDomain":""}}</script>
     <script src="./script.js"></script>
   </body>
 </html>

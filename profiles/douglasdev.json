@@ -1,0 +1,117 @@
+{
+  "id": "douglasdev",
+  "order": 1,
+  "navTitle": "IA e automação",
+  "navDescription": "Projetos, curso e redes de @o.douglas.dev.",
+  "navIcon": "💻",
+  "profile": {
+    "kind": "person",
+    "name": "Douglas Ribeiro dos Santos",
+    "handle": "@o.douglas.dev",
+    "bio": "Conteúdo sobre inteligência artificial e automação.",
+    "avatar": "assets/avatars/douglas.svg",
+    "avatarAlt": "Monograma DR de Douglas Ribeiro dos Santos",
+    "footer": "Feito com ♥ por Douglas Ribeiro dos Santos"
+  },
+  "theme": {
+    "accent": "#ffffff",
+    "accentText": "#000000",
+    "textColor": "#ffffff",
+    "strokeColor": "rgba(255, 255, 255, 0.5)",
+    "surfaceColor": "rgba(255, 255, 255, 0.05)",
+    "surfaceColorHover": "rgba(0, 0, 0, 0.02)",
+    "highlightColor": "rgba(255, 255, 255, 0.2)",
+    "light": {
+      "accent": "#ffffff",
+      "accentText": "#000000",
+      "textColor": "#000000",
+      "strokeColor": "rgba(0, 0, 0, 0.5)",
+      "surfaceColor": "rgba(0, 0, 0, 0.05)",
+      "surfaceColorHover": "rgba(0, 0, 0, 0.02)",
+      "highlightColor": "rgba(0, 0, 0, 0.1)"
+    }
+  },
+  "seo": {
+    "title": "Douglas Ribeiro dos Santos (@o.douglas.dev)",
+    "description": "Links de Douglas Ribeiro dos Santos: Dark Pages AI, curso de importação de chuteiras, Instagram, LinkedIn e GitHub.",
+    "type": "profile",
+    "siteName": "Douglas Ribeiro dos Santos",
+    "imageAlt": "Douglas Ribeiro dos Santos, @o.douglas.dev. Links de IA e automação."
+  },
+  "utm": {
+    "source": "instagram",
+    "medium": "bio"
+  },
+  "sections": [
+    {
+      "id": "projetos",
+      "title": "Projetos",
+      "layout": "list",
+      "links": [
+        {
+          "id": "dark-pages",
+          "title": "Dark Pages AI",
+          "description": "Editor de vídeos, IA e agendamento num só painel.",
+          "url": "https://darkpagesai.vercel.app",
+          "icon": "🎬",
+          "badge": "",
+          "highlight": false,
+          "enabled": true,
+          "utm": true
+        },
+        {
+          "id": "curso-chuteiras",
+          "title": "Curso de importação de chuteiras",
+          "description": "Passo a passo para importar chuteiras.",
+          "url": "#",
+          "todo": "TODO: colar a URL do curso de importação de chuteiras",
+          "icon": "👟",
+          "badge": "",
+          "highlight": false,
+          "enabled": true,
+          "utm": true
+        }
+      ]
+    },
+    {
+      "id": "redes",
+      "title": "Redes",
+      "layout": "social",
+      "links": [
+        {
+          "id": "instagram",
+          "title": "Instagram",
+          "description": "",
+          "url": "https://instagram.com/o.douglas.dev",
+          "icon": "logo-instagram",
+          "badge": "",
+          "highlight": false,
+          "enabled": true,
+          "utm": true
+        },
+        {
+          "id": "linkedin",
+          "title": "LinkedIn",
+          "description": "",
+          "url": "https://www.linkedin.com/in/douglas-ribeiro-dos-santos",
+          "icon": "logo-linkedin",
+          "badge": "",
+          "highlight": false,
+          "enabled": true,
+          "utm": true
+        },
+        {
+          "id": "github",
+          "title": "GitHub",
+          "description": "",
+          "url": "https://github.com/Douglasfuturin",
+          "icon": "logo-github",
+          "badge": "",
+          "highlight": false,
+          "enabled": true,
+          "utm": true
+        }
+      ]
+    }
+  ]
+}
