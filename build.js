@@ -654,7 +654,11 @@ function assertBuilt(profiles) {
     'href="https://lastlink.com/p/CE3770193/checkout-payment?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=espanhol"',
     "Checkout de Fluência na Prática sem UTM da página"
   )
-  expect(espanhol, 'href="#morar-e-trabalhar"', "Morar e trabalhar deixou de ser placeholder")
+  expect(
+    espanhol,
+    'href="https://lastlink.com/p/CBDB5423A/checkout-payment?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=espanhol"',
+    "Checkout de Morar e Trabalhar sem UTM da página"
+  )
   expect(espanhol, 'class="highlight"', "Destaque dos flashcards ausente")
   expect(espanhol, "--accent: #fdba01;", "Amarelo da marca ausente")
   expect(espanhol, "--mark: #dd1014;", "Vermelho da Espanha ausente")
