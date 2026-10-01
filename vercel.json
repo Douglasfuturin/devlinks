@@ -1,11 +1,5 @@
 {
   "trailingSlash": true,
-  "rewrites": [
-    {
-      "source": "/",
-      "destination": "/espanhol/"
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",

@@ -4,9 +4,10 @@ Páginas estáticas no visual do DevLinks, uma para cada perfil. Não tem backen
 
 | URL | Arquivo | Para que serve |
 | --- | --- | --- |
-| [/](./) | `site.json` | Lista dos perfis |
+| [/](./) | `site.json` → `vercelRoot` | Página da Marina (`/espanhol/`), na raiz da Vercel e do GitHub Pages |
+| [/perfis/](./perfis/) | `site.json` | Lista dos perfis |
 | [/douglasdev/](./douglasdev/) | `profiles/douglasdev.json` | Bio de [@o.douglas.dev](https://instagram.com/o.douglas.dev): IA e automação |
-| [/espanhol/](./espanhol/) | `profiles/espanhol.json` | Bio do [Espanhol do Brasileiro](https://www.instagram.com/espanhol.do.brasileiro/) (@espanhol.do.brasileiro), com a professora Marina Duarte. Na Vercel é a raiz: https://marina-duarte.vercel.app |
+| [/espanhol/](./espanhol/) | `profiles/espanhol.json` | A mesma página da raiz: [Espanhol do Brasileiro](https://www.instagram.com/espanhol.do.brasileiro/) (@espanhol.do.brasileiro), com a professora Marina Duarte |
 
 ## Editar um link
 
@@ -47,15 +48,15 @@ O `utm_campaign` é sempre o `id` do perfil.
 
 O objeto `theme` troca as variáveis do DevLinks naquele perfil: texto, borda, fundo do botão, hover e as cores do selo (`accent` e `accentText`). O bloco `light` vale quando o interruptor está no tema claro.
 
-O fundo com foto roxa/cinza continua o do DevLinks, compartilhado. O `/douglasdev/` usa o tema clássico (branco) em cima da foto roxa. O `/espanhol/` usa a paleta do logo: azul-marinho `#031228`, verde `#037b27`, amarelo `#fdba01` e vermelho da Espanha `#dd1014`. O logo oficial fica em `assets/espanhol/logo.png` (fundo transparente; na página ele entra num cartão branco para o azul-marinho do lettering aparecer). O favicon dessa página é `assets/espanhol/favicon.png`.
+O fundo com foto roxa/cinza continua o do DevLinks, compartilhado. O `/douglasdev/` usa o tema clássico (branco) em cima da foto roxa. O `/espanhol/` usa a paleta da marca: azul-marinho `#031228`, verde `#037b27`, amarelo `#fdba01` e vermelho da Espanha `#dd1014`. O destaque do topo, o favicon, o ícone da tela inicial e a imagem de preview são `assets/espanhol/marina-duarte-logo.webp`.
 
 Avatar: caminho em `profile.avatar`, a partir da raiz do site (`assets/avatars/douglas.svg`). Pode ser SVG, PNG ou JPG. `avatarAlt` é o texto alternativo.
 
 ## Vercel (marina-duarte.vercel.app)
 
-O projeto `marina-duarte` na Vercel publica este repositório sem build. O `vercel.json` reescreve `/` para `/espanhol/`, então o link da bio é só https://marina-duarte.vercel.app. `/douglasdev/` continua no mesmo endereço.
+O projeto `marina-duarte` na Vercel publica este repositório sem build. A Vercel entrega um arquivo estático antes de aplicar rewrite, então um rewrite de `/` para `/espanhol/` nunca roda enquanto existir `index.html`. O `node build.js` grava a página do perfil em `site.json` → `vercelRoot` (hoje `espanhol`) direto em `index.html`, com caminhos `./`. Assim https://marina-duarte.vercel.app abre a página da Marina, e o mesmo arquivo também funciona na raiz de um GitHub Pages de projeto (`/devlinks/`). `/espanhol/` continua a mesma página, com caminhos `../`. `/douglasdev/` e a lista em `/perfis/` seguem no ar nos dois hosts.
 
-No `/espanhol/`, `seo.canonical` aponta canonical, `og:url`, `og:image` e sitemap para a Vercel. A foto do topo é `assets/espanhol/marina-duarte.jpg` (400x400, `avatarFit: "photo"`) e o logo pequeno é `assets/espanhol/logo-small.png` (`brandLogo`).
+No `/espanhol/` e na raiz, `seo.canonical` aponta canonical e `og:url` para a Vercel. O `og:image` é a marca nova, em `https://marina-duarte.vercel.app/assets/espanhol/marina-duarte-logo.webp`. O título grande fica só para leitores de tela, porque a imagem já traz o nome.
 
 ## UTM
 
@@ -95,17 +96,17 @@ node build.js
 python3 -m http.server 4173
 ```
 
-Abra `http://localhost:4173/`, `http://localhost:4173/douglasdev/` e `http://localhost:4173/espanhol/`.
+Abra `http://localhost:4173/`, `http://localhost:4173/espanhol/`, `http://localhost:4173/douglasdev/` e `http://localhost:4173/perfis/`.
 
 ## GitHub Pages
 
 O repositório não tinha um workflow de Pages: o deploy é o modo estático, pela branch. Em **Settings → Pages**, escolha **Deploy from a branch**, branch `main`, pasta **/ (root)**.
 
-A URL fica `https://douglasfuturin.github.io/devlinks/`. O arquivo `.nojekyll` impede o Jekyll de filtrar JSON e pastas. Os links usam caminhos relativos, então funcionam nesse subcaminho.
+A URL fica `https://douglasfuturin.github.io/devlinks/`. A raiz mostra a mesma página da Marina, com caminhos `./`, então o subcaminho `/devlinks/` acha o CSS e as imagens. `/douglasdev/` e `/perfis/` continuam nesse endereço. O arquivo `.nojekyll` impede o Jekyll de filtrar JSON e pastas.
 
 ## Vercel
 
-Importe o repositório. Framework **Other**, sem comando de build, diretório de saída na raiz. O `vercel.json` só liga a barra no final da URL e alguns cabeçalhos. Não crie projeto Node: não existe `package.json` de propósito.
+Importe o repositório. Framework **Other**, sem comando de build, diretório de saída na raiz. O `index.html` da raiz já é a página da Marina; não precisa de comando de build nem de rewrite. O `vercel.json` só liga a barra no final da URL e alguns cabeçalhos. Não crie projeto Node: não existe `package.json` de propósito.
 
 Se a URL da Vercel for a oficial, atualize `siteUrl` e rode o build antes do push.
 

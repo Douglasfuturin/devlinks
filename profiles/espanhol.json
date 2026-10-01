@@ -7,16 +7,16 @@
   "profile": {
     "kind": "person",
     "name": "Marina Duarte",
-    "subtitle": "Professora de espanhol • Espanhol do Brasileiro",
+    "hideTitle": true,
+    "subtitle": "Professora de espanhol",
     "handle": "@espanhol.do.brasileiro",
-    "bio": "Espanhol da Espanha, do jeito do brasileiro.",
-    "avatar": "assets/espanhol/marina-duarte.jpg",
-    "avatarFit": "photo",
-    "avatarAlt": "Foto de Marina Duarte, professora de espanhol do Espanhol do Brasileiro.",
-    "brandLogo": "assets/espanhol/logo-small.png",
-    "brandLogoAlt": "Logo Espanhol do Brasileiro, com as bandeiras da Espanha e do Brasil.",
-    "favicon": "assets/espanhol/favicon.png",
-    "faviconType": "image/png",
+    "bio": "",
+    "avatar": "assets/espanhol/marina-duarte-logo.webp",
+    "avatarFit": "mark",
+    "avatarAlt": "Espanhol do Brasileiro com Marina Duarte: ilustração da professora, bandeiras do Brasil e da Espanha e o cartão Hola.",
+    "favicon": "assets/espanhol/marina-duarte-logo.webp",
+    "faviconType": "image/webp",
+    "appleTouchIcon": "assets/espanhol/marina-duarte-logo.webp",
     "footer": "Espanhol do Brasileiro"
   },
   "theme": {
@@ -54,7 +54,11 @@
     "description": "Marina Duarte, professora de espanhol do Espanhol do Brasileiro: Kit Sobrevivência, Flashcards, Fluência na Prática e Morar e Trabalhar na Espanha, com o tutor Professor de Espanhol.",
     "type": "website",
     "siteName": "Espanhol do Brasileiro",
-    "imageAlt": "Logo Espanhol do Brasileiro, flashcards de espanhol da Espanha.",
+    "image": "assets/espanhol/marina-duarte-logo.webp",
+    "imageAlt": "Espanhol do Brasileiro com Marina Duarte: ilustração da professora, bandeiras do Brasil e da Espanha e o cartão Hola.",
+    "imageType": "image/webp",
+    "imageWidth": 512,
+    "imageHeight": 512,
     "canonical": "https://marina-duarte.vercel.app/"
   },
   "utm": {
