@@ -94,8 +94,15 @@
       "links": [
         {
           "id": "kit-sobrevivencia",
-          "title": "Kit Sobrevivência",
-          "description": "O essencial para se virar em espanhol.",
+          "title": "Kit Sobrevivência na Espanha",
+          "description": "Frases da Espanha para se virar na chegada e no dia a dia, com pronúncia e tradução. O material é digital: PDF no celular e versão para imprimir.",
+          "features": [
+            "PDF para celular, com 33 páginas",
+            "Versão A4 para imprimir, com 17 páginas",
+            "Frases essenciais com pronúncia e tradução, por situação: emergência, o básico, aeroporto e chegada, e o dia a dia",
+            "Guia rápido de pronúncia da Espanha",
+            "Dicas culturais, como o uso de tú com desconhecidos"
+          ],
           "url": "https://lastlink.com/p/CA990C2E4/checkout-payment",
           "icon": "🧰",
           "badge": "R$19,90",
@@ -105,8 +112,16 @@
         },
         {
           "id": "flashcards",
-          "title": "Flashcards",
-          "description": "Espanhol da Espanha, do zero ao avançado.",
+          "title": "Flashcards A1–C1",
+          "description": "Vocabulário da Espanha do A1 ao C1, pronto para estudar no Anki, na planilha ou no papel. São 687 cards, com exercícios por nível e um guia de repetição espaçada.",
+          "features": [
+            "687 flashcards do A1 ao C1",
+            "Baralho pronto para o Anki (.apkg) e arquivo TSV",
+            "Planilha em Excel (.xlsx) e CSV com todos os cards",
+            "Flashcards para imprimir por nível: PDFs A1, A2, B1, B2 e C1",
+            "5 cadernos de exercícios, um por nível, com cerca de 20 a 26 páginas",
+            "Guia do aluno: como estudar com repetição espaçada"
+          ],
           "url": "https://lastlink.com/p/CC267EA60/checkout-payment",
           "icon": "🗂️",
           "badge": "R$47",
@@ -117,7 +132,14 @@
         {
           "id": "fluencia-na-pratica",
           "title": "Fluência na Prática",
-          "description": "Prática para falar com mais segurança.",
+          "description": "Os Flashcards mais roteiros para falar em situações reais, do bar ao banco. Entram também os falsos amigos e um plano de 30 dias, com 30 a 40 minutos por dia.",
+          "includesPrevious": "Tudo do plano anterior +",
+          "features": [
+            "Roteiros de Conversação, 22 páginas: bar em grupo, farmácia, aluguel de quarto, fibra e celular, banco, centro de salud, troca ou devolução. Método de 4 passos, níveis A1 a B1",
+            "Falsos amigos PT–ES, 9 páginas",
+            "Plano de Estudo de 30 Dias: 30 a 40 minutos por dia, missões diárias, duas trilhas e checklist para imprimir",
+            "Guia Comece Aqui"
+          ],
           "url": "https://lastlink.com/p/CE3770193/checkout-payment",
           "icon": "🗣️",
           "badge": "R$97",
@@ -128,7 +150,14 @@
         {
           "id": "morar-e-trabalhar",
           "title": "Morar e Trabalhar na Espanha",
-          "description": "Bônus: Professor de Espanhol, tutor com IA.",
+          "description": "A prática da conversa, mais o espanhol do trabalho, da burocracia e do DELE. O bônus são comandos prontos de IA para ensaiar, corrigir textos e revisar documentos.",
+          "includesPrevious": "Tudo do plano anterior +",
+          "features": [
+            "Vocabulário de Trabalho: procurar emprego, contrato e salário, setores (hotelaria, restaurantes, comércio, logística, cuidados e limpeza), direitos, frases e e-mails modelo",
+            "Documentos e Burocracia: NIE e TIE, empadronamiento, Seguridad Social, tarjeta sanitaria, conta bancária, contrato de aluguel, ordem dos trâmites, checklist e glossário",
+            "Preparação para o DELE A1 a C1: formato das provas, estratégias por habilidade, tarefas com gabarito e modelos",
+            "Bônus: Professor de Espanhol com IA, com comandos prontos para conversar, ensaiar roteiros, corrigir textos, burocracia e DELE"
+          ],
           "url": "https://lastlink.com/p/CBDB5423A/checkout-payment",
           "icon": "✈️",
           "badge": "R$197",
