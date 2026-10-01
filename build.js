@@ -664,7 +664,12 @@ function assertBuilt(profiles) {
   reject(espanhol, "Rumo à Espanha", "Nome antigo ainda está na página")
   reject(home, "Rumo à Espanha", "Nome antigo ainda está na home")
   reject(espanhol, "darkpagesai", "Dark Pages vazou para /espanhol/")
-  reject(espanhol, "logo-instagram", "Instagram desligado apareceu em /espanhol/")
+  expect(espanhol, ">@espanhol.do.brasileiro<", "Arroba do Instagram ausente")
+  expect(
+    espanhol,
+    'href="https://www.instagram.com/espanhol.do.brasileiro/?utm_source=instagram&amp;utm_medium=bio&amp;utm_campaign=espanhol"',
+    "Link do Instagram sem UTM da página"
+  )
   reject(espanhol, "TODO", "Texto de TODO vazou para o HTML")
   reject(douglas, "TODO", "Texto de TODO vazou para o HTML")
   reject(home, "TODO", "Texto de TODO vazou para a home")

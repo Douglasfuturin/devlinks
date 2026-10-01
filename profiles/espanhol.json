@@ -4,14 +4,11 @@
   "navTitle": "Espanhol do Brasileiro",
   "navDescription": "Flashcards e cursos de espanhol da Espanha.",
   "navIcon": "🇪🇸",
-  "todos": [
-    "TODO: definir o @ do Instagram deste perfil"
-  ],
   "profile": {
     "kind": "organization",
     "name": "Espanhol do Brasileiro",
     "subtitle": "FLASHCARDS",
-    "handle": "",
+    "handle": "@espanhol.do.brasileiro",
     "bio": "Espanhol da Espanha, do jeito do brasileiro.",
     "avatar": "assets/espanhol/logo.png",
     "avatarFit": "logo",
@@ -143,12 +140,11 @@
           "id": "instagram",
           "title": "Instagram",
           "description": "",
-          "url": "#",
-          "todo": "TODO: colar a URL quando o @ do Instagram existir",
+          "url": "https://www.instagram.com/espanhol.do.brasileiro/",
           "icon": "logo-instagram",
           "badge": "",
           "highlight": false,
-          "enabled": false,
+          "enabled": true,
           "utm": true
         }
       ]

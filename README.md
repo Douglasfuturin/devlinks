@@ -6,7 +6,7 @@ Páginas estáticas no visual do DevLinks, uma para cada perfil. Não tem backen
 | --- | --- | --- |
 | [/](./) | `site.json` | Lista dos perfis |
 | [/douglasdev/](./douglasdev/) | `profiles/douglasdev.json` | Bio de [@o.douglas.dev](https://instagram.com/o.douglas.dev): IA e automação |
-| [/espanhol/](./espanhol/) | `profiles/espanhol.json` | Bio do Espanhol do Brasileiro (Flashcards) |
+| [/espanhol/](./espanhol/) | `profiles/espanhol.json` | Bio do [Espanhol do Brasileiro](https://www.instagram.com/espanhol.do.brasileiro/) (@espanhol.do.brasileiro) |
 
 ## Editar um link
 
@@ -110,7 +110,6 @@ Nada disso aparece na página. O `node build.js` lista de novo:
 - Curso de importação de chuteiras (`/douglasdev/`)
 - Checkouts da Lastlink em `/espanhol/` ainda sem URL: Fluência na Prática (R$97) e Morar e Trabalhar na Espanha (R$197, bônus Professor de Espanhol). Kit Sobrevivência (R$19,90) e Flashcards (R$47) já apontam para a Lastlink, com UTM do perfil.
 - Material grátis / lista de WhatsApp
-- @ do Instagram do Espanhol do Brasileiro, hoje desligado em `profiles/espanhol.json`
 
 ## Crédito
 
