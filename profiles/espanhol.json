@@ -73,8 +73,10 @@
       "links": [
         {
           "id": "grupo-whatsapp",
-          "title": "Entrar no grupo gratuito do WhatsApp",
-          "description": "Dicas de espanhol da Espanha, grátis.",
+          "title": "Grupo de Networking de Imigrantes na Espanha",
+          "description": "Dicas de espanhol e experiências do dia a dia. Gratuito!",
+          "cta": "Entrar no grupo grátis",
+          "ariaLabel": "Grupo de Networking de Imigrantes na Espanha. Dicas de espanhol e experiências do dia a dia. Gratuito! Entrar no grupo grátis no WhatsApp (abre em nova aba)",
           "url": "https://chat.whatsapp.com/DasExwyjLjNJAdKjoMYYUb",
           "icon": "logo-whatsapp",
           "badge": "GRÁTIS",

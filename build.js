@@ -190,18 +190,21 @@ function renderListLink(link, profileId, utm) {
   if (link.tone === "whatsapp") classes.push("whatsapp")
   const classAttr = classes.length ? ` class="${classes.join(" ")}"` : ""
   const blank = external ? ' target="_blank" rel="noopener noreferrer"' : ""
+  const aria = link.ariaLabel ? ` aria-label="${esc(link.ariaLabel)}"` : ""
   const desc = link.description
     ? `\n              <span class="link-desc">${esc(link.description)}</span>`
     : ""
+  const cta = link.cta ? `\n              <span class="link-cta">${esc(link.cta)}</span>` : ""
   const badge = link.badge ? `\n            <span class="badge">${esc(link.badge)}</span>` : ""
-  const extra = external
-    ? `\n            <span class="sr-only"> (abre em nova aba)</span>`
-    : ""
+  const extra =
+    external && !link.ariaLabel
+      ? `\n            <span class="sr-only"> (abre em nova aba)</span>`
+      : ""
   return `        <li>
-          <a id="${esc(link.id)}" href="${esc(finalHref)}" data-link-id="${esc(link.id)}"${classAttr}${blank}>
+          <a id="${esc(link.id)}" href="${esc(finalHref)}" data-link-id="${esc(link.id)}"${classAttr}${aria}${blank}>
             ${iconMarkup(link.icon, link.id)}
             <span class="link-copy">
-              <span class="link-title">${esc(link.title)}</span>${desc}
+              <span class="link-title">${esc(link.title)}</span>${desc}${cta}
             </span>${badge}${extra}
           </a>
         </li>`
@@ -747,11 +750,22 @@ function assertBuilt(profiles) {
   )
   expect(espanhol, 'id="grupo-whatsapp"', "Botão do grupo ausente")
   expect(espanhol, 'class="whatsapp"', "Destaque do WhatsApp ausente")
-  expect(espanhol, "Entrar no grupo gratuito do WhatsApp", "Texto do grupo ausente")
-  expect(espanhol, "Dicas de espanhol da Espanha, grátis.", "Linha do grupo ausente")
+  expect(espanhol, "Grupo de Networking de Imigrantes na Espanha", "Título do grupo ausente")
   expect(
     espanhol,
-    '<a id="grupo-whatsapp" href="https://chat.whatsapp.com/DasExwyjLjNJAdKjoMYYUb" data-link-id="grupo-whatsapp" class="whatsapp" target="_blank" rel="noopener noreferrer">',
+    "Dicas de espanhol e experiências do dia a dia. Gratuito!",
+    "Linha do grupo ausente"
+  )
+  expect(espanhol, "Entrar no grupo grátis", "Chamada do grupo ausente")
+  reject(espanhol, "Entrar no grupo gratuito do WhatsApp", "Texto antigo do grupo ainda está na página")
+  expect(
+    espanhol,
+    'aria-label="Grupo de Networking de Imigrantes na Espanha. Dicas de espanhol e experiências do dia a dia. Gratuito! Entrar no grupo grátis no WhatsApp (abre em nova aba)"',
+    "Texto acessível do grupo desatualizado"
+  )
+  expect(
+    espanhol,
+    '<a id="grupo-whatsapp" href="https://chat.whatsapp.com/DasExwyjLjNJAdKjoMYYUb" data-link-id="grupo-whatsapp" class="whatsapp" aria-label="Grupo de Networking de Imigrantes na Espanha. Dicas de espanhol e experiências do dia a dia. Gratuito! Entrar no grupo grátis no WhatsApp (abre em nova aba)" target="_blank" rel="noopener noreferrer">',
     "Grupo sem nova aba"
   )
   if (espanhol.indexOf('id="grupo-whatsapp"') > espanhol.indexOf('id="kit-sobrevivencia"')) {
