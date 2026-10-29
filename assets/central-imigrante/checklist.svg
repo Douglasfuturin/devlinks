@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+  <defs><filter id="sh" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#000" flood-opacity=".45"/></filter></defs>
+  <!-- prancheta com checklist (genérico) -->
+  <g filter="url(#sh)" transform="rotate(-7 120 130)">
+    <rect x="52" y="34" width="136" height="180" rx="14" fill="#c8102e"/>
+    <rect x="62" y="48" width="116" height="156" rx="8" fill="#f8f5ee"/>
+    <rect x="94" y="26" width="52" height="22" rx="6" fill="#fdba01"/>
+    <g stroke-linecap="round" stroke-linejoin="round">
+      <rect x="74" y="66" width="16" height="16" rx="3" fill="none" stroke="#1f1410" stroke-width="2.5"/>
+      <path d="M77 74l4 4 8-9" fill="none" stroke="#037b27" stroke-width="3.5"/>
+      <path d="M98 74h66" stroke="#9a9a9a" stroke-width="5"/>
+      <rect x="74" y="98" width="16" height="16" rx="3" fill="none" stroke="#1f1410" stroke-width="2.5"/>
+      <path d="M77 106l4 4 8-9" fill="none" stroke="#037b27" stroke-width="3.5"/>
+      <path d="M98 106h56" stroke="#9a9a9a" stroke-width="5"/>
+      <rect x="74" y="130" width="16" height="16" rx="3" fill="none" stroke="#1f1410" stroke-width="2.5"/>
+      <path d="M77 138l4 4 8-9" fill="none" stroke="#037b27" stroke-width="3.5"/>
+      <path d="M98 138h62" stroke="#9a9a9a" stroke-width="5"/>
+      <rect x="74" y="162" width="16" height="16" rx="3" fill="none" stroke="#1f1410" stroke-width="2.5"/>
+      <path d="M98 170h48" stroke="#9a9a9a" stroke-width="5"/>
+    </g>
+  </g>
+  <!-- passaporte -->
+  <g filter="url(#sh)" transform="rotate(12 190 180)">
+    <rect x="160" y="140" width="62" height="84" rx="8" fill="#7a1420"/>
+    <circle cx="191" cy="176" r="13" fill="none" stroke="#fdba01" stroke-width="2.5"/>
+    <text x="191" y="210" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="700" letter-spacing="1" fill="#fdba01">PASSAPORTE</text>
+  </g>
+  <!-- etiqueta PDF -->
+  <g filter="url(#sh)" transform="rotate(-10 40 60)">
+    <rect x="14" y="44" width="52" height="28" rx="6" fill="#0b0b0b"/>
+    <text x="40" y="63" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-size="13" font-weight="900" fill="#fff">PDF</text>
+  </g>
+</svg>

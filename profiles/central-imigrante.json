@@ -72,6 +72,28 @@
           "utm": false
         },
         {
+          "id": "checklist-embarque",
+          "eyebrow": "Material grátis",
+          "title": "Checklist de Embarque",
+          "description": "Tudo o que você precisa antes, durante e logo depois da viagem para a Espanha.",
+          "cta": "Baixar no grupo",
+          "url": "https://chat.whatsapp.com/Jvb3VwpCTy92LDZvYSrImV",
+          "image": "assets/central-imigrante/checklist.svg",
+          "imageAlt": "",
+          "tone": "ink",
+          "bgWord": "LISTA",
+          "badge": "GRÁTIS",
+          "features": [
+            "Documentos de entrada e o que a imigração pode pedir",
+            "Dinheiro, chip e mala prontos antes de embarcar",
+            "O que fazer na primeira semana: moradia, empadronamiento e NIE",
+            "O PDF está fixado no grupo do WhatsApp"
+          ],
+          "enabled": true,
+          "utm": false,
+          "flip": true
+        },
+        {
           "id": "kit-sobrevivencia",
           "eyebrow": "Curso de espanhol",
           "title": "Kit Sobrevivência na Espanha",
@@ -81,7 +103,7 @@
           "image": "assets/central-imigrante/kit.svg",
           "imageAlt": "",
           "tone": "red",
-          "flip": true,
+          "flip": false,
           "bgWord": "KIT",
           "badge": "R$19,90",
           "features": [
@@ -102,7 +124,7 @@
           "image": "assets/central-imigrante/flashcards.svg",
           "imageAlt": "",
           "tone": "gold",
-          "flip": false,
+          "flip": true,
           "bgWord": "A1C1",
           "badge": "R$47",
           "features": [
@@ -125,7 +147,7 @@
           "image": "assets/central-imigrante/conta-app.svg",
           "imageAlt": "",
           "tone": "ink",
-          "flip": true,
+          "flip": false,
           "bgWord": "EUR",
           "enabled": true,
           "utm": false,
@@ -147,7 +169,7 @@
           "image": "assets/central-imigrante/conta.svg",
           "imageAlt": "",
           "tone": "gold",
-          "flip": false,
+          "flip": true,
           "bgWord": "€$",
           "badge": "TAXA ZERO",
           "features": [
@@ -171,7 +193,7 @@
           "bgWord": "NIE",
           "enabled": true,
           "todo": "Colocar o link do serviço de relocation",
-          "flip": true
+          "flip": false
         },
         {
           "id": "passagens",
@@ -184,7 +206,7 @@
           "imageAlt": "",
           "tone": "ink",
           "bgWord": "MAD",
-          "flip": false,
+          "flip": true,
           "enabled": true,
           "todo": "Colocar o link de afiliado das passagens"
         }
