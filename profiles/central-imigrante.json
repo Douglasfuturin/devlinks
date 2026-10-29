@@ -1,0 +1,138 @@
+{
+  "id": "central-imigrante",
+  "order": 3,
+  "navTitle": "Central do Imigrante ES",
+  "navDescription": "Grupo, espanhol, relocation e passagens para quem vai morar na Espanha.",
+  "navIcon": "🧳",
+  "profile": {
+    "kind": "organization",
+    "name": "Central do Imigrante ES",
+    "handle": "@centraldoimigrante.es",
+    "bio": "Tudo para brasileiros que querem morar na Espanha, com a realidade que ninguém conta.",
+    "avatar": "assets/avatars/central-imigrante.svg",
+    "avatarAlt": "Monograma CI da Central do Imigrante ES, em vermelho e amarelo",
+    "footer": "Central do Imigrante ES"
+  },
+  "theme": {
+    "themeColor": "#170f0c",
+    "pageBg": "#170f0c",
+    "bgUrl": "none",
+    "textColor": "#f6ede3",
+    "strokeColor": "rgba(253, 186, 1, 0.5)",
+    "surfaceColor": "rgba(255, 255, 255, 0.05)",
+    "surfaceColorHover": "rgba(200, 16, 46, 0.22)",
+    "highlightColor": "rgba(253, 186, 1, 0.22)",
+    "accent": "#fdba01",
+    "accentText": "#170f0c",
+    "mark": "#c8102e",
+    "sectionColor": "#fdba01",
+    "subtitleColor": "#fdba01",
+    "light": {
+      "themeColor": "#fbf6ec",
+      "pageBg": "#fbf6ec",
+      "bgUrl": "none",
+      "textColor": "#1f1410",
+      "strokeColor": "rgba(200, 16, 46, 0.4)",
+      "surfaceColor": "rgba(200, 16, 46, 0.05)",
+      "surfaceColorHover": "rgba(200, 16, 46, 0.1)",
+      "highlightColor": "rgba(253, 186, 1, 0.25)",
+      "accent": "#fdba01",
+      "accentText": "#1f1410",
+      "mark": "#c8102e",
+      "sectionColor": "#c8102e",
+      "subtitleColor": "#c8102e"
+    }
+  },
+  "seo": {
+    "title": "Central do Imigrante ES (@centraldoimigrante.es)",
+    "description": "Grupo do WhatsApp, cursos de espanhol, serviços de relocation e passagens aéreas para brasileiros que vão morar na Espanha.",
+    "type": "website",
+    "siteName": "Central do Imigrante ES",
+    "imageAlt": "Central do Imigrante ES. Links para brasileiros que vão morar na Espanha."
+  },
+  "utm": {
+    "source": "instagram",
+    "medium": "bio"
+  },
+  "sections": [
+    {
+      "id": "grupo",
+      "title": "Grátis",
+      "layout": "list",
+      "links": [
+        {
+          "id": "grupo-whatsapp",
+          "title": "Grupo do WhatsApp da Central do Imigrante",
+          "description": "Dicas, vagas e quem já está do lado de cá. Gratuito!",
+          "cta": "Entrar no grupo grátis",
+          "ariaLabel": "Grupo do WhatsApp da Central do Imigrante. Dicas, vagas e quem já está do lado de cá. Gratuito! Entrar no grupo grátis no WhatsApp (abre em nova aba)",
+          "url": "https://chat.whatsapp.com/Jvb3VwpCTy92LDZvYSrImV",
+          "icon": "logo-whatsapp",
+          "badge": "GRÁTIS",
+          "highlight": false,
+          "tone": "whatsapp",
+          "enabled": true,
+          "utm": false
+        }
+      ]
+    },
+    {
+      "id": "servicos",
+      "title": "Para a sua mudança",
+      "layout": "list",
+      "links": [
+        {
+          "id": "cursos-espanhol",
+          "title": "Cursos de espanhol",
+          "description": "Kit Sobrevivência, Flashcards A1–C1 e mais, com a professora Marina Duarte.",
+          "url": "https://marina-duarte.vercel.app/",
+          "icon": "📚",
+          "badge": "",
+          "highlight": true,
+          "enabled": true,
+          "utm": true
+        },
+        {
+          "id": "relocation",
+          "title": "Serviços de relocation",
+          "description": "NIE, empadronamiento, moradia e documentos para chegar com tudo resolvido.",
+          "url": "#",
+          "icon": "🏠",
+          "badge": "",
+          "highlight": false,
+          "enabled": true,
+          "todo": "Colocar o link do serviço de relocation"
+        },
+        {
+          "id": "passagens",
+          "title": "Passagens aéreas",
+          "description": "Voos baratos do Brasil para a Espanha.",
+          "url": "#",
+          "icon": "✈️",
+          "badge": "",
+          "highlight": false,
+          "enabled": true,
+          "todo": "Colocar o link de afiliado das passagens"
+        }
+      ]
+    },
+    {
+      "id": "redes",
+      "title": "Redes",
+      "layout": "social",
+      "links": [
+        {
+          "id": "instagram",
+          "title": "Instagram",
+          "description": "",
+          "url": "https://www.instagram.com/centraldoimigrante.es/",
+          "icon": "logo-instagram",
+          "badge": "",
+          "highlight": false,
+          "enabled": true,
+          "utm": true
+        }
+      ]
+    }
+  ]
+}

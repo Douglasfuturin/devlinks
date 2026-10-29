@@ -90,6 +90,34 @@ def espanhol_card():
     print("escreveu assets/og-espanhol.png")
 
 
+def first_font(*paths):
+    for path in paths:
+        if Path(path).exists():
+            return path
+    raise FileNotFoundError("Nenhuma fonte encontrada: " + ", ".join(paths))
+
+
+def central_imigrante_card():
+    """Faixa da bandeira (vermelho/amarelo/vermelho), sem azul."""
+    red, gold, ink = (200, 16, 46), (253, 186, 1), (23, 15, 12)
+    bold = first_font(SEMIBOLD, "/usr/share/fonts/opentype/inter/Inter-ExtraBold.otf", "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf")
+    regular = first_font(REGULAR, "/usr/share/fonts/opentype/inter/Inter-Regular.otf", "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf")
+    image = Image.new("RGB", (W, H), ink)
+    draw = ImageDraw.Draw(image)
+    draw.rectangle((0, 0, W, 18), fill=red)
+    draw.rectangle((0, 18, W, 54), fill=gold)
+    draw.rectangle((0, 54, W, 72), fill=red)
+    draw.ellipse((W / 2 - 62, 120, W / 2 + 62, 244), fill=gold)
+    draw.ellipse((W / 2 - 54, 128, W / 2 + 54, 236), fill=red)
+    draw_centered(draw, "CI", 152, font(bold, 52), (255, 255, 255))
+    draw_centered(draw, "Central do Imigrante ES", 284, font(bold, 66), (246, 237, 227))
+    draw_centered(draw, "@centraldoimigrante.es", 378, font(regular, 34), gold)
+    draw_centered(draw, "Grupo, espanhol, relocation e passagens", 452, font(regular, 30), (185, 165, 150))
+    draw.rectangle((0, H - 18, W, H), fill=red)
+    image.save(OUT / "og-central-imigrante.png", "PNG", optimize=True)
+    print("escreveu assets/og-central-imigrante.png")
+
+
 def main():
     card(
         "og-home.png",
@@ -109,6 +137,7 @@ def main():
     )
     espanhol_favicon()
     espanhol_card()
+    central_imigrante_card()
 
 
 if __name__ == "__main__":
