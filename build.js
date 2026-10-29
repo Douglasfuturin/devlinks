@@ -347,6 +347,10 @@ function themeBlock(theme) {
     bgUrl: "--bg-url",
     sectionColor: "--section-color",
     subtitleColor: "--subtitle-color",
+    glassBlur: "--glass-blur",
+    glassSaturate: "--glass-saturate",
+    glassShine: "--glass-shine",
+    cardRadius: "--card-radius",
   }
   const lines = (group, label) => {
     if (!group) return ""
