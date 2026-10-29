@@ -1,0 +1,207 @@
+{
+  "id": "central-imigrante",
+  "order": 3,
+  "navTitle": "Central do Imigrante ES",
+  "navDescription": "Grupo, espanhol, relocation, passagens e bancos parceiros para quem vai morar na Espanha.",
+  "navIcon": "🧳",
+  "profile": {
+    "kind": "organization",
+    "name": "Central do Imigrante ES",
+    "handle": "@centraldoimigrante.es",
+    "bio": "Tudo para brasileiros que querem morar na Espanha, com a realidade que ninguém conta.",
+    "avatar": "assets/central-imigrante/avatar.webp",
+    "avatarAlt": "Logo da Central do Imigrante .ES: bandeira da Espanha, Edifício Metrópolis, Puerta de Alcalá, passaporte espanhol e placa do Metro de Madrid",
+    "footer": "Central do Imigrante ES",
+    "avatarFit": "seal",
+    "hideTitle": true,
+    "favicon": "assets/central-imigrante/favicon.png",
+    "faviconType": "image/png",
+    "appleTouchIcon": "assets/central-imigrante/favicon.png",
+    "themeSwitch": false
+  },
+  "theme": {
+    "themeColor": "#000000",
+    "pageBg": "#000000",
+    "bgUrl": "radial-gradient(60% 40% at 15% 0%, rgba(200, 16, 46, 0.32), transparent 70%), radial-gradient(50% 35% at 90% 30%, rgba(253, 186, 1, 0.16), transparent 70%), radial-gradient(60% 40% at 20% 85%, rgba(200, 16, 46, 0.18), transparent 70%)",
+    "textColor": "#f5f5f5",
+    "strokeColor": "rgba(255, 255, 255, 0.14)",
+    "surfaceColor": "rgba(255, 255, 255, 0.06)",
+    "surfaceColorHover": "rgba(255, 255, 255, 0.11)",
+    "highlightColor": "rgba(253, 186, 1, 0.14)",
+    "accent": "#fdba01",
+    "accentText": "#000000",
+    "mark": "#c8102e",
+    "sectionColor": "#fdba01",
+    "subtitleColor": "#fdba01",
+    "glassBlur": "18px",
+    "glassSaturate": "160%",
+    "glassShine": "inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 8px 32px rgba(0, 0, 0, 0.45)",
+    "cardRadius": "16px"
+  },
+  "seo": {
+    "title": "Central do Imigrante ES (@centraldoimigrante.es)",
+    "description": "Grupo do WhatsApp, cursos de espanhol, serviços de relocation, passagens aéreas e os bancos parceiros Nomad e Revolut para brasileiros que vão morar na Espanha.",
+    "type": "website",
+    "siteName": "Central do Imigrante ES",
+    "imageAlt": "Central do Imigrante ES. Links para brasileiros que vão morar na Espanha."
+  },
+  "utm": {
+    "source": "instagram",
+    "medium": "bio"
+  },
+  "sections": [
+    {
+      "id": "servicos",
+      "title": "Comece por aqui",
+      "layout": "banner",
+      "links": [
+        {
+          "id": "grupo-whatsapp",
+          "eyebrow": "Comunidade",
+          "title": "Grupo do WhatsApp",
+          "description": "Dicas, vagas e quem já está do lado de cá.",
+          "cta": "Entrar no grupo",
+          "url": "https://chat.whatsapp.com/Jvb3VwpCTy92LDZvYSrImV",
+          "image": "assets/central-imigrante/whatsapp.svg",
+          "imageAlt": "",
+          "tone": "green",
+          "bgWord": "HOLA",
+          "badge": "GRÁTIS",
+          "enabled": true,
+          "utm": false
+        },
+        {
+          "id": "kit-sobrevivencia",
+          "eyebrow": "Curso de espanhol",
+          "title": "Kit Sobrevivência na Espanha",
+          "description": "Frases para se virar na chegada e no dia a dia, com pronúncia e tradução.",
+          "cta": "Quero o kit",
+          "url": "https://lastlink.com/p/CA990C2E4/checkout-payment",
+          "image": "assets/central-imigrante/kit.svg",
+          "imageAlt": "",
+          "tone": "red",
+          "flip": true,
+          "bgWord": "KIT",
+          "badge": "R$19,90",
+          "features": [
+            "PDF para celular, com 33 páginas",
+            "Versão A4 para imprimir, com 17 páginas",
+            "Frases essenciais com pronúncia e tradução, por situação: emergência, o básico, aeroporto e chegada, e o dia a dia",
+            "Guia rápido de pronúncia da Espanha",
+            "Dicas culturais, como o uso de tú com desconhecidos"
+          ],
+          "enabled": true,
+          "utm": true
+        },
+        {
+          "id": "flashcards",
+          "eyebrow": "Curso de espanhol",
+          "title": "Flashcards A1–C1",
+          "description": "Vocabulário da Espanha do A1 ao C1, para estudar no Anki, na planilha ou no papel.",
+          "cta": "Quero os flashcards",
+          "url": "https://lastlink.com/p/CC267EA60/checkout-payment",
+          "image": "assets/central-imigrante/flashcards.svg",
+          "imageAlt": "",
+          "tone": "gold",
+          "flip": false,
+          "bgWord": "A1C1",
+          "badge": "R$47",
+          "features": [
+            "687 flashcards do A1 ao C1",
+            "Baralho pronto para o Anki (.apkg) e arquivo TSV",
+            "Planilha em Excel (.xlsx) e CSV com todos os cards",
+            "Flashcards para imprimir por nível: PDFs A1, A2, B1, B2 e C1",
+            "5 cadernos de exercícios, um por nível, com cerca de 20 a 26 páginas",
+            "Guia do aluno: como estudar com repetição espaçada"
+          ],
+          "enabled": true,
+          "utm": true
+        },
+        {
+          "id": "relocation",
+          "eyebrow": "Mudança",
+          "title": "Serviços de relocation",
+          "description": "NIE, empadronamiento, moradia e documentos.",
+          "cta": "Quero ajuda",
+          "url": "#",
+          "image": "assets/central-imigrante/relocation.svg",
+          "imageAlt": "",
+          "tone": "red",
+          "bgWord": "NIE",
+          "enabled": true,
+          "todo": "Colocar o link do serviço de relocation",
+          "flip": true
+        },
+        {
+          "id": "passagens",
+          "eyebrow": "Viagem",
+          "title": "Passagens aéreas",
+          "description": "Voos baratos do Brasil para a Espanha.",
+          "cta": "Ver ofertas",
+          "url": "#",
+          "image": "assets/central-imigrante/passagens.svg",
+          "imageAlt": "",
+          "tone": "ink",
+          "bgWord": "MAD",
+          "flip": false,
+          "enabled": true,
+          "todo": "Colocar o link de afiliado das passagens"
+        },
+        {
+          "id": "nomad",
+          "eyebrow": "Banco parceiro",
+          "title": "Conta Internacional Nomad",
+          "description": "Ganhe taxa zero + 1GB de internet com o código LTY2DA7YFD.",
+          "cta": "Abrir minha conta",
+          "url": "https://nomad.onelink.me/wIQT/Travel?code=LTY2DA7YFD%26n=Douglas",
+          "image": "assets/central-imigrante/conta.svg",
+          "imageAlt": "",
+          "tone": "gold",
+          "flip": true,
+          "bgWord": "€$",
+          "badge": "TAXA ZERO",
+          "features": [
+            "Taxa de conversão zerada na 1ª conversão de até US$ 1.000 ou € 1.000",
+            "1GB de internet no Nomad Chip, o eSIM internacional",
+            "Use o código LTY2DA7YFD ao abrir a conta pelo app"
+          ],
+          "enabled": true,
+          "utm": false
+        },
+        {
+          "id": "revolut",
+          "eyebrow": "Banco parceiro",
+          "title": "Conta Revolut",
+          "description": "Conta digital usada por mais de 80 milhões de clientes. Abra pelo link da Central.",
+          "cta": "Abrir minha conta",
+          "url": "https://revolut.com/referral/?referral-code=dougla_xh_ynfl!NOV1-26-noreward&geo-redirect",
+          "image": "assets/central-imigrante/conta-app.svg",
+          "imageAlt": "",
+          "tone": "ink",
+          "flip": false,
+          "bgWord": "EUR",
+          "enabled": true,
+          "utm": false
+        }
+      ]
+    },
+    {
+      "id": "redes",
+      "title": "Redes",
+      "layout": "social",
+      "links": [
+        {
+          "id": "instagram",
+          "title": "Instagram",
+          "description": "",
+          "url": "https://www.instagram.com/centraldoimigrante.es/",
+          "icon": "logo-instagram",
+          "badge": "",
+          "highlight": false,
+          "enabled": true,
+          "utm": true
+        }
+      ]
+    }
+  ]
+}

@@ -3,15 +3,7 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <script>
-      ;(function () {
-        try {
-          if (localStorage.getItem("devlinks-theme") === "light") {
-            document.documentElement.classList.add("light")
-          }
-        } catch (error) {}
-      })()
-    </script>
+@@THEME_BOOT@@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
       name="viewport"
@@ -76,18 +68,7 @@
         @@BRAND@@
       </header>
 
-      <div
-        id="switch"
-        role="switch"
-        tabindex="0"
-        aria-checked="false"
-        aria-label="Ativar tema claro"
-        onclick="toggleMode()"
-        onkeydown="onSwitchKey(event)"
-      >
-        <button type="button" tabindex="-1" aria-hidden="true"></button>
-        <span></span>
-      </div>
+@@SWITCH@@
 
       <div id="conteudo">
         @@LINKS@@

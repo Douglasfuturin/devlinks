@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+  <defs><filter id="sh" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#000" flood-opacity=".45"/></filter></defs>
+  <g filter="url(#sh)" transform="rotate(-8 120 170)">
+    <rect x="18" y="122" width="204" height="92" rx="12" fill="#fff"/>
+    <rect x="166" y="122" width="56" height="92" rx="12" fill="#c8102e"/>
+    <rect x="166" y="122" width="14" height="92" fill="#c8102e"/>
+    <path d="M166 130v76" stroke="#fff" stroke-width="2" stroke-dasharray="5 5"/>
+    <text x="34" y="146" font-family="Arial, sans-serif" font-size="9" font-weight="700" letter-spacing="1.5" fill="#999">BOARDING PASS</text>
+    <text x="32" y="184" font-family="Arial Black, Arial, sans-serif" font-size="23" font-weight="900" fill="#1f1410">GRU</text>
+    <text x="108" y="184" font-family="Arial Black, Arial, sans-serif" font-size="23" font-weight="900" fill="#1f1410">MAD</text>
+    <path d="M93 176h8" stroke="#c8102e" stroke-width="3" stroke-linecap="round"/>
+    <text x="34" y="202" font-family="Arial, sans-serif" font-size="10" fill="#777">São Paulo</text>
+    <text x="108" y="202" font-family="Arial, sans-serif" font-size="10" fill="#777">Madrid</text>
+    <g fill="#fff"><rect x="178" y="140" width="3" height="56"/><rect x="184" y="140" width="1.5" height="56"/><rect x="188" y="140" width="4" height="56"/><rect x="195" y="140" width="2" height="56"/><rect x="200" y="140" width="3" height="56"/><rect x="206" y="140" width="1.5" height="56"/><rect x="210" y="140" width="3" height="56"/></g>
+  </g>
+  <path d="M20 96 C70 40, 140 30, 196 52" fill="none" stroke="#fdba01" stroke-width="3" stroke-dasharray="2 9" stroke-linecap="round"/>
+  <g filter="url(#sh)" transform="translate(178 52) rotate(14)">
+    <path d="M-44 -5 H18 C28 -5 34 -2 34 0 C34 2 28 5 18 5 H-44 Z" fill="#f5f5f5"/>
+    <path d="M-4 -4 L-22 -34 H-12 L12 -4 Z M-4 4 L-22 34 H-12 L12 4 Z" fill="#fdba01"/>
+    <path d="M-40 -4 L-48 -18 H-41 L-30 -4 Z M-40 4 L-48 18 H-41 L-30 4 Z" fill="#fdba01"/>
+  </g>
+</svg>

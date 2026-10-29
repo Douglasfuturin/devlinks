@@ -151,7 +151,7 @@ function assertProfile(profile, filename) {
   for (const section of profile.sections || []) {
     assertId(section.id, `${filename} seção`)
     if (!section.title) throw new Error(`${filename}: seção ${section.id} sem título.`)
-    if (section.layout && !["list", "social"].includes(section.layout)) {
+    if (section.layout && !["list", "social", "banner"].includes(section.layout)) {
       throw new Error(`${filename}: layout "${section.layout}" inválido.`)
     }
     for (const link of section.links || []) {
@@ -285,6 +285,46 @@ function renderListLink(link, profileId, utm) {
         </li>`
 }
 
+const BANNER_TONES = ["red", "gold", "green", "ink"]
+
+function renderBannerLink(link, profileId, utm, prefix) {
+  const label = `${profileId}/${link.id}`
+  if (link.paused === true) throw new Error(`${label}: banner não pode ficar pausado.`)
+  if (!link.image) throw new Error(`${label}: banner precisa de image.`)
+  const tone = link.tone || "red"
+  if (!BANNER_TONES.includes(tone)) {
+    throw new Error(`${label}: tone "${tone}" inválido. Use: ${BANNER_TONES.join(", ")}`)
+  }
+  const href = outboundHref(link, profileId, utm)
+  const external = isHttp(href)
+  const finalHref = href === "#" ? `#${link.id}` : href
+  const blank = external ? ' target="_blank" rel="noopener noreferrer"' : ""
+  const classes = ["banner", `tone-${tone}`]
+  if (link.flip) classes.push("flip")
+  if (href === "#") classes.push("soon")
+  const word = link.bgWord ? `\n            <span class="banner-word" aria-hidden="true">${esc(link.bgWord)}</span>` : ""
+  const eyebrow = link.eyebrow ? `\n              <span class="banner-eyebrow">${esc(link.eyebrow)}</span>` : ""
+  const desc = link.description ? `\n              <span class="banner-desc">${esc(link.description)}</span>` : ""
+  const cta = `\n              <span class="banner-cta">${esc(href === "#" ? "Em breve" : link.cta || "Acessar")}</span>`
+  const badge = link.badge ? `\n            <span class="banner-sticker">${esc(link.badge)}</span>` : ""
+  const extra = external ? `\n            <span class="sr-only"> (abre em nova aba)</span>` : ""
+  const features = Array.isArray(link.features) ? link.features.filter(Boolean) : []
+  if (features.length) classes.push("has-list")
+  const list = features.length
+    ? `\n            <ul class="banner-list">\n${features
+        .map((item) => `              <li>${esc(item)}</li>`)
+        .join("\n")}\n            </ul>`
+    : ""
+  return `        <li>
+          <a id="${esc(link.id)}" href="${esc(finalHref)}" data-link-id="${esc(link.id)}" class="${classes.join(" ")}"${blank}>${word}
+            <span class="banner-art"><img src="${esc(asset(prefix, link.image))}" alt="${esc(link.imageAlt || "")}" loading="lazy" decoding="async" /></span>
+            <span class="banner-copy">${eyebrow}
+              <span class="banner-title">${esc(link.title)}</span>${desc}${cta}
+            </span>${list}${badge}${extra}
+          </a>
+        </li>`
+}
+
 function renderSocialLink(link, profileId, utm) {
   const href = outboundHref(link, profileId, utm)
   const external = isHttp(href)
@@ -302,7 +342,7 @@ function visibleLinks(section) {
   return (section.links || []).filter((link) => link.enabled)
 }
 
-function renderSections(profile) {
+function renderSections(profile, prefix = "") {
   const utm = profile.utm || {}
   const lists = []
   const socials = []
@@ -316,6 +356,13 @@ function renderSections(profile) {
         <div id="social-links">
 ${links.map((link) => renderSocialLink(link, profile.id, utm)).join("\n")}
         </div>
+      </section>`)
+    } else if (layout === "banner") {
+      lists.push(`      <section aria-labelledby="secao-${esc(section.id)}">
+        <h2 id="secao-${esc(section.id)}" class="section-title">${esc(section.title)}</h2>
+        <ul class="banners">
+${links.map((link) => renderBannerLink(link, profile.id, utm, prefix)).join("\n")}
+        </ul>
       </section>`)
     } else {
       lists.push(`      <section aria-labelledby="secao-${esc(section.id)}">
@@ -347,6 +394,10 @@ function themeBlock(theme) {
     bgUrl: "--bg-url",
     sectionColor: "--section-color",
     subtitleColor: "--subtitle-color",
+    glassBlur: "--glass-blur",
+    glassSaturate: "--glass-saturate",
+    glassShine: "--glass-shine",
+    cardRadius: "--card-radius",
   }
   const lines = (group, label) => {
     if (!group) return ""
@@ -479,11 +530,13 @@ function pageMap(options) {
           ? "avatar photo"
           : options.avatarFit === "mark"
             ? "mark"
+            : options.avatarFit === "seal"
+              ? "seal"
             : "avatar",
     AVATAR_SIZE:
       options.avatarFit === "logo"
         ? 'width="320" height="246"'
-        : options.avatarFit === "mark"
+        : options.avatarFit === "mark" || options.avatarFit === "seal"
           ? 'width="512" height="512"'
           : 'width="112" height="112"',
     FAVICON: esc(asset(options.prefix, options.favicon || "assets/favicon.svg")),
@@ -512,6 +565,8 @@ function pageMap(options) {
     FOOTER: esc(options.footer),
     JSON_LD: options.jsonLd,
     THEME_STYLE: options.themeStyle || "",
+    THEME_BOOT: options.themeSwitch === false ? "" : "    <script>\n      ;(function () {\n        try {\n          if (localStorage.getItem(\"devlinks-theme\") === \"light\") {\n            document.documentElement.classList.add(\"light\")\n          }\n        } catch (error) {}\n      })()\n    </script>",
+    SWITCH: options.themeSwitch === false ? "" : "      <div\n        id=\"switch\"\n        role=\"switch\"\n        tabindex=\"0\"\n        aria-checked=\"false\"\n        aria-label=\"Ativar tema claro\"\n        onclick=\"toggleMode()\"\n        onkeydown=\"onSwitchKey(event)\"\n      >\n        <button type=\"button\" tabindex=\"-1\" aria-hidden=\"true\"></button>\n        <span></span>\n      </div>",
     ANALYTICS_HEAD: analyticsHead(options.analytics),
     ANALYTICS_BOOT: analyticsBoot(options.profileId, options.analytics),
   }
@@ -689,7 +744,7 @@ function build() {
   function profileDocument(profile, prefix) {
     const canonical = profileCanonical(profile, base)
     const ogBase = canonical.replace(/\/+$/, "").replace(new RegExp(`/${profile.id}$`), "")
-    const sections = renderSections(profile)
+    const sections = renderSections(profile, prefix)
     return fill(
       template,
       pageMap({
@@ -728,6 +783,7 @@ function build() {
         profileId: profile.id,
         analytics,
         themeStyle: themeBlock(profile.theme),
+        themeSwitch: profile.profile.themeSwitch !== false,
         jsonLd: jsonLdScript(profileJsonLd(profile, canonical)),
       })
     )
