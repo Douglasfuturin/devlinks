@@ -98,25 +98,21 @@ def first_font(*paths):
 
 
 def central_imigrante_card():
-    """Faixa da bandeira (vermelho/amarelo/vermelho), sem azul."""
-    red, gold, ink = (200, 16, 46), (253, 186, 1), (23, 15, 12)
+    """Logo redondo à esquerda, nome e serviços à direita, fundo preto."""
+    gold, ink = (253, 186, 1), (0, 0, 0)
     bold = first_font(SEMIBOLD, "/usr/share/fonts/opentype/inter/Inter-ExtraBold.otf", "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf")
     regular = first_font(REGULAR, "/usr/share/fonts/opentype/inter/Inter-Regular.otf", "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf")
-    image = Image.new("RGB", (W, H), ink)
+    image = Image.new("RGBA", (W, H), ink)
+    logo = Image.open(OUT / "central-imigrante" / "avatar.webp").convert("RGBA").resize((470, 470), Image.LANCZOS)
+    image.alpha_composite(logo, (70, 80))
     draw = ImageDraw.Draw(image)
-    draw.rectangle((0, 0, W, 18), fill=red)
-    draw.rectangle((0, 18, W, 54), fill=gold)
-    draw.rectangle((0, 54, W, 72), fill=red)
-    draw.ellipse((W / 2 - 62, 120, W / 2 + 62, 244), fill=gold)
-    draw.ellipse((W / 2 - 54, 128, W / 2 + 54, 236), fill=red)
-    draw_centered(draw, "CI", 152, font(bold, 52), (255, 255, 255))
-    draw_centered(draw, "Central do Imigrante ES", 284, font(bold, 66), (246, 237, 227))
-    draw_centered(draw, "@centraldoimigrante.es", 378, font(regular, 34), gold)
-    draw_centered(draw, "Grupo, espanhol, relocation e passagens", 452, font(regular, 30), (185, 165, 150))
-    draw.rectangle((0, H - 18, W, H), fill=red)
-    image.save(OUT / "og-central-imigrante.png", "PNG", optimize=True)
+    draw.text((600, 190), "Central do", font=font(bold, 60), fill=(245, 245, 245))
+    draw.text((600, 258), "Imigrante ES", font=font(bold, 60), fill=(245, 245, 245))
+    draw.text((602, 346), "@centraldoimigrante.es", font=font(regular, 30), fill=gold)
+    draw.text((602, 400), "Grupo, espanhol, relocation", font=font(regular, 28), fill=(170, 170, 170))
+    draw.text((602, 438), "e passagens", font=font(regular, 28), fill=(170, 170, 170))
+    image.convert("RGB").save(OUT / "og-central-imigrante.png", "PNG", optimize=True)
     print("escreveu assets/og-central-imigrante.png")
-
 
 def main():
     card(

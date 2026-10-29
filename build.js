@@ -523,11 +523,13 @@ function pageMap(options) {
           ? "avatar photo"
           : options.avatarFit === "mark"
             ? "mark"
+            : options.avatarFit === "seal"
+              ? "seal"
             : "avatar",
     AVATAR_SIZE:
       options.avatarFit === "logo"
         ? 'width="320" height="246"'
-        : options.avatarFit === "mark"
+        : options.avatarFit === "mark" || options.avatarFit === "seal"
           ? 'width="512" height="512"'
           : 'width="112" height="112"',
     FAVICON: esc(asset(options.prefix, options.favicon || "assets/favicon.svg")),

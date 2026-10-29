@@ -9,9 +9,14 @@
     "name": "Central do Imigrante ES",
     "handle": "@centraldoimigrante.es",
     "bio": "Tudo para brasileiros que querem morar na Espanha, com a realidade que ninguém conta.",
-    "avatar": "assets/avatars/central-imigrante.svg",
-    "avatarAlt": "Monograma CI da Central do Imigrante ES, em vermelho e amarelo",
-    "footer": "Central do Imigrante ES"
+    "avatar": "assets/central-imigrante/avatar.webp",
+    "avatarAlt": "Logo da Central do Imigrante .ES: bandeira da Espanha, Edifício Metrópolis, Puerta de Alcalá, passaporte espanhol e placa do Metro de Madrid",
+    "footer": "Central do Imigrante ES",
+    "avatarFit": "seal",
+    "hideTitle": true,
+    "favicon": "assets/central-imigrante/favicon.png",
+    "faviconType": "image/png",
+    "appleTouchIcon": "assets/central-imigrante/favicon.png"
   },
   "theme": {
     "themeColor": "#000000",
