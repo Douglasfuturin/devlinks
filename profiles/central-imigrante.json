@@ -116,6 +116,42 @@
           "utm": true
         },
         {
+          "id": "revolut",
+          "eyebrow": "Banco parceiro",
+          "title": "Conta Revolut",
+          "description": "Conta digital usada por mais de 80 milhões de clientes. Abra pelo link da Central.",
+          "cta": "Abrir minha conta",
+          "url": "https://revolut.com/referral/?referral-code=dougla_xh_ynfl!NOV1-26-noreward&geo-redirect",
+          "image": "assets/central-imigrante/conta-app.svg",
+          "imageAlt": "",
+          "tone": "ink",
+          "flip": true,
+          "bgWord": "EUR",
+          "enabled": true,
+          "utm": false
+        },
+        {
+          "id": "nomad",
+          "eyebrow": "Banco parceiro",
+          "title": "Conta Internacional Nomad",
+          "description": "Ganhe taxa zero + 1GB de internet com o código LTY2DA7YFD.",
+          "cta": "Abrir minha conta",
+          "url": "https://nomad.onelink.me/wIQT/Travel?code=LTY2DA7YFD%26n=Douglas",
+          "image": "assets/central-imigrante/conta.svg",
+          "imageAlt": "",
+          "tone": "gold",
+          "flip": false,
+          "bgWord": "€$",
+          "badge": "TAXA ZERO",
+          "features": [
+            "Taxa de conversão zerada na 1ª conversão de até US$ 1.000 ou € 1.000",
+            "1GB de internet no Nomad Chip, o eSIM internacional",
+            "Use o código LTY2DA7YFD ao abrir a conta pelo app"
+          ],
+          "enabled": true,
+          "utm": false
+        },
+        {
           "id": "relocation",
           "eyebrow": "Mudança",
           "title": "Serviços de relocation",
@@ -144,42 +180,6 @@
           "flip": false,
           "enabled": true,
           "todo": "Colocar o link de afiliado das passagens"
-        },
-        {
-          "id": "nomad",
-          "eyebrow": "Banco parceiro",
-          "title": "Conta Internacional Nomad",
-          "description": "Ganhe taxa zero + 1GB de internet com o código LTY2DA7YFD.",
-          "cta": "Abrir minha conta",
-          "url": "https://nomad.onelink.me/wIQT/Travel?code=LTY2DA7YFD%26n=Douglas",
-          "image": "assets/central-imigrante/conta.svg",
-          "imageAlt": "",
-          "tone": "gold",
-          "flip": true,
-          "bgWord": "€$",
-          "badge": "TAXA ZERO",
-          "features": [
-            "Taxa de conversão zerada na 1ª conversão de até US$ 1.000 ou € 1.000",
-            "1GB de internet no Nomad Chip, o eSIM internacional",
-            "Use o código LTY2DA7YFD ao abrir a conta pelo app"
-          ],
-          "enabled": true,
-          "utm": false
-        },
-        {
-          "id": "revolut",
-          "eyebrow": "Banco parceiro",
-          "title": "Conta Revolut",
-          "description": "Conta digital usada por mais de 80 milhões de clientes. Abra pelo link da Central.",
-          "cta": "Abrir minha conta",
-          "url": "https://revolut.com/referral/?referral-code=dougla_xh_ynfl!NOV1-26-noreward&geo-redirect",
-          "image": "assets/central-imigrante/conta-app.svg",
-          "imageAlt": "",
-          "tone": "ink",
-          "flip": false,
-          "bgWord": "EUR",
-          "enabled": true,
-          "utm": false
         }
       ]
     },
