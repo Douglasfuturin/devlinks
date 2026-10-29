@@ -2,7 +2,7 @@
   "id": "central-imigrante",
   "order": 3,
   "navTitle": "Central do Imigrante ES",
-  "navDescription": "Grupo, espanhol, relocation e passagens para quem vai morar na Espanha.",
+  "navDescription": "Grupo, espanhol, relocation, passagens e banco parceiro para quem vai morar na Espanha.",
   "navIcon": "🧳",
   "profile": {
     "kind": "organization",
@@ -40,7 +40,7 @@
   },
   "seo": {
     "title": "Central do Imigrante ES (@centraldoimigrante.es)",
-    "description": "Grupo do WhatsApp, cursos de espanhol, serviços de relocation e passagens aéreas para brasileiros que vão morar na Espanha.",
+    "description": "Grupo do WhatsApp, cursos de espanhol, serviços de relocation, passagens aéreas e o banco parceiro Nomad para brasileiros que vão morar na Espanha.",
     "type": "website",
     "siteName": "Central do Imigrante ES",
     "imageAlt": "Central do Imigrante ES. Links para brasileiros que vão morar na Espanha."
@@ -146,6 +146,27 @@
           "flip": false,
           "enabled": true,
           "todo": "Colocar o link de afiliado das passagens"
+        },
+        {
+          "id": "nomad",
+          "eyebrow": "Banco parceiro",
+          "title": "Conta Internacional Nomad",
+          "description": "Ganhe taxa zero + 1GB de internet com o código LTY2DA7YFD.",
+          "cta": "Abrir minha conta",
+          "url": "https://nomad.onelink.me/wIQT/Travel?code=LTY2DA7YFD%26n=Douglas",
+          "image": "assets/central-imigrante/conta.svg",
+          "imageAlt": "",
+          "tone": "gold",
+          "flip": true,
+          "bgWord": "€$",
+          "badge": "TAXA ZERO",
+          "features": [
+            "Taxa de conversão zerada na 1ª conversão de até US$ 1.000 ou € 1.000",
+            "1GB de internet no Nomad Chip, o eSIM internacional",
+            "Use o código LTY2DA7YFD ao abrir a conta pelo app"
+          ],
+          "enabled": true,
+          "utm": false
         }
       ]
     },
