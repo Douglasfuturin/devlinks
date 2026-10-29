@@ -565,6 +565,8 @@ function pageMap(options) {
     FOOTER: esc(options.footer),
     JSON_LD: options.jsonLd,
     THEME_STYLE: options.themeStyle || "",
+    THEME_BOOT: options.themeSwitch === false ? "" : "    <script>\n      ;(function () {\n        try {\n          if (localStorage.getItem(\"devlinks-theme\") === \"light\") {\n            document.documentElement.classList.add(\"light\")\n          }\n        } catch (error) {}\n      })()\n    </script>",
+    SWITCH: options.themeSwitch === false ? "" : "      <div\n        id=\"switch\"\n        role=\"switch\"\n        tabindex=\"0\"\n        aria-checked=\"false\"\n        aria-label=\"Ativar tema claro\"\n        onclick=\"toggleMode()\"\n        onkeydown=\"onSwitchKey(event)\"\n      >\n        <button type=\"button\" tabindex=\"-1\" aria-hidden=\"true\"></button>\n        <span></span>\n      </div>",
     ANALYTICS_HEAD: analyticsHead(options.analytics),
     ANALYTICS_BOOT: analyticsBoot(options.profileId, options.analytics),
   }
@@ -781,6 +783,7 @@ function build() {
         profileId: profile.id,
         analytics,
         themeStyle: themeBlock(profile.theme),
+        themeSwitch: profile.profile.themeSwitch !== false,
         jsonLd: jsonLdScript(profileJsonLd(profile, canonical)),
       })
     )

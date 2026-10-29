@@ -16,7 +16,8 @@
     "hideTitle": true,
     "favicon": "assets/central-imigrante/favicon.png",
     "faviconType": "image/png",
-    "appleTouchIcon": "assets/central-imigrante/favicon.png"
+    "appleTouchIcon": "assets/central-imigrante/favicon.png",
+    "themeSwitch": false
   },
   "theme": {
     "themeColor": "#000000",
@@ -35,23 +36,7 @@
     "glassBlur": "18px",
     "glassSaturate": "160%",
     "glassShine": "inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 8px 32px rgba(0, 0, 0, 0.45)",
-    "cardRadius": "16px",
-    "light": {
-      "themeColor": "#f4f4f5",
-      "pageBg": "#f4f4f5",
-      "bgUrl": "radial-gradient(60% 40% at 15% 0%, rgba(200, 16, 46, 0.18), transparent 70%), radial-gradient(50% 35% at 90% 30%, rgba(253, 186, 1, 0.2), transparent 70%)",
-      "textColor": "#0a0a0a",
-      "strokeColor": "rgba(0, 0, 0, 0.1)",
-      "surfaceColor": "rgba(255, 255, 255, 0.55)",
-      "surfaceColorHover": "rgba(255, 255, 255, 0.8)",
-      "highlightColor": "rgba(253, 186, 1, 0.2)",
-      "accent": "#fdba01",
-      "accentText": "#000000",
-      "mark": "#c8102e",
-      "sectionColor": "#c8102e",
-      "subtitleColor": "#c8102e",
-      "glassShine": "inset 0 1px 0 rgba(255, 255, 255, 0.7), 0 8px 24px rgba(0, 0, 0, 0.08)"
-    }
+    "cardRadius": "16px"
   },
   "seo": {
     "title": "Central do Imigrante ES (@centraldoimigrante.es)",

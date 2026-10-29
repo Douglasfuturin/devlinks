@@ -3,15 +3,7 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <script>
-      ;(function () {
-        try {
-          if (localStorage.getItem("devlinks-theme") === "light") {
-            document.documentElement.classList.add("light")
-          }
-        } catch (error) {}
-      })()
-    </script>
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
       name="viewport"
@@ -25,7 +17,7 @@
       name="theme-color"
       content="#000000"
       data-theme-dark="#000000"
-      data-theme-light="#f4f4f5"
+      data-theme-light="#d0d0d0"
     />
     <link rel="canonical" href="https://douglasfuturin.github.io/devlinks/central-imigrante/" />
     <link rel="icon" href="../assets/central-imigrante/favicon.png" type="image/png" />
@@ -74,19 +66,7 @@
       --card-radius: 16px;
     }
     .light {
-      --text-color: #0a0a0a;
-      --stroke-color: rgba(0, 0, 0, 0.1);
-      --surface-color: rgba(255, 255, 255, 0.55);
-      --surface-color-hover: rgba(255, 255, 255, 0.8);
-      --highlight-color: rgba(253, 186, 1, 0.2);
-      --accent: #fdba01;
-      --accent-text: #000000;
-      --mark: #c8102e;
-      --page-bg: #f4f4f5;
-      --bg-url: radial-gradient(60% 40% at 15% 0%, rgba(200, 16, 46, 0.18), transparent 70%), radial-gradient(50% 35% at 90% 30%, rgba(253, 186, 1, 0.2), transparent 70%);
-      --section-color: #c8102e;
-      --subtitle-color: #c8102e;
-      --glass-shine: inset 0 1px 0 rgba(255, 255, 255, 0.7), 0 8px 24px rgba(0, 0, 0, 0.08);
+
     }
   </style>
     
@@ -110,18 +90,7 @@
         
       </header>
 
-      <div
-        id="switch"
-        role="switch"
-        tabindex="0"
-        aria-checked="false"
-        aria-label="Ativar tema claro"
-        onclick="toggleMode()"
-        onkeydown="onSwitchKey(event)"
-      >
-        <button type="button" tabindex="-1" aria-hidden="true"></button>
-        <span></span>
-      </div>
+
 
       <div id="conteudo">
               <section aria-labelledby="secao-servicos">
