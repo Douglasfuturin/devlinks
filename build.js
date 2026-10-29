@@ -308,12 +308,19 @@ function renderBannerLink(link, profileId, utm, prefix) {
   const cta = `\n              <span class="banner-cta">${esc(href === "#" ? "Em breve" : link.cta || "Acessar")}</span>`
   const badge = link.badge ? `\n            <span class="banner-sticker">${esc(link.badge)}</span>` : ""
   const extra = external ? `\n            <span class="sr-only"> (abre em nova aba)</span>` : ""
+  const features = Array.isArray(link.features) ? link.features.filter(Boolean) : []
+  if (features.length) classes.push("has-list")
+  const list = features.length
+    ? `\n            <ul class="banner-list">\n${features
+        .map((item) => `              <li>${esc(item)}</li>`)
+        .join("\n")}\n            </ul>`
+    : ""
   return `        <li>
           <a id="${esc(link.id)}" href="${esc(finalHref)}" data-link-id="${esc(link.id)}" class="${classes.join(" ")}"${blank}>${word}
             <span class="banner-art"><img src="${esc(asset(prefix, link.image))}" alt="${esc(link.imageAlt || "")}" loading="lazy" decoding="async" /></span>
             <span class="banner-copy">${eyebrow}
               <span class="banner-title">${esc(link.title)}</span>${desc}${cta}
-            </span>${badge}${extra}
+            </span>${list}${badge}${extra}
           </a>
         </li>`
 }

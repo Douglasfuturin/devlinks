@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+  <defs><filter id="sh" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#000" flood-opacity=".45"/></filter></defs>
+  <g filter="url(#sh)" transform="rotate(-16 100 150)">
+    <rect x="34" y="96" width="132" height="92" rx="12" fill="#1f1f22"/>
+    <text x="100" y="152" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-size="34" font-weight="900" fill="#fdba01">A1</text>
+  </g>
+  <g filter="url(#sh)" transform="rotate(-4 120 150)">
+    <rect x="52" y="100" width="132" height="92" rx="12" fill="#c8102e"/>
+    <text x="118" y="156" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-size="34" font-weight="900" fill="#fff">B2</text>
+  </g>
+  <g filter="url(#sh)" transform="rotate(9 140 150)">
+    <rect x="74" y="98" width="132" height="92" rx="12" fill="#fff"/>
+    <text x="140" y="138" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-size="22" font-weight="900" fill="#1a1205">la casa</text>
+    <path d="M100 152h80" stroke="#e6dcc6" stroke-width="2" stroke-dasharray="5 4"/>
+    <text x="140" y="174" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" font-weight="600" fill="#8a6a10">a casa</text>
+  </g>
+  <g filter="url(#sh)" transform="rotate(-8 64 54)">
+    <rect x="22" y="30" width="92" height="44" rx="22" fill="#fff"/>
+    <text x="68" y="59" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-size="18" font-weight="900" fill="#c8102e">687</text>
+  </g>
+  <g filter="url(#sh)" transform="rotate(12 196 62)">
+    <circle cx="196" cy="62" r="26" fill="#1f1f22"/>
+    <path d="M196 46l4.7 9.6 10.6 1.5-7.7 7.5 1.8 10.5-9.4-5-9.4 5 1.8-10.5-7.7-7.5 10.6-1.5Z" fill="#fdba01"/>
+  </g>
+</svg>

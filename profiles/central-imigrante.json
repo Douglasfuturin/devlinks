@@ -86,17 +86,49 @@
           "utm": false
         },
         {
-          "id": "cursos-espanhol",
-          "eyebrow": "Idioma",
-          "title": "Cursos de espanhol",
-          "description": "Do zero ao DELE, com a professora Marina Duarte.",
-          "cta": "Ver cursos",
-          "url": "https://marina-duarte.vercel.app/",
-          "image": "assets/central-imigrante/espanhol.svg",
+          "id": "kit-sobrevivencia",
+          "eyebrow": "Curso de espanhol",
+          "title": "Kit Sobrevivência na Espanha",
+          "description": "Frases para se virar na chegada e no dia a dia, com pronúncia e tradução.",
+          "cta": "Quero o kit",
+          "url": "https://lastlink.com/p/CA990C2E4/checkout-payment",
+          "image": "assets/central-imigrante/kit.svg",
+          "imageAlt": "",
+          "tone": "red",
+          "flip": true,
+          "bgWord": "KIT",
+          "badge": "R$19,90",
+          "features": [
+            "PDF para celular, com 33 páginas",
+            "Versão A4 para imprimir, com 17 páginas",
+            "Frases essenciais com pronúncia e tradução, por situação: emergência, o básico, aeroporto e chegada, e o dia a dia",
+            "Guia rápido de pronúncia da Espanha",
+            "Dicas culturais, como o uso de tú com desconhecidos"
+          ],
+          "enabled": true,
+          "utm": true
+        },
+        {
+          "id": "flashcards",
+          "eyebrow": "Curso de espanhol",
+          "title": "Flashcards A1–C1",
+          "description": "Vocabulário da Espanha do A1 ao C1, para estudar no Anki, na planilha ou no papel.",
+          "cta": "Quero os flashcards",
+          "url": "https://lastlink.com/p/CC267EA60/checkout-payment",
+          "image": "assets/central-imigrante/flashcards.svg",
           "imageAlt": "",
           "tone": "gold",
-          "bgWord": "ÑÑÑ",
-          "flip": true,
+          "flip": false,
+          "bgWord": "A1C1",
+          "badge": "R$47",
+          "features": [
+            "687 flashcards do A1 ao C1",
+            "Baralho pronto para o Anki (.apkg) e arquivo TSV",
+            "Planilha em Excel (.xlsx) e CSV com todos os cards",
+            "Flashcards para imprimir por nível: PDFs A1, A2, B1, B2 e C1",
+            "5 cadernos de exercícios, um por nível, com cerca de 20 a 26 páginas",
+            "Guia do aluno: como estudar com repetição espaçada"
+          ],
           "enabled": true,
           "utm": true
         },
@@ -112,7 +144,8 @@
           "tone": "red",
           "bgWord": "NIE",
           "enabled": true,
-          "todo": "Colocar o link do serviço de relocation"
+          "todo": "Colocar o link do serviço de relocation",
+          "flip": true
         },
         {
           "id": "passagens",
@@ -125,7 +158,7 @@
           "imageAlt": "",
           "tone": "ink",
           "bgWord": "MAD",
-          "flip": true,
+          "flip": false,
           "enabled": true,
           "todo": "Colocar o link de afiliado das passagens"
         }
