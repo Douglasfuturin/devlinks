@@ -119,7 +119,7 @@
           "id": "revolut",
           "eyebrow": "Banco parceiro",
           "title": "Conta Revolut",
-          "description": "Conta digital usada por mais de 80 milhões de clientes. Abra pelo link da Central.",
+          "description": "Conta digital com IBAN espanhol, usada por mais de 80 milhões de clientes.",
           "cta": "Abrir minha conta",
           "url": "https://revolut.com/referral/?referral-code=dougla_xh_ynfl!NOV1-26-noreward&geo-redirect",
           "image": "assets/central-imigrante/conta-app.svg",
@@ -128,7 +128,14 @@
           "flip": true,
           "bgWord": "EUR",
           "enabled": true,
-          "utm": false
+          "utm": false,
+          "badge": "IBAN ES",
+          "features": [
+            "Plano Standard sem mensalidade, com IBAN espanhol (ES)",
+            "Bizum integrado e transferências grátis entre contas Revolut",
+            "Câmbio sem taxa até € 1.000 por mês em dias úteis",
+            "Saques grátis até € 200 ou 5 por mês"
+          ]
         },
         {
           "id": "nomad",
