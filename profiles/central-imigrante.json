@@ -43,7 +43,8 @@
     "description": "Grupo do WhatsApp, cursos de espanhol, serviços de relocation, passagens aéreas e os bancos parceiros Nomad e Revolut para brasileiros que vão morar na Espanha.",
     "type": "website",
     "siteName": "Central do Imigrante ES",
-    "imageAlt": "Central do Imigrante ES. Links para brasileiros que vão morar na Espanha."
+    "imageAlt": "Central do Imigrante ES. Links para brasileiros que vão morar na Espanha.",
+    "canonical": "https://central-do-imigrante.vercel.app/"
   },
   "utm": {
     "source": "instagram",
@@ -196,6 +197,28 @@
           "description": "",
           "url": "https://www.instagram.com/centraldoimigrante.es/",
           "icon": "logo-instagram",
+          "badge": "",
+          "highlight": false,
+          "enabled": true,
+          "utm": true
+        },
+        {
+          "id": "tiktok",
+          "title": "TikTok",
+          "description": "",
+          "url": "https://www.tiktok.com/@centraldoimigrante.es",
+          "icon": "logo-tiktok",
+          "badge": "",
+          "highlight": false,
+          "enabled": true,
+          "utm": true
+        },
+        {
+          "id": "youtube",
+          "title": "YouTube",
+          "description": "",
+          "url": "https://www.youtube.com/channel/UC3k_I2NyF59BYWpbcjI9RxA",
+          "icon": "logo-youtube",
           "badge": "",
           "highlight": false,
           "enabled": true,
