@@ -107,11 +107,10 @@
           "badge": "R$47",
           "features": [
             "687 flashcards do A1 ao C1",
-            "Baralho pronto para o Anki (.apkg) e arquivo TSV",
-            "Planilha em Excel (.xlsx) e CSV com todos os cards",
             "Flashcards para imprimir por nível: PDFs A1, A2, B1, B2 e C1",
             "5 cadernos de exercícios, um por nível, com cerca de 20 a 26 páginas",
-            "Guia do aluno: como estudar com repetição espaçada"
+            "Guia do aluno: como estudar com repetição espaçada",
+            "Baralho pronto para o Anki (.apkg) e arquivo TSV"
           ],
           "enabled": true,
           "utm": true
