@@ -151,7 +151,7 @@ function assertProfile(profile, filename) {
   for (const section of profile.sections || []) {
     assertId(section.id, `${filename} seção`)
     if (!section.title) throw new Error(`${filename}: seção ${section.id} sem título.`)
-    if (section.layout && !["list", "social"].includes(section.layout)) {
+    if (section.layout && !["list", "social", "banner"].includes(section.layout)) {
       throw new Error(`${filename}: layout "${section.layout}" inválido.`)
     }
     for (const link of section.links || []) {
@@ -285,6 +285,39 @@ function renderListLink(link, profileId, utm) {
         </li>`
 }
 
+const BANNER_TONES = ["red", "gold", "green", "ink"]
+
+function renderBannerLink(link, profileId, utm, prefix) {
+  const label = `${profileId}/${link.id}`
+  if (link.paused === true) throw new Error(`${label}: banner não pode ficar pausado.`)
+  if (!link.image) throw new Error(`${label}: banner precisa de image.`)
+  const tone = link.tone || "red"
+  if (!BANNER_TONES.includes(tone)) {
+    throw new Error(`${label}: tone "${tone}" inválido. Use: ${BANNER_TONES.join(", ")}`)
+  }
+  const href = outboundHref(link, profileId, utm)
+  const external = isHttp(href)
+  const finalHref = href === "#" ? `#${link.id}` : href
+  const blank = external ? ' target="_blank" rel="noopener noreferrer"' : ""
+  const classes = ["banner", `tone-${tone}`]
+  if (link.flip) classes.push("flip")
+  if (href === "#") classes.push("soon")
+  const word = link.bgWord ? `\n            <span class="banner-word" aria-hidden="true">${esc(link.bgWord)}</span>` : ""
+  const eyebrow = link.eyebrow ? `\n              <span class="banner-eyebrow">${esc(link.eyebrow)}</span>` : ""
+  const desc = link.description ? `\n              <span class="banner-desc">${esc(link.description)}</span>` : ""
+  const cta = `\n              <span class="banner-cta">${esc(href === "#" ? "Em breve" : link.cta || "Acessar")}</span>`
+  const badge = link.badge ? `\n            <span class="banner-sticker">${esc(link.badge)}</span>` : ""
+  const extra = external ? `\n            <span class="sr-only"> (abre em nova aba)</span>` : ""
+  return `        <li>
+          <a id="${esc(link.id)}" href="${esc(finalHref)}" data-link-id="${esc(link.id)}" class="${classes.join(" ")}"${blank}>${word}
+            <span class="banner-art"><img src="${esc(asset(prefix, link.image))}" alt="${esc(link.imageAlt || "")}" loading="lazy" decoding="async" /></span>
+            <span class="banner-copy">${eyebrow}
+              <span class="banner-title">${esc(link.title)}</span>${desc}${cta}
+            </span>${badge}${extra}
+          </a>
+        </li>`
+}
+
 function renderSocialLink(link, profileId, utm) {
   const href = outboundHref(link, profileId, utm)
   const external = isHttp(href)
@@ -302,7 +335,7 @@ function visibleLinks(section) {
   return (section.links || []).filter((link) => link.enabled)
 }
 
-function renderSections(profile) {
+function renderSections(profile, prefix = "") {
   const utm = profile.utm || {}
   const lists = []
   const socials = []
@@ -316,6 +349,13 @@ function renderSections(profile) {
         <div id="social-links">
 ${links.map((link) => renderSocialLink(link, profile.id, utm)).join("\n")}
         </div>
+      </section>`)
+    } else if (layout === "banner") {
+      lists.push(`      <section aria-labelledby="secao-${esc(section.id)}">
+        <h2 id="secao-${esc(section.id)}" class="section-title">${esc(section.title)}</h2>
+        <ul class="banners">
+${links.map((link) => renderBannerLink(link, profile.id, utm, prefix)).join("\n")}
+        </ul>
       </section>`)
     } else {
       lists.push(`      <section aria-labelledby="secao-${esc(section.id)}">
@@ -693,7 +733,7 @@ function build() {
   function profileDocument(profile, prefix) {
     const canonical = profileCanonical(profile, base)
     const ogBase = canonical.replace(/\/+$/, "").replace(new RegExp(`/${profile.id}$`), "")
-    const sections = renderSections(profile)
+    const sections = renderSections(profile, prefix)
     return fill(
       template,
       pageMap({

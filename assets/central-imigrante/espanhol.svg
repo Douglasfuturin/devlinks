@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+  <defs><filter id="sh" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#000" flood-opacity=".45"/></filter></defs>
+  <g filter="url(#sh)">
+    <path d="M20 150 L120 168 L120 228 L20 210 Z" fill="#a50d26"/>
+    <path d="M220 150 L120 168 L120 228 L220 210 Z" fill="#c8102e"/>
+    <path d="M28 142 L120 160 L120 220 L28 202 Z" fill="#fffaf0"/>
+    <path d="M212 142 L120 160 L120 220 L212 202 Z" fill="#f6efe1"/>
+    <g stroke="#d9cdb6" stroke-width="3" stroke-linecap="round">
+      <path d="M42 162 L106 175"/><path d="M42 174 L106 187"/><path d="M42 186 L92 196"/>
+      <path d="M134 175 L198 162"/><path d="M134 187 L198 174"/><path d="M134 199 L180 190"/>
+    </g>
+  </g>
+  <g filter="url(#sh)">
+    <text x="118" y="132" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="128" font-weight="700" fill="#fdba01">ñ</text>
+  </g>
+  <g filter="url(#sh)" transform="rotate(-6 180 52)">
+    <path d="M136 24h88a10 10 0 0 1 10 10v34a10 10 0 0 1-10 10h-56l-16 14v-14h-16a10 10 0 0 1-10-10V34a10 10 0 0 1 10-10Z" fill="#fff"/>
+    <text x="180" y="60" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-size="24" font-weight="900" fill="#c8102e">¡Hola!</text>
+  </g>
+  <g filter="url(#sh)" transform="rotate(-12 50 50)">
+    <rect x="18" y="34" width="66" height="40" rx="10" fill="#1f1f22"/>
+    <text x="51" y="61" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#fdba01">DELE</text>
+  </g>
+</svg>

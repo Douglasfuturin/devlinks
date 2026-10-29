@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+  <defs><filter id="sh" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#000" flood-opacity=".45"/></filter></defs>
+  <g filter="url(#sh)">
+    <rect x="46" y="98" width="130" height="112" rx="6" fill="#fff4dc"/>
+    <path d="M30 108 L111 40 L192 108 Z" fill="#c8102e"/>
+    <rect x="96" y="148" width="30" height="62" rx="4" fill="#7a3b1e"/>
+    <circle cx="119" cy="181" r="2.5" fill="#fdba01"/>
+    <rect x="60" y="120" width="26" height="24" rx="3" fill="#7fb8d8"/>
+    <rect x="136" y="120" width="26" height="24" rx="3" fill="#7fb8d8"/>
+    <path d="M60 132h26M73 120v24M136 132h26M149 120v24" stroke="#fff4dc" stroke-width="3"/>
+    <rect x="150" y="52" width="16" height="34" fill="#a50d26"/>
+  </g>
+  <g filter="url(#sh)" transform="rotate(10 186 176)">
+    <rect x="138" y="140" width="96" height="62" rx="8" fill="#fdba01"/>
+    <rect x="148" y="152" width="24" height="30" rx="4" fill="#fff"/>
+    <circle cx="160" cy="162" r="6" fill="#c9b37a"/>
+    <path d="M151 180a9 9 0 0 1 18 0Z" fill="#c9b37a"/>
+    <text x="180" y="160" font-family="Arial, sans-serif" font-size="13" font-weight="800" fill="#1f1410">NIE</text>
+    <rect x="180" y="168" width="40" height="4" rx="2" fill="#8a6a10"/>
+    <rect x="180" y="176" width="30" height="4" rx="2" fill="#8a6a10"/>
+    <rect x="148" y="190" width="76" height="4" rx="2" fill="#8a6a10"/>
+  </g>
+  <g filter="url(#sh)" transform="rotate(-28 40 70)">
+    <circle cx="34" cy="62" r="16" fill="none" stroke="#fdba01" stroke-width="8"/>
+    <rect x="48" y="58" width="44" height="8" rx="3" fill="#fdba01"/>
+    <rect x="78" y="64" width="6" height="12" rx="2" fill="#fdba01"/>
+    <rect x="66" y="64" width="6" height="9" rx="2" fill="#fdba01"/>
+  </g>
+</svg>
