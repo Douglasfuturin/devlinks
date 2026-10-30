@@ -11,7 +11,7 @@
     "bio": "Tudo para brasileiros que querem morar na Espanha, com a realidade que ninguém conta.",
     "avatar": "assets/central-imigrante/avatar.webp",
     "avatarAlt": "Logo da Central do Imigrante .ES: bandeira da Espanha, Edifício Metrópolis, Puerta de Alcalá, passaporte espanhol e placa do Metro de Madrid",
-    "footer": "Central do Imigrante ES",
+    "footer": "Central do Imigrante ES · Alguns links são de parceiros e podem gerar comissão para a Central.",
     "avatarFit": "seal",
     "hideTitle": true,
     "favicon": "assets/central-imigrante/favicon.png",
@@ -52,7 +52,7 @@
   },
   "sections": [
     {
-      "id": "servicos",
+      "id": "comece",
       "title": "Comece por aqui",
       "layout": "banner",
       "links": [
@@ -92,7 +92,14 @@
           "enabled": true,
           "utm": false,
           "flip": true
-        },
+        }
+      ]
+    },
+    {
+      "id": "espanhol",
+      "title": "Aprender espanhol",
+      "layout": "banner",
+      "links": [
         {
           "id": "kit-sobrevivencia",
           "eyebrow": "Curso de espanhol",
@@ -136,10 +143,17 @@
           ],
           "enabled": true,
           "utm": true
-        },
+        }
+      ]
+    },
+    {
+      "id": "bancos",
+      "title": "Bancos parceiros",
+      "layout": "banner",
+      "links": [
         {
           "id": "revolut",
-          "eyebrow": "Banco parceiro",
+          "eyebrow": "Conta digital",
           "title": "Conta Revolut",
           "description": "Conta digital com IBAN espanhol, usada por mais de 80 milhões de clientes.",
           "cta": "Abrir minha conta",
@@ -161,7 +175,7 @@
         },
         {
           "id": "nomad",
-          "eyebrow": "Banco parceiro",
+          "eyebrow": "Conta internacional",
           "title": "Conta Internacional Nomad",
           "description": "Ganhe taxa zero + 1GB de internet com o código LTY2DA7YFD.",
           "cta": "Abrir minha conta",
@@ -179,7 +193,14 @@
           ],
           "enabled": true,
           "utm": false
-        },
+        }
+      ]
+    },
+    {
+      "id": "mudanca",
+      "title": "Mudança e viagem",
+      "layout": "banner",
+      "links": [
         {
           "id": "relocation",
           "eyebrow": "Mudança",
@@ -252,5 +273,9 @@
         }
       ]
     }
-  ]
+  ],
+  "analytics": {
+    "enabled": true,
+    "vercel": true
+  }
 }

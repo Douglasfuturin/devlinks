@@ -781,7 +781,8 @@ function build() {
         social: sections.social,
         footer: profile.profile.footer || profile.profile.name,
         profileId: profile.id,
-        analytics,
+        // profile.analytics (opcional) liga a medição só naquele perfil
+        analytics: { ...analytics, ...(profile.analytics || {}) },
         themeStyle: themeBlock(profile.theme),
         themeSwitch: profile.profile.themeSwitch !== false,
         jsonLd: jsonLdScript(profileJsonLd(profile, canonical)),
