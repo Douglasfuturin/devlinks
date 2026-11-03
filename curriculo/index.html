@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Gerador de Currículo Espanhol grátis | Central do Imigrante ES</title>
+<meta name="description" content="Monte seu currículo no padrão espanhol (Currículum Vitae) em minutos, de graça. Preencha em português, o currículo sai em espanhol e você salva em PDF." />
+<meta name="robots" content="index,follow" />
+<meta name="theme-color" content="#000000" />
+<link rel="canonical" href="https://central-do-imigrante.vercel.app/curriculo/" />
+<link rel="icon" href="../assets/central-imigrante/favicon.png" type="image/png" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:site_name" content="Central do Imigrante ES" />
+<meta property="og:title" content="Gerador de Currículo Espanhol grátis" />
+<meta property="og:description" content="Preencha em português, o currículo sai em espanhol no padrão da Espanha e você salva em PDF." />
+<meta property="og:url" content="https://central-do-imigrante.vercel.app/curriculo/" />
+<meta property="og:image" content="https://central-do-imigrante.vercel.app/assets/og-central-imigrante.png" />
+<style>
+  :root {
+    --bg: #000;
+    --card: #121212;
+    --card2: #1b1b1b;
+    --line: rgba(255, 255, 255, 0.14);
+    --text: #f5f5f5;
+    --muted: #a8a8a8;
+    --gold: #fdba01;
+    --red: #c8102e;
+    --green: #25d366;
+    --radius: 14px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--bg);
+    background-image:
+      radial-gradient(60% 40% at 15% 0%, rgba(200, 16, 46, 0.3), transparent 70%),
+      radial-gradient(50% 35% at 90% 20%, rgba(253, 186, 1, 0.14), transparent 70%);
+    background-attachment: fixed;
+    color: var(--text);
+    font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    -webkit-text-size-adjust: 100%;
+  }
+  a { color: var(--gold); }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 20px 16px 48px; }
+
+  /* topo */
+  .top { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+  .top img { width: 64px; height: 64px; border-radius: 50%; flex: none; }
+  .top h1 { margin: 0; font-size: clamp(1.35rem, 4.5vw, 2rem); line-height: 1.15; }
+  .top p { margin: 4px 0 0; color: var(--muted); font-size: 0.95rem; }
+  .eyebrow { color: var(--gold); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+
+  .privacy {
+    display: flex; gap: 10px; align-items: flex-start;
+    background: rgba(37, 211, 102, 0.08); border: 1px solid rgba(37, 211, 102, 0.35);
+    border-radius: var(--radius); padding: 10px 14px; font-size: 0.9rem; margin-bottom: 16px;
+  }
+
+  /* abas no celular */
+  .tabs { display: none; position: sticky; top: 0; z-index: 5; background: rgba(0,0,0,.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 8px 0; margin: 0 -16px 12px; padding-inline: 16px; }
+  .tabs .seg { display: grid; grid-template-columns: 1fr 1fr; background: var(--card2); border: 1px solid var(--line); border-radius: 999px; padding: 4px; }
+  .tabs button { border: 0; background: transparent; color: var(--muted); font: inherit; font-weight: 600; padding: 9px 0; border-radius: 999px; cursor: pointer; }
+  .tabs button[aria-selected="true"] { background: var(--gold); color: #000; }
+
+  .layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 20px; align-items: start; }
+  .panel-preview { position: sticky; top: 16px; }
+
+  /* formulário */
+  details.sec { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); margin-bottom: 12px; overflow: hidden; }
+  details.sec > summary {
+    list-style: none; cursor: pointer; padding: 14px 16px; font-weight: 700; display: flex; align-items: center; gap: 10px;
+  }
+  details.sec > summary::-webkit-details-marker { display: none; }
+  details.sec > summary .n { width: 26px; height: 26px; border-radius: 50%; background: var(--gold); color: #000; display: grid; place-items: center; font-size: 0.85rem; flex: none; }
+  details.sec > summary .es { color: var(--muted); font-weight: 400; font-size: 0.85rem; margin-left: auto; }
+  details.sec[open] > summary { border-bottom: 1px solid var(--line); }
+  .sec-body { padding: 14px 16px 16px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .full { grid-column: 1 / -1; }
+  label { display: block; font-size: 0.85rem; color: var(--muted); margin-bottom: 4px; }
+  label .opt { color: #777; }
+  input, select, textarea {
+    width: 100%; background: #0a0a0a; color: var(--text); border: 1px solid var(--line); border-radius: 10px;
+    padding: 11px 12px; font: inherit; font-size: 16px; outline: none;
+  }
+  input:focus, select:focus, textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(253, 186, 1, 0.18); }
+  textarea { min-height: 92px; resize: vertical; }
+  .hint { font-size: 0.8rem; color: var(--muted); margin-top: 4px; }
+  .check { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; color: var(--text); margin: 0; }
+  .check input { width: 18px; height: 18px; accent-color: var(--gold); }
+
+  .item { border: 1px dashed var(--line); border-radius: 12px; padding: 12px; margin-bottom: 12px; position: relative; }
+  .item-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; color: var(--gold); font-weight: 700; font-size: 0.85rem; }
+  .icon-btn { background: transparent; border: 1px solid var(--line); color: var(--muted); border-radius: 8px; padding: 4px 10px; font: inherit; font-size: 0.8rem; cursor: pointer; }
+  .icon-btn:hover { color: var(--text); border-color: var(--text); }
+  .add { width: 100%; background: transparent; border: 1px dashed var(--gold); color: var(--gold); border-radius: 10px; padding: 11px; font: inherit; font-weight: 600; cursor: pointer; }
+
+  .photo-row { display: flex; gap: 12px; align-items: center; }
+  .photo-thumb { width: 64px; height: 64px; border-radius: 10px; background: #0a0a0a center/cover no-repeat; border: 1px solid var(--line); flex: none; }
+
+  .swatches { display: flex; gap: 10px; }
+  .swatches button { width: 34px; height: 34px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; }
+  .swatches button[aria-pressed="true"] { border-color: #fff; box-shadow: 0 0 0 2px var(--gold); }
+
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 6px 0 14px; }
+  .btn { border: 0; border-radius: 999px; padding: 12px 18px; font: inherit; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; }
+  .btn-gold { background: var(--gold); color: #000; }
+  .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--line); }
+  .btn-green { background: var(--green); color: #04210f; }
+
+  .tips { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; margin-top: 14px; font-size: 0.9rem; }
+  .tips h2 { font-size: 1rem; margin: 0 0 8px; color: var(--gold); }
+  .tips ul { margin: 0; padding-left: 18px; }
+  .tips li { margin: 4px 0; }
+
+  .cta { margin-top: 14px; background: linear-gradient(135deg, rgba(37,211,102,.16), rgba(37,211,102,.04)); border: 1px solid rgba(37,211,102,.4); border-radius: var(--radius); padding: 16px; }
+  .cta h2 { margin: 0 0 4px; font-size: 1.05rem; }
+  .cta p { margin: 0 0 12px; color: var(--muted); font-size: 0.92rem; }
+
+  /* prévia */
+  .preview-shell { background: #2a2a2a; border: 1px solid var(--line); border-radius: var(--radius); padding: 12px; overflow: hidden; }
+  .preview-scale { transform-origin: top left; }
+  .preview-note { color: var(--muted); font-size: 0.82rem; margin: 8px 2px 0; }
+
+  /* ===== CURRÍCULO (A4) ===== */
+  .cv {
+    --accent: #0b2a4a;
+    width: 794px; min-height: 1123px; background: #fff; color: #1b1b1b;
+    font: 13px/1.45 Arial, "Helvetica Neue", Helvetica, sans-serif;
+    padding: 46px 52px; box-shadow: 0 10px 40px rgba(0,0,0,.4);
+  }
+  .cv-head { display: flex; gap: 22px; align-items: center; padding-bottom: 16px; border-bottom: 3px solid var(--accent); }
+  .cv-photo { width: 104px; height: 104px; border-radius: 50%; object-fit: cover; flex: none; }
+  .cv-name { font-size: 28px; font-weight: 700; color: var(--accent); margin: 0; line-height: 1.15; }
+  .cv-role { font-size: 15px; color: #444; margin: 4px 0 8px; font-weight: 600; }
+  .cv-contact { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 12px; color: #333; }
+  .cv-contact span { white-space: nowrap; }
+  .cv-contact span + span::before { content: "·"; margin-right: 16px; color: #999; margin-left: -8px; }
+  .cv-sec { margin-top: 18px; }
+  .cv-sec h2 { font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin: 0 0 8px; padding-bottom: 4px; border-bottom: 1px solid #d9d9d9; }
+  .cv-entry { margin-bottom: 11px; break-inside: avoid; }
+  .cv-entry-top { display: flex; justify-content: space-between; gap: 12px; }
+  .cv-entry-title { font-weight: 700; }
+  .cv-entry-date { color: #555; white-space: nowrap; font-size: 12px; }
+  .cv-entry-sub { color: #444; font-style: italic; }
+  .cv-entry ul { margin: 4px 0 0; padding-left: 18px; }
+  .cv-entry li { margin: 1px 0; }
+  .cv-langs { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 24px; }
+  .cv-lang { display: flex; justify-content: space-between; border-bottom: 1px dotted #ccc; padding: 2px 0; }
+  .cv-lang b { font-weight: 700; }
+  .cv-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .cv-tags span { background: #f1f3f5; border-radius: 4px; padding: 2px 8px; font-size: 12px; }
+  .cv-list { margin: 0; padding-left: 18px; }
+  .cv-empty { color: #9a9a9a; font-style: italic; }
+
+  @media (max-width: 920px) {
+    .tabs { display: block; }
+    .layout { grid-template-columns: minmax(0, 1fr); }
+    .panel-preview { position: static; }
+    body[data-tab="form"] .panel-preview { display: none; }
+    body[data-tab="preview"] .panel-form { display: none; }
+  }
+  @media (max-width: 520px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+
+  /* impressão: só o currículo, em A4 */
+  @page { size: A4; margin: 0; }
+  @media print {
+    html, body { background: #fff !important; }
+    body { background-image: none !important; }
+    .top, .privacy, .tabs, .panel-form, .panel-preview > .actions, .preview-note, .cta { display: none !important; }
+    .wrap { padding: 0; max-width: none; }
+    .layout { display: block; }
+    .panel-preview { display: block !important; position: static; }
+    .preview-shell { background: none; border: 0; padding: 0; border-radius: 0; }
+    .preview-scale { transform: none !important; height: auto !important; }
+    .cv { width: 210mm; min-height: 0; box-shadow: none; padding: 14mm 15mm; }
+  }
+</style>
+</head>
+<body data-tab="form">
+<div class="wrap">
+  <header class="top">
+    <img src="../assets/central-imigrante/avatar.webp" alt="Logo da Central do Imigrante ES" width="64" height="64" />
+    <div>
+      <div class="eyebrow">Grátis · Central do Imigrante ES</div>
+      <h1>Gerador de Currículo Espanhol</h1>
+      <p>Preencha em português. O currículo sai em espanhol, no padrão da Espanha, pronto para salvar em PDF.</p>
+    </div>
+  </header>
+
+  <div class="privacy">🔒 <span>Seus dados ficam <b>só neste aparelho</b>. Nada é enviado para nenhum servidor.</span></div>
+
+  <nav class="tabs" aria-label="Alternar entre preencher e ver o currículo">
+    <div class="seg" role="tablist">
+      <button type="button" role="tab" id="tab-form" aria-selected="true">1. Preencher</button>
+      <button type="button" role="tab" id="tab-preview" aria-selected="false">2. Ver e baixar</button>
+    </div>
+  </nav>
+
+  <div class="layout">
+    <section class="panel-form" aria-label="Formulário">
+      <div class="actions">
+        <button type="button" class="btn btn-ghost" id="btn-example">✨ Ver exemplo preenchido</button>
+        <button type="button" class="btn btn-ghost" id="btn-clear">Limpar tudo</button>
+      </div>
+
+      <form id="form" autocomplete="on" onsubmit="return false">
+        <details class="sec" open>
+          <summary><span class="n">1</span>Dados pessoais <span class="es">Datos personales</span></summary>
+          <div class="sec-body grid">
+            <div class="full"><label for="nome">Nome completo</label><input id="nome" name="nome" autocomplete="name" placeholder="Ana Souza Lima" /></div>
+            <div class="full"><label for="cargo">Vaga que você procura <span class="opt">(em espanhol)</span></label><input id="cargo" name="cargo" list="puestos" placeholder="Camarera / Ayudante de cocina" /><div class="hint">Comece a digitar para ver nomes de profissões em espanhol.</div></div>
+            <div><label for="telefone">Telefone</label><input id="telefone" name="telefone" type="tel" autocomplete="tel" placeholder="+34 600 000 000" /></div>
+            <div><label for="email">E-mail</label><input id="email" name="email" type="email" autocomplete="email" placeholder="ana@email.com" /></div>
+            <div><label for="cidade">Cidade onde mora na Espanha</label><input id="cidade" name="cidade" placeholder="Elche (Alicante)" /></div>
+            <div><label for="nacionalidade">Nacionalidade <span class="opt">(opcional)</span></label><input id="nacionalidade" name="nacionalidade" placeholder="Brasileña" /></div>
+            <div><label for="situacao">Situação para trabalhar</label>
+              <select id="situacao" name="situacao">
+                <option value="">Não indicar</option>
+                <option value="Permiso de residencia y trabajo">Tenho permissão de residência e trabalho</option>
+                <option value="Ciudadanía de la Unión Europea">Tenho cidadania europeia</option>
+                <option value="Familiar de ciudadano de la UE">Familiar de cidadão europeu</option>
+                <option value="Autorización de trabajo en trámite">Autorização de trabalho em andamento</option>
+              </select>
+              <div class="hint">Na Espanha, a empresa quer saber logo se você pode ser contratado.</div>
+            </div>
+            <div><label for="carnet">Carteira de motorista</label>
+              <select id="carnet" name="carnet">
+                <option value="">Não indicar</option>
+                <option value="Carnet de conducir B">Tenho carteira B</option>
+                <option value="Carnet de conducir B y vehículo propio">Carteira B e carro próprio</option>
+              </select>
+            </div>
+            <div><label for="linkedin">LinkedIn <span class="opt">(opcional)</span></label><input id="linkedin" name="linkedin" placeholder="linkedin.com/in/anasouza" /></div>
+            <div><label for="nascimento">Data de nascimento <span class="opt">(opcional)</span></label><input id="nascimento" name="nascimento" placeholder="12/05/1992" /><div class="hint">Na Espanha não é obrigatória.</div></div>
+            <div class="full">
+              <label>Foto <span class="opt">(opcional, mas comum na Espanha)</span></label>
+              <div class="photo-row">
+                <div class="photo-thumb" id="photo-thumb"></div>
+                <div style="flex:1">
+                  <input id="foto" type="file" accept="image/*" />
+                  <button type="button" class="icon-btn" id="foto-remove" style="margin-top:6px">Remover foto</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <details class="sec" open>
+          <summary><span class="n">2</span>Resumo profissional <span class="es">Perfil profesional</span></summary>
+          <div class="sec-body">
+            <label for="perfil">2 a 4 frases sobre você <span class="opt">(escreva em espanhol)</span></label>
+            <textarea id="perfil" name="perfil" placeholder="Profesional con 5 años de experiencia en hostelería, acostumbrada a trabajar en equipo y bajo presión. Responsable, puntual y con muchas ganas de aprender."></textarea>
+            <div class="hint">Dica: diga quantos anos de experiência tem, em quê, e 2 ou 3 qualidades.</div>
+          </div>
+        </details>
+
+        <details class="sec" open>
+          <summary><span class="n">3</span>Experiência <span class="es">Experiencia laboral</span></summary>
+          <div class="sec-body"><div id="exp-list"></div><button type="button" class="add" id="add-exp">+ Adicionar experiência</button>
+          <div class="hint" style="margin-top:8px">Comece pela mais recente. Experiência no Brasil também conta: indique "Brasil" na cidade.</div></div>
+        </details>
+
+        <details class="sec">
+          <summary><span class="n">4</span>Formação <span class="es">Formación</span></summary>
+          <div class="sec-body"><div id="edu-list"></div><button type="button" class="add" id="add-edu">+ Adicionar formação</button></div>
+        </details>
+
+        <details class="sec">
+          <summary><span class="n">5</span>Idiomas <span class="es">Idiomas</span></summary>
+          <div class="sec-body"><div id="lang-list"></div><button type="button" class="add" id="add-lang">+ Adicionar idioma</button>
+          <div class="hint" style="margin-top:8px">A Espanha usa os níveis A1 a C2 (Quadro Europeu). Se não tem certificado, seja honesto no nível.</div></div>
+        </details>
+
+        <details class="sec">
+          <summary><span class="n">6</span>Habilidades e extras <span class="es">Competencias</span></summary>
+          <div class="sec-body grid">
+            <div class="full"><label for="habilidades">Habilidades <span class="opt">(separe por vírgula, em espanhol)</span></label><input id="habilidades" name="habilidades" placeholder="Atención al cliente, Trabajo en equipo, Manipulación de alimentos" /></div>
+            <div class="full"><label for="informatica">Informática <span class="opt">(separe por vírgula)</span></label><input id="informatica" name="informatica" placeholder="Microsoft Office, Google Workspace, TPV" /></div>
+            <div class="full"><label for="cursos">Cursos e certificados <span class="opt">(um por linha)</span></label><textarea id="cursos" name="cursos" placeholder="Carnet de manipulador de alimentos (2026)&#10;Curso de prevención de riesgos laborales (2025)"></textarea></div>
+            <div class="full" style="display:grid;gap:8px">
+              <label class="check"><input type="checkbox" id="imediata" name="imediata" /> Posso começar imediatamente <span class="opt">(Incorporación inmediata)</span></label>
+              <label class="check"><input type="checkbox" id="horarios" name="horarios" /> Disponível para turnos e fins de semana</label>
+              <label class="check"><input type="checkbox" id="viajar" name="viajar" /> Disponível para viajar ou mudar de cidade</label>
+            </div>
+          </div>
+        </details>
+
+        <details class="sec">
+          <summary><span class="n">7</span>Aparência</summary>
+          <div class="sec-body">
+            <label>Cor do currículo</label>
+            <div class="swatches" id="swatches">
+              <button type="button" data-color="#0b2a4a" style="background:#0b2a4a" aria-label="Azul-marinho" aria-pressed="true"></button>
+              <button type="button" data-color="#1f1f1f" style="background:#1f1f1f" aria-label="Preto"></button>
+              <button type="button" data-color="#9b1424" style="background:#9b1424" aria-label="Vinho"></button>
+              <button type="button" data-color="#0f6b4a" style="background:#0f6b4a" aria-label="Verde"></button>
+            </div>
+          </div>
+        </details>
+      </form>
+
+      <div class="actions">
+        <button type="button" class="btn btn-gold" id="btn-pdf-form">⬇ Baixar em PDF</button>
+        <button type="button" class="btn btn-ghost" id="btn-see">Ver currículo</button>
+      </div>
+
+      <div class="tips">
+        <h2>Como é o currículo na Espanha</h2>
+        <ul>
+          <li><b>Uma página</b>, no máximo duas. Quem seleciona lê em poucos segundos.</li>
+          <li><b>Em espanhol</b>, mesmo para vagas simples. Peça a um nativo para revisar.</li>
+          <li><b>Diga se pode trabalhar</b> (NIE e autorização). É uma das primeiras dúvidas da empresa.</li>
+          <li><b>Foto é comum</b>, mas não obrigatória. Se usar, que seja simples e profissional.</li>
+          <li><b>Adapte para cada vaga</b>: mude o cargo desejado e o resumo.</li>
+          <li>Envie em <b>PDF</b> e leve impresso quando entregar pessoalmente.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="panel-preview" aria-label="Prévia do currículo">
+      <div class="actions" style="margin-top:0">
+        <button type="button" class="btn btn-gold" id="btn-pdf">⬇ Baixar em PDF</button>
+        <button type="button" class="btn btn-ghost" id="btn-edit">✏ Editar</button>
+      </div>
+      <div class="preview-shell" id="shell">
+        <div class="preview-scale" id="scale">
+          <article class="cv" id="cv" lang="es"></article>
+        </div>
+      </div>
+      <p class="preview-note">No celular: toque em <b>Baixar em PDF</b> e escolha <b>Salvar como PDF</b> na tela de impressão.</p>
+
+      <div class="cta">
+        <h2>Procurando trabalho na Espanha?</h2>
+        <p>No grupo da Central a galera compartilha vagas, dicas e quem já está do lado de cá. É grátis.</p>
+        <a class="btn btn-green" id="cta-grupo" href="https://chat.whatsapp.com/Jvb3VwpCTy92LDZvYSrImV" target="_blank" rel="noopener noreferrer">Entrar no grupo do WhatsApp</a>
+        <p style="margin:12px 0 0"><a href="../">← Voltar para a Central do Imigrante</a></p>
+      </div>
+    </section>
+  </div>
+</div>
+
+<datalist id="puestos">
+  <option value="Camarero/a"><option value="Ayudante de cocina"><option value="Cocinero/a"><option value="Friegaplatos">
+  <option value="Camarera de pisos"><option value="Recepcionista"><option value="Cuidador/a de personas mayores">
+  <option value="Niñera / Canguro"><option value="Limpiador/a"><option value="Empleada del hogar"><option value="Albañil">
+  <option value="Peón de obra"><option value="Pintor/a"><option value="Electricista"><option value="Fontanero/a">
+  <option value="Jardinero/a"><option value="Mozo/a de almacén"><option value="Reponedor/a"><option value="Cajero/a">
+  <option value="Dependiente/a"><option value="Repartidor/a"><option value="Conductor/a"><option value="Auxiliar administrativo/a">
+  <option value="Comercial"><option value="Teleoperador/a"><option value="Esteticista"><option value="Peluquero/a">
+  <option value="Enfermero/a"><option value="Técnico/a en cuidados auxiliares de enfermería"><option value="Desarrollador/a de software">
+</datalist>
+
+<template id="tpl-exp">
+  <div class="item">
+    <div class="item-head"><span>Experiência</span><button type="button" class="icon-btn" data-remove>Remover</button></div>
+    <div class="grid">
+      <div class="full"><label>Cargo <span class="opt">(em espanhol)</span></label><input data-k="cargo" list="puestos" placeholder="Camarera" /></div>
+      <div><label>Empresa</label><input data-k="empresa" placeholder="Restaurante Sabor" /></div>
+      <div><label>Cidade e país</label><input data-k="local" placeholder="São Paulo, Brasil" /></div>
+      <div><label>Início</label><input data-k="inicio" type="month" placeholder="AAAA-MM" /></div>
+      <div><label>Fim</label><input data-k="fim" type="month" placeholder="AAAA-MM" /><label class="check" style="margin-top:6px"><input type="checkbox" data-k="atual" /> Trabalho aqui atualmente</label></div>
+      <div class="full"><label>O que você fazia <span class="opt">(uma tarefa por linha, em espanhol)</span></label><textarea data-k="tarefas" placeholder="Atención al cliente en sala y terraza&#10;Toma de comandas y cobro en TPV"></textarea></div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-edu">
+  <div class="item">
+    <div class="item-head"><span>Formação</span><button type="button" class="icon-btn" data-remove>Remover</button></div>
+    <div class="grid">
+      <div class="full"><label>Curso ou título</label><input data-k="titulo" placeholder="Grado en Administración de Empresas" /></div>
+      <div><label>Instituição</label><input data-k="centro" placeholder="Universidade de São Paulo" /></div>
+      <div><label>Cidade e país</label><input data-k="local" placeholder="São Paulo, Brasil" /></div>
+      <div><label>Ano de início</label><input data-k="inicio" inputmode="numeric" placeholder="2014" /></div>
+      <div><label>Ano de conclusão</label><input data-k="fim" inputmode="numeric" placeholder="2018" /></div>
+      <div class="full"><label>Situação na Espanha</label>
+        <select data-k="homolog">
+          <option value="">Não indicar</option>
+          <option value="Título homologado en España">Diploma homologado na Espanha</option>
+          <option value="Homologación en trámite">Homologação em andamento</option>
+          <option value="Equivalencia en trámite">Equivalência em andamento</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-lang">
+  <div class="item">
+    <div class="item-head"><span>Idioma</span><button type="button" class="icon-btn" data-remove>Remover</button></div>
+    <div class="grid">
+      <div><label>Idioma</label>
+        <select data-k="idioma">
+          <option value="Portugués">Português</option><option value="Español">Espanhol</option><option value="Inglés">Inglês</option>
+          <option value="Italiano">Italiano</option><option value="Francés">Francês</option><option value="Alemán">Alemão</option>
+          <option value="Catalán">Catalão</option><option value="Valenciano">Valenciano</option>
+        </select>
+      </div>
+      <div><label>Nível</label>
+        <select data-k="nivel">
+          <option value="Nativo">Nativo</option><option value="C2 – Maestría">C2 – Domínio total</option><option value="C1 – Avanzado">C1 – Avançado</option>
+          <option value="B2 – Intermedio alto">B2 – Intermediário alto</option><option value="B1 – Intermedio">B1 – Intermediário</option>
+          <option value="A2 – Básico">A2 – Básico</option><option value="A1 – Inicial">A1 – Iniciante</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+;(function () {
+  "use strict"
+  var KEY = "central-curriculo-es-v1"
+  var MESES = ["ene.", "feb.", "mar.", "abr.", "may.", "jun.", "jul.", "ago.", "sept.", "oct.", "nov.", "dic."]
+  var $ = function (id) { return document.getElementById(id) }
+  var FIELDS = ["nome", "cargo", "telefone", "email", "cidade", "nacionalidade", "situacao", "carnet", "linkedin", "nascimento", "perfil", "habilidades", "informatica", "cursos"]
+  var CHECKS = ["imediata", "horarios", "viajar"]
+  var state = { foto: "", cor: "#0b2a4a" }
+
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]
+    })
+  }
+  function mes(v) {
+    if (!v) return ""
+    var m = String(v).trim().match(/^(\d{4})-(\d{1,2})$/) || null
+    if (m) return MESES[+m[2] - 1] + " " + m[1]
+    var b = String(v).trim().match(/^(\d{1,2})\/(\d{4})$/)
+    if (b) return MESES[+b[1] - 1] + " " + b[2]
+    return String(v).trim()
+  }
+  function lines(t) { return String(t || "").split(/\n+/).map(function (s) { return s.trim().replace(/^[-•·]\s*/, "") }).filter(Boolean) }
+  function commas(t) { return String(t || "").split(",").map(function (s) { return s.trim() }).filter(Boolean) }
+
+  // ---------- listas repetíveis ----------
+  function addItem(listId, tplId, data) {
+    var node = $(tplId).content.firstElementChild.cloneNode(true)
+    if (data) {
+      node.querySelectorAll("[data-k]").forEach(function (el) {
+        var k = el.getAttribute("data-k")
+        if (el.type === "checkbox") el.checked = !!data[k]
+        else if (data[k] != null) el.value = data[k]
+      })
+    }
+    node.querySelector("[data-remove]").addEventListener("click", function () { node.remove(); update() })
+    $(listId).appendChild(node)
+    return node
+  }
+  function readList(listId) {
+    return Array.prototype.map.call($(listId).children, function (item) {
+      var o = {}
+      item.querySelectorAll("[data-k]").forEach(function (el) {
+        o[el.getAttribute("data-k")] = el.type === "checkbox" ? el.checked : el.value
+      })
+      return o
+    })
+  }
+
+  function collect() {
+    var d = { foto: state.foto, cor: state.cor }
+    FIELDS.forEach(function (f) { d[f] = $(f).value })
+    CHECKS.forEach(function (f) { d[f] = $(f).checked })
+    d.exp = readList("exp-list")
+    d.edu = readList("edu-list")
+    d.lang = readList("lang-list")
+    return d
+  }
+
+  // ---------- currículo ----------
+  function render(d) {
+    var contact = []
+    if (d.telefone) contact.push("Tel. " + esc(d.telefone))
+    if (d.email) contact.push(esc(d.email))
+    if (d.cidade) contact.push(esc(d.cidade))
+    if (d.linkedin) contact.push(esc(d.linkedin))
+    var extra = []
+    if (d.situacao) extra.push(esc(d.situacao))
+    if (d.nacionalidade) extra.push("Nacionalidad: " + esc(d.nacionalidade))
+    if (d.nascimento) extra.push("Fecha de nacimiento: " + esc(d.nascimento))
+
+    var h = '<header class="cv-head">'
+    if (d.foto) h += '<img class="cv-photo" src="' + d.foto + '" alt="" />'
+    h += "<div>"
+    h += '<h1 class="cv-name">' + (d.nome ? esc(d.nome) : '<span class="cv-empty">Tu nombre</span>') + "</h1>"
+    if (d.cargo) h += '<div class="cv-role">' + esc(d.cargo) + "</div>"
+    if (contact.length) h += '<div class="cv-contact">' + contact.map(function (c) { return "<span>" + c + "</span>" }).join("") + "</div>"
+    if (extra.length) h += '<div class="cv-contact" style="margin-top:4px">' + extra.map(function (c) { return "<span>" + c + "</span>" }).join("") + "</div>"
+    h += "</div></header>"
+
+    if (d.perfil.trim()) h += '<section class="cv-sec"><h2>Perfil profesional</h2><p style="margin:0">' + esc(d.perfil.trim()) + "</p></section>"
+
+    var exps = d.exp.filter(function (e) { return e.cargo || e.empresa })
+    if (exps.length) {
+      h += '<section class="cv-sec"><h2>Experiencia laboral</h2>'
+      exps.forEach(function (e) {
+        var ini = mes(e.inicio), fim = e.atual ? "Actualidad" : mes(e.fim)
+        var date = ini && fim ? ini + " – " + fim : ini || fim
+        var sub = [e.empresa, e.local].filter(Boolean).map(esc).join(" · ")
+        h += '<div class="cv-entry"><div class="cv-entry-top"><span class="cv-entry-title">' + esc(e.cargo) + '</span><span class="cv-entry-date">' + esc(date) + "</span></div>"
+        if (sub) h += '<div class="cv-entry-sub">' + sub + "</div>"
+        var t = lines(e.tarefas)
+        if (t.length) h += "<ul>" + t.map(function (x) { return "<li>" + esc(x) + "</li>" }).join("") + "</ul>"
+        h += "</div>"
+      })
+      h += "</section>"
+    }
+
+    var edus = d.edu.filter(function (e) { return e.titulo || e.centro })
+    if (edus.length) {
+      h += '<section class="cv-sec"><h2>Formación</h2>'
+      edus.forEach(function (e) {
+        var date = e.inicio && e.fim ? e.inicio + " – " + e.fim : e.fim || e.inicio || ""
+        var sub = [e.centro, e.local].filter(Boolean).map(esc).join(" · ")
+        h += '<div class="cv-entry"><div class="cv-entry-top"><span class="cv-entry-title">' + esc(e.titulo) + '</span><span class="cv-entry-date">' + esc(date) + "</span></div>"
+        if (sub) h += '<div class="cv-entry-sub">' + sub + "</div>"
+        if (e.homolog) h += '<div style="font-size:12px;color:#555">' + esc(e.homolog) + "</div>"
+        h += "</div>"
+      })
+      h += "</section>"
+    }
+
+    var cursos = lines(d.cursos)
+    if (cursos.length) h += '<section class="cv-sec"><h2>Cursos y certificados</h2><ul class="cv-list">' + cursos.map(function (x) { return "<li>" + esc(x) + "</li>" }).join("") + "</ul></section>"
+
+    if (d.lang.length) {
+      h += '<section class="cv-sec"><h2>Idiomas</h2><div class="cv-langs">'
+      d.lang.forEach(function (l) { h += '<div class="cv-lang"><b>' + esc(l.idioma) + "</b><span>" + esc(l.nivel) + "</span></div>" })
+      h += "</div></section>"
+    }
+
+    var hab = commas(d.habilidades), inf = commas(d.informatica)
+    if (hab.length || inf.length) {
+      h += '<section class="cv-sec"><h2>Competencias</h2>'
+      if (hab.length) h += '<div class="cv-tags">' + hab.map(function (x) { return "<span>" + esc(x) + "</span>" }).join("") + "</div>"
+      if (inf.length) h += '<div style="margin-top:8px"><b>Informática:</b> ' + inf.map(esc).join(", ") + "</div>"
+      h += "</section>"
+    }
+
+    var otros = []
+    if (d.carnet) otros.push(d.carnet)
+    if (d.imediata) otros.push("Incorporación inmediata")
+    if (d.horarios) otros.push("Disponibilidad horaria, turnos y fines de semana")
+    if (d.viajar) otros.push("Disponibilidad para viajar y cambiar de residencia")
+    if (otros.length) h += '<section class="cv-sec"><h2>Otros datos</h2><ul class="cv-list">' + otros.map(function (x) { return "<li>" + esc(x) + "</li>" }).join("") + "</ul></section>"
+
+    var cv = $("cv")
+    cv.style.setProperty("--accent", d.cor || "#0b2a4a")
+    cv.innerHTML = h
+    fit()
+  }
+
+  // ---------- prévia em escala ----------
+  function fit() {
+    var shell = $("shell"), scale = $("scale"), cv = $("cv")
+    if (!shell.offsetWidth) return
+    var avail = shell.clientWidth - 24
+    var s = Math.min(1, avail / 794)
+    scale.style.transform = "scale(" + s + ")"
+    scale.style.height = cv.offsetHeight * s + "px"
+  }
+  window.addEventListener("resize", fit)
+
+  // ---------- salvar no aparelho ----------
+  var timer
+  function save(d) {
+    clearTimeout(timer)
+    timer = setTimeout(function () {
+      try { localStorage.setItem(KEY, JSON.stringify(d)) } catch (e) {
+        try { var s = Object.assign({}, d, { foto: "" }); localStorage.setItem(KEY, JSON.stringify(s)) } catch (e2) {}
+      }
+    }, 300)
+  }
+  function load(d) {
+    FIELDS.forEach(function (f) { $(f).value = d[f] || "" })
+    CHECKS.forEach(function (f) { $(f).checked = !!d[f] })
+    ;["exp-list", "edu-list", "lang-list"].forEach(function (id) { $(id).innerHTML = "" })
+    ;(d.exp || []).forEach(function (x) { addItem("exp-list", "tpl-exp", x) })
+    ;(d.edu || []).forEach(function (x) { addItem("edu-list", "tpl-edu", x) })
+    ;(d.lang || []).forEach(function (x) { addItem("lang-list", "tpl-lang", x) })
+    state.foto = d.foto || ""
+    setColor(d.cor || "#0b2a4a")
+    showThumb()
+  }
+  function update() { var d = collect(); render(d); save(d) }
+
+  // ---------- foto ----------
+  function showThumb() { $("photo-thumb").style.backgroundImage = state.foto ? "url(" + state.foto + ")" : "none" }
+  $("foto").addEventListener("change", function (ev) {
+    var f = ev.target.files && ev.target.files[0]
+    if (!f) return
+    var img = new Image(), url = URL.createObjectURL(f)
+    img.onload = function () {
+      var size = 320, c = document.createElement("canvas")
+      c.width = c.height = size
+      var side = Math.min(img.width, img.height)
+      c.getContext("2d").drawImage(img, (img.width - side) / 2, (img.height - side) / 2, side, side, 0, 0, size, size)
+      state.foto = c.toDataURL("image/jpeg", 0.85)
+      URL.revokeObjectURL(url)
+      showThumb(); update()
+    }
+    img.src = url
+  })
+  $("foto-remove").addEventListener("click", function () { state.foto = ""; $("foto").value = ""; showThumb(); update() })
+
+  // ---------- cor ----------
+  function setColor(c) {
+    state.cor = c
+    document.querySelectorAll("#swatches button").forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-color") === c ? "true" : "false") })
+  }
+  document.querySelectorAll("#swatches button").forEach(function (b) {
+    b.addEventListener("click", function () { setColor(b.getAttribute("data-color")); update() })
+  })
+
+  // ---------- abas ----------
+  function tab(t) {
+    document.body.setAttribute("data-tab", t)
+    $("tab-form").setAttribute("aria-selected", t === "form" ? "true" : "false")
+    $("tab-preview").setAttribute("aria-selected", t === "preview" ? "true" : "false")
+    window.scrollTo(0, 0)
+    fit()
+  }
+  $("tab-form").addEventListener("click", function () { tab("form") })
+  $("tab-preview").addEventListener("click", function () { tab("preview") })
+  $("btn-see").addEventListener("click", function () { tab("preview") })
+  $("btn-edit").addEventListener("click", function () { tab("form") })
+
+  // ---------- PDF ----------
+  function track(name) { try { if (window.va) window.va("event", { name: name }) } catch (e) {} }
+  function pdf() {
+    update()
+    track("curriculo_pdf")
+    var prev = document.body.getAttribute("data-tab")
+    document.body.setAttribute("data-tab", "preview")
+    var nome = ($("nome").value || "").trim()
+    var old = document.title
+    document.title = nome ? "CV " + nome : "Curriculum Vitae"
+    setTimeout(function () {
+      window.print()
+      document.title = old
+      document.body.setAttribute("data-tab", prev)
+      fit()
+    }, 60)
+  }
+  $("btn-pdf").addEventListener("click", pdf)
+  $("btn-pdf-form").addEventListener("click", pdf)
+  $("cta-grupo").addEventListener("click", function () { track("curriculo_grupo") })
+
+  // ---------- botões ----------
+  $("add-exp").addEventListener("click", function () { addItem("exp-list", "tpl-exp").querySelector("input").focus(); update() })
+  $("add-edu").addEventListener("click", function () { addItem("edu-list", "tpl-edu").querySelector("input").focus(); update() })
+  $("add-lang").addEventListener("click", function () { addItem("lang-list", "tpl-lang"); update() })
+  $("form").addEventListener("input", update)
+  $("form").addEventListener("change", update)
+
+  var EXEMPLO = {
+    nome: "Ana Souza Lima", cargo: "Camarera / Ayudante de cocina", telefone: "+34 600 123 456", email: "ana.souza@email.com",
+    cidade: "Elche (Alicante)", nacionalidade: "Brasileña", situacao: "Permiso de residencia y trabajo", carnet: "Carnet de conducir B",
+    linkedin: "", nascimento: "",
+    perfil: "Profesional con 5 años de experiencia en hostelería y atención al cliente en Brasil y España. Acostumbrada a trabajar en equipo y bajo presión, con buena disposición y ganas de aprender. Responsable, puntual y con trato amable.",
+    exp: [
+      { cargo: "Camarera", empresa: "Restaurante La Plaza", local: "Elche, España", inicio: "2025-06", fim: "", atual: true, tarefas: "Atención al cliente en sala y terraza\nToma de comandas y cobro en TPV\nMontaje y limpieza del comedor" },
+      { cargo: "Ayudante de cocina", empresa: "Restaurante Sabor Mineiro", local: "São Paulo, Brasil", inicio: "2021-03", fim: "2025-02", atual: false, tarefas: "Preparación de ingredientes y elaboración de platos fríos\nControl de stock y recepción de mercancía\nCumplimiento de normas de higiene alimentaria" }
+    ],
+    edu: [{ titulo: "Técnico en Gastronomía", centro: "SENAC São Paulo", local: "São Paulo, Brasil", inicio: "2019", fim: "2020", homolog: "" }],
+    lang: [{ idioma: "Portugués", nivel: "Nativo" }, { idioma: "Español", nivel: "B1 – Intermedio" }, { idioma: "Inglés", nivel: "A2 – Básico" }],
+    habilidades: "Atención al cliente, Trabajo en equipo, Manipulación de alimentos, Organización",
+    informatica: "Google Workspace, TPV, Redes sociales",
+    cursos: "Carnet de manipulador de alimentos (2025)",
+    imediata: true, horarios: true, viajar: false, foto: "", cor: "#0b2a4a"
+  }
+  $("btn-example").addEventListener("click", function () {
+    var tem = FIELDS.some(function (f) { return $(f).value.trim() }) || $("exp-list").children.length
+    if (tem && !window.confirm("Isso vai substituir o que você já preencheu. Continuar?")) return
+    load(EXEMPLO); update(); track("curriculo_exemplo")
+  })
+  $("btn-clear").addEventListener("click", function () {
+    if (!window.confirm("Apagar todos os dados do currículo deste aparelho?")) return
+    try { localStorage.removeItem(KEY) } catch (e) {}
+    $("form").reset()
+    load({ lang: [{ idioma: "Portugués", nivel: "Nativo" }, { idioma: "Español", nivel: "A2 – Básico" }] })
+    update()
+  })
+
+  // ---------- início ----------
+  var saved = null
+  try { saved = JSON.parse(localStorage.getItem(KEY) || "null") } catch (e) {}
+  if (saved) load(saved)
+  else {
+    addItem("exp-list", "tpl-exp")
+    addItem("edu-list", "tpl-edu")
+    addItem("lang-list", "tpl-lang", { idioma: "Portugués", nivel: "Nativo" })
+    addItem("lang-list", "tpl-lang", { idioma: "Español", nivel: "A2 – Básico" })
+  }
+  update()
+})()
+</script>
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments) }</script>
+</body>
+</html>

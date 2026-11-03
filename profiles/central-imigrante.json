@@ -92,6 +92,27 @@
           "enabled": true,
           "utm": false,
           "flip": true
+        },
+        {
+          "id": "curriculo",
+          "eyebrow": "Ferramenta grátis",
+          "title": "Gerador de Currículo Espanhol",
+          "description": "Preencha em português e baixe seu currículo em espanhol, no padrão da Espanha.",
+          "cta": "Criar meu currículo",
+          "url": "https://central-do-imigrante.vercel.app/curriculo/",
+          "image": "assets/central-imigrante/curriculo.svg",
+          "imageAlt": "",
+          "tone": "red",
+          "bgWord": "CV",
+          "badge": "GRÁTIS",
+          "features": [
+            "Modelo de 1 página no formato espanhol",
+            "Nomes de profissões em espanhol",
+            "Salva em PDF no celular, sem cadastro"
+          ],
+          "enabled": true,
+          "utm": false,
+          "flip": false
         }
       ]
     },
@@ -110,7 +131,7 @@
           "image": "assets/central-imigrante/kit.svg",
           "imageAlt": "",
           "tone": "red",
-          "flip": false,
+          "flip": true,
           "bgWord": "KIT",
           "badge": "R$19,90",
           "features": [
@@ -131,7 +152,7 @@
           "image": "assets/central-imigrante/flashcards.svg",
           "imageAlt": "",
           "tone": "gold",
-          "flip": true,
+          "flip": false,
           "bgWord": "A1C1",
           "badge": "R$47",
           "features": [
@@ -161,7 +182,7 @@
           "image": "assets/central-imigrante/conta-app.svg",
           "imageAlt": "",
           "tone": "ink",
-          "flip": false,
+          "flip": true,
           "bgWord": "EUR",
           "enabled": true,
           "utm": false,
@@ -183,7 +204,7 @@
           "image": "assets/central-imigrante/conta.svg",
           "imageAlt": "",
           "tone": "gold",
-          "flip": true,
+          "flip": false,
           "bgWord": "€$",
           "badge": "TAXA ZERO",
           "features": [
@@ -214,7 +235,7 @@
           "bgWord": "NIE",
           "enabled": true,
           "todo": "Colocar o link do serviço de relocation",
-          "flip": false
+          "flip": true
         },
         {
           "id": "passagens",
@@ -227,7 +248,7 @@
           "imageAlt": "",
           "tone": "ink",
           "bgWord": "MAD",
-          "flip": true,
+          "flip": false,
           "enabled": true,
           "todo": "Colocar o link de afiliado das passagens"
         }
