@@ -52,6 +52,37 @@
   },
   "sections": [
     {
+      "id": "destaque",
+      "title": "Novidade",
+      "layout": "banner",
+      "links": [
+        {
+          "id": "mapas-mentais",
+          "eyebrow": "Material de espanhol",
+          "title": "Mapas Mentais de Espanhol Ilustrado",
+          "description": "Aprenda a gramática e o vocabulário de forma visual e fixe tudo com exercícios corrigidos.",
+          "cta": "Quero os mapas mentais",
+          "url": "#",
+          "image": "assets/central-imigrante/mapas-mentais.svg",
+          "imageAlt": "",
+          "tone": "red",
+          "featured": true,
+          "bgWord": "MAPAS",
+          "badge": "NOVO",
+          "features": [
+            "Mapas mentais ilustrados: alfabeto, pronúncia, verbos ser e estar, tempos verbais, pronomes e mais",
+            "Situações do dia a dia: restaurante, transporte, compras e conversas",
+            "100 exercícios de espanhol com respostas",
+            "50 exercícios de fixação",
+            "Flashcards ilustrados por tema: cumprimentos, comida e viagens"
+          ],
+          "enabled": true,
+          "utm": true,
+          "flip": false
+        }
+      ]
+    },
+    {
       "id": "comece",
       "title": "Comece por aqui",
       "layout": "banner",
@@ -138,29 +169,6 @@
             "Frases essenciais com pronúncia e tradução, por situação: emergência, o básico, aeroporto e chegada, e o dia a dia",
             "Guia rápido de pronúncia da Espanha",
             "Dicas culturais, como o uso de tú com desconhecidos"
-          ],
-          "enabled": true,
-          "utm": true
-        },
-        {
-          "id": "flashcards",
-          "eyebrow": "Curso de espanhol",
-          "title": "Flashcards A1–C1",
-          "description": "Vocabulário da Espanha do A1 ao C1, para estudar no Anki, na planilha ou no papel.",
-          "cta": "Quero os flashcards",
-          "url": "https://lastlink.com/p/CC267EA60/checkout-payment",
-          "image": "assets/central-imigrante/flashcards.svg",
-          "imageAlt": "",
-          "tone": "gold",
-          "flip": false,
-          "bgWord": "A1C1",
-          "badge": "R$47",
-          "features": [
-            "687 flashcards do A1 ao C1",
-            "Flashcards para imprimir por nível: PDFs A1, A2, B1, B2 e C1",
-            "5 cadernos de exercícios, um por nível, com cerca de 20 a 26 páginas",
-            "Guia do aluno: como estudar com repetição espaçada",
-            "Baralho pronto para o Anki (.apkg) e arquivo TSV"
           ],
           "enabled": true,
           "utm": true

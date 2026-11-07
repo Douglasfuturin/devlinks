@@ -849,6 +849,19 @@ ul li a.banner.tone-gold .banner-desc { color: #1a1205; }
 }
 ul li a.banner.flip .banner-sticker { right: auto; left: 16px; transform: rotate(-3deg); }
 
+/* Banner em destaque: moldura dourada com brilho */
+ul li a.banner.featured {
+  border: 2px solid #fdba01;
+  box-shadow: 0 0 0 4px rgba(253, 186, 1, 0.18), 0 0 34px rgba(253, 186, 1, 0.35), 0 14px 34px rgba(0, 0, 0, 0.45);
+  animation: featured-glow 2.6s ease-in-out infinite;
+}
+ul li a.banner.featured .banner-sticker { background: #fdba01; font-size: 12.5px; }
+@keyframes featured-glow {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(253, 186, 1, 0.16), 0 0 26px rgba(253, 186, 1, 0.28), 0 14px 34px rgba(0, 0, 0, 0.45); }
+  50% { box-shadow: 0 0 0 6px rgba(253, 186, 1, 0.26), 0 0 44px rgba(253, 186, 1, 0.5), 0 14px 34px rgba(0, 0, 0, 0.45); }
+}
+@media (prefers-reduced-motion: reduce) { ul li a.banner.featured { animation: none; } }
+
 ul.banners .banner-list {
   grid-column: 1 / -1;
   display: flex;

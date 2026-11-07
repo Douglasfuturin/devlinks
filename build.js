@@ -301,6 +301,7 @@ function renderBannerLink(link, profileId, utm, prefix) {
   const blank = external ? ' target="_blank" rel="noopener noreferrer"' : ""
   const classes = ["banner", `tone-${tone}`]
   if (link.flip) classes.push("flip")
+  if (link.featured) classes.push("featured")
   if (href === "#") classes.push("soon")
   const word = link.bgWord ? `\n            <span class="banner-word" aria-hidden="true">${esc(link.bgWord)}</span>` : ""
   const eyebrow = link.eyebrow ? `\n              <span class="banner-eyebrow">${esc(link.eyebrow)}</span>` : ""

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+  <defs><filter id="sh" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#000" flood-opacity=".45"/></filter></defs>
+  <!-- folha de exercícios (atrás) -->
+  <g filter="url(#sh)" transform="rotate(10 168 150)">
+    <rect x="118" y="78" width="104" height="138" rx="10" fill="#fffdf6"/>
+    <rect x="118" y="78" width="104" height="22" rx="10" fill="#c8102e"/>
+    <rect x="118" y="90" width="104" height="10" fill="#c8102e"/>
+    <g stroke-linecap="round" stroke-linejoin="round">
+      <rect x="130" y="114" width="12" height="12" rx="2" fill="none" stroke="#1f1410" stroke-width="2"/>
+      <path d="M132 120l3 3 6-7" fill="none" stroke="#037b27" stroke-width="3"/>
+      <path d="M150 120h60" stroke="#c9c2b3" stroke-width="4"/>
+      <rect x="130" y="138" width="12" height="12" rx="2" fill="none" stroke="#1f1410" stroke-width="2"/>
+      <path d="M132 144l3 3 6-7" fill="none" stroke="#037b27" stroke-width="3"/>
+      <path d="M150 144h50" stroke="#c9c2b3" stroke-width="4"/>
+      <rect x="130" y="162" width="12" height="12" rx="2" fill="none" stroke="#1f1410" stroke-width="2"/>
+      <path d="M150 168h56" stroke="#c9c2b3" stroke-width="4"/>
+      <rect x="130" y="186" width="12" height="12" rx="2" fill="none" stroke="#1f1410" stroke-width="2"/>
+      <path d="M150 192h44" stroke="#c9c2b3" stroke-width="4"/>
+    </g>
+  </g>
+  <!-- mapa mental (frente) -->
+  <g filter="url(#sh)" transform="rotate(-7 92 126)">
+    <rect x="18" y="52" width="150" height="150" rx="12" fill="#fffdf6"/>
+    <g stroke="#c8102e" stroke-width="3.5" fill="none" stroke-linecap="round">
+      <path d="M93 127 Q60 100 44 82"/><path d="M93 127 Q130 98 144 82"/>
+      <path d="M93 127 Q56 150 42 176"/><path d="M93 127 Q128 154 146 176"/>
+    </g>
+    <rect x="26" y="70" width="40" height="20" rx="10" fill="#fdba01"/>
+    <rect x="122" y="70" width="40" height="20" rx="10" fill="#037b27"/>
+    <rect x="24" y="166" width="40" height="20" rx="10" fill="#2456c4"/>
+    <rect x="124" y="166" width="40" height="20" rx="10" fill="#fdba01"/>
+    <circle cx="93" cy="127" r="27" fill="#c8102e"/>
+    <text x="93" y="134" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-size="19" font-weight="900" fill="#fff">ES</text>
+  </g>
+  <!-- selo 150 exercícios -->
+  <g filter="url(#sh)" transform="rotate(-10 60 40)">
+    <rect x="16" y="20" width="94" height="40" rx="20" fill="#0b0b0b"/>
+    <text x="63" y="47" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-size="17" font-weight="900" fill="#fdba01">+150 ✓</text>
+  </g>
+</svg>
