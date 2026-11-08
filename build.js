@@ -824,7 +824,7 @@ function build() {
   }
 }
 
-const LIVE_CHECKOUTS = new Set(["CA990C2E4", "CC267EA60"])
+const LIVE_CHECKOUTS = new Set(["CA990C2E4", "CC267EA60", "C285BBCFA"])
 
 function assertOnlyLiveCheckouts(html, label) {
   const ids = [...html.matchAll(/lastlink\.com\/p\/([A-Za-z0-9]+)/gi)].map((match) => match[1])
