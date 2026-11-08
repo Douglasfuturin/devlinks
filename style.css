@@ -863,6 +863,21 @@ ul li a.banner.featured .banner-sticker { background: #fdba01; font-size: 13.5px
 }
 @media (prefers-reduced-motion: reduce) { ul li a.banner.featured { animation: none; } }
 
+/* Banner com foto: imagem quadrada inteira, sem sair do card */
+ul li a.banner.photo-art .banner-art { align-items: center; padding: 18px 4px 14px 14px; }
+ul li a.banner.photo-art.flip .banner-art { padding: 18px 14px 14px 4px; }
+ul li a.banner.photo-art .banner-art img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  margin: 0;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 2px solid rgba(253, 186, 1, 0.85);
+  filter: none;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.45);
+}
+ul li a.banner.photo-art:hover .banner-art img { transform: translateY(-3px) rotate(-1deg); }
+
 ul.banners .banner-list {
   grid-column: 1 / -1;
   display: flex;

@@ -63,8 +63,8 @@
           "description": "Aprenda a gramática e o vocabulário de forma visual e fixe tudo com exercícios corrigidos.",
           "cta": "Quero os mapas mentais",
           "url": "https://lastlink.com/p/C285BBCFA/checkout-payment",
-          "image": "assets/central-imigrante/mapas-mentais.svg",
-          "imageAlt": "",
+          "image": "assets/central-imigrante/mapas-mentais.webp",
+          "imageAlt": "Capa do material Mapas Mentais e Flashcards de espanhol",
           "tone": "red",
           "featured": true,
           "bgWord": "MAPAS",
@@ -79,7 +79,8 @@
           "enabled": true,
           "utm": true,
           "flip": false,
-          "badgeFrom": "R$47"
+          "badgeFrom": "R$47",
+          "imageFit": "photo"
         }
       ]
     },
