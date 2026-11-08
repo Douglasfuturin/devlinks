@@ -68,7 +68,7 @@
           "tone": "red",
           "featured": true,
           "bgWord": "MAPAS",
-          "badge": "NOVO",
+          "badge": "R$19,90",
           "features": [
             "Mapas mentais ilustrados: alfabeto, pronúncia, verbos ser e estar, tempos verbais, pronomes e mais",
             "Situações do dia a dia: restaurante, transporte, compras e conversas",
@@ -78,7 +78,8 @@
           ],
           "enabled": true,
           "utm": true,
-          "flip": false
+          "flip": false,
+          "badgeFrom": "R$47"
         }
       ]
     },

@@ -307,7 +307,8 @@ function renderBannerLink(link, profileId, utm, prefix) {
   const eyebrow = link.eyebrow ? `\n              <span class="banner-eyebrow">${esc(link.eyebrow)}</span>` : ""
   const desc = link.description ? `\n              <span class="banner-desc">${esc(link.description)}</span>` : ""
   const cta = `\n              <span class="banner-cta">${esc(href === "#" ? "Em breve" : link.cta || "Acessar")}</span>`
-  const badge = link.badge ? `\n            <span class="banner-sticker">${esc(link.badge)}</span>` : ""
+  const badgeFrom = link.badgeFrom ? `<span class="sticker-from">de <s>${esc(link.badgeFrom)}</s></span> por ` : ""
+  const badge = link.badge ? `\n            <span class="banner-sticker">${badgeFrom}${esc(link.badge)}</span>` : ""
   const extra = external ? `\n            <span class="sr-only"> (abre em nova aba)</span>` : ""
   const features = Array.isArray(link.features) ? link.features.filter(Boolean) : []
   if (features.length) classes.push("has-list")
